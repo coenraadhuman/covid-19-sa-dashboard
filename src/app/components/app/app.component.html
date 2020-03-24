@@ -1,0 +1,15 @@
+<app-header [header]="overviewHeader" [icon]="overviewIcon"></app-header>
+<app-overview-table [tableDataSource]="overviewTableData" *ngIf="isLoaded"></app-overview-table>
+<mat-progress-bar mode="indeterminate" color="warn" *ngIf="!isLoaded"></mat-progress-bar>
+
+<app-header [header]="southAfricaHeader" [icon]="southAfricaIcon"></app-header>
+<app-stats-table [tableDataSource]="southAfricaTableData" *ngIf="isLoaded"></app-stats-table>
+<mat-progress-bar mode="indeterminate" color="warn" *ngIf="!isLoaded"></mat-progress-bar>
+
+<app-header [header]="worldHeader" [icon]="worldIcon"></app-header>
+<app-stats-table [tableDataSource]="worldTableData" *ngIf="isLoaded"></app-stats-table>
+<mat-progress-bar mode="indeterminate" color="warn" *ngIf="!isLoaded"></mat-progress-bar>
+
+<p>All data is retrieved using <a href="https://github.com/ChrisMichaelPerezSantiago/covid19">Chris Michael Perez Santiago's</a> Web API which retrieves it's data from <a href="https://www.worldometers.info/coronavirus/">Worldometer</a>.</p>
+
+<p>Data is retrieved every {{ updateInterval }} minutes.</p>
