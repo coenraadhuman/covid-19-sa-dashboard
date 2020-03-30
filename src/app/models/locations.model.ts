@@ -1,26 +1,26 @@
 export interface LocationsModel {
-    latest: Latest;
-    locations: Location[];
+    latest: LatestLs;
+    locations: LocationLs[];
 }
 
-export interface Latest {
+export interface LatestLs {
     confirmed: number;
     deaths: number;
     recovered: number;
 }
 
-export interface Location {
+export interface LocationLs {
     id: number;
     country: string;
     country_code: string;
     country_population: number | null;
     province: string;
     last_updated: Date;
-    coordinates: Coordinates;
-    latest: Latest;
+    coordinates: CoordinatesLs;
+    latest: LatestLs;
 }
 
-export interface Coordinates {
+export interface CoordinatesLs {
     latitude: string;
     longitude: string;
 }

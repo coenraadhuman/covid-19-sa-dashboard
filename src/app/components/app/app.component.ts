@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { LocationsModel } from '../../models/locations.model';
+import {LocationLs, LocationsModel} from '../../models/locations.model';
 import { groupBy, mergeMap, toArray} from 'rxjs/operators';
 import { from } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
@@ -13,6 +13,8 @@ import { MatSnackBar } from '@angular/material';
 
 export class AppComponent implements OnInit {
 
+    initialLocations: LocationLs[];
+
   data: LocationsModel = {
     latest: {
       confirmed: 0,
@@ -20,6 +22,24 @@ export class AppComponent implements OnInit {
       recovered: 0
     },
     locations: []
+  };
+
+  sa: LocationLs = {
+      latest: {
+          confirmed: 0,
+          deaths: 0,
+          recovered: 0
+      },
+      coordinates: {
+          latitude: '',
+          longitude: ''
+      },
+      country: '',
+      country_code: '',
+      country_population: 0,
+      id: 0,
+      last_updated: Date.prototype,
+      province: ''
   };
 
   header = 'COVID-19 Pandemic';
@@ -36,21 +56,35 @@ export class AppComponent implements OnInit {
   getTable(url: string) {
     this.http.get<LocationsModel>(url, {responseType: 'json'})
       .subscribe(data => {
-        this.data = data;
-        this.data.locations = this.data.locations
-            .sort((a, b) => b.latest.confirmed - a.latest.confirmed);
 
-        const source = from(data.locations);
+          this.initialLocations = [...data.locations];
 
-        const example = source.pipe(
-            groupBy(location => location.country),
-            mergeMap(group => group.pipe(toArray()))
-        );
+          this.getSa(this.initialLocations);
 
-        const newLocations = [];
+          this.data = data;
 
-        const subscribe = example.subscribe(val => newLocations.push(val.reduce(
-            (country, x) => {
+          this.aggregateData(this.initialLocations);
+
+          if (this.data.latest.recovered === 0) {
+            this.openSnackBar();
+          }
+
+          this.isTableLoaded = true;
+      });
+  }
+
+    aggregateData(locations: LocationLs[]) {
+      const source = from(locations);
+
+      const example = source.pipe(
+          groupBy(location => location.country),
+          mergeMap(group => group.pipe(toArray()))
+      );
+
+      const newLocations = [];
+
+      const subscribe = example.subscribe(val => newLocations.push(val.reduce(
+          (country, x) => {
               country.country = x.country;
               country.latest.confirmed += x.latest.confirmed;
               country.latest.recovered += x.latest.recovered;
@@ -62,17 +96,20 @@ export class AppComponent implements OnInit {
               country.province = '';
               country.last_updated = x.last_updated > country.last_updated ? x.last_updated : country.last_updated;
               return country;
-            })));
+          })));
 
-        this.data.locations = newLocations.splice(0, 10);
+      this.data.locations = newLocations
+          .sort((a, b) => b.latest.confirmed - a.latest.confirmed)
+          .splice(0, 10);
 
-        subscribe.unsubscribe();
+      subscribe.unsubscribe();
+  }
 
-        if (this.data.latest.recovered === 0) {
-            this.openSnackBar();
-        }
-
-        this.isTableLoaded = true;
+  getSa(locations: LocationLs[]) {
+      locations.forEach(x => {
+          if (x.id === 200) {
+              this.sa = x;
+          }
       });
   }
 

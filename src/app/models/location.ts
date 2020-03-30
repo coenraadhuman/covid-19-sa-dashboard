@@ -1,8 +1,8 @@
 export interface LocationModel {
-    location: Location;
+    location: LocationL;
 }
 
-export interface Location {
+export interface LocationL {
     id: number;
     country: string;
     country_code: string;
@@ -10,34 +10,34 @@ export interface Location {
     province: string;
     county: string;
     last_updated: Date;
-    coordinates: Coordinates;
-    latest: Latest;
-    timelines: Timelines;
+    coordinates: CoordinatesL;
+    latest: LatestL;
+    timelines: TimelinesL;
 }
 
-export interface Coordinates {
+export interface CoordinatesL {
     latitude: string;
     longitude: string;
 }
 
-export interface Latest {
+export interface LatestL {
     confirmed: number;
     deaths: number;
     recovered: number;
 }
 
-export interface Timelines {
-    confirmed: Confirmed;
-    deaths: Confirmed;
-    recovered: Recovered;
+export interface TimelinesL {
+    confirmed: ConfirmedL;
+    deaths: ConfirmedL;
+    recovered: RecoveredL;
 }
 
-export interface Confirmed {
+export interface ConfirmedL {
     latest: number;
     timeline: { [key: string]: number };
 }
 
-export interface Recovered {
+export interface RecoveredL {
     latest: number;
     timeline: { [key: string]: number };
 }

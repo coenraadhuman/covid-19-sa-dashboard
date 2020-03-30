@@ -6,16 +6,20 @@
             <mat-card-title>Overview</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <p>overview stats</p>
+            <p>Total Cases: {{data.latest.confirmed}}</p>
+            <p>Total Deaths: {{data.latest.deaths}}</p>
+            <p>Total Recovered: {{data.latest.recovered}}</p>
         </mat-card-content>
     </mat-card>
 
-    <mat-card class="sa">
+    <mat-card *ngIf="isTableLoaded" class="sa">
         <mat-card-header>
             <mat-card-title>South Africa</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <p>this is meant for SA stats</p>
+            <p>Total Cases: {{ sa.latest.confirmed }}</p>
+            <p>Total Deaths: {{ sa.latest.deaths }}</p>
+            <p>Total Recovered: {{ sa.latest.recovered }}</p>
         </mat-card-content>
     </mat-card>
 

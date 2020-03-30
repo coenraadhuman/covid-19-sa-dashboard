@@ -18,6 +18,7 @@ import {
 } from '@angular/material';
 import { StatsTableComponent } from './components/stats-table/stats-table.component';
 import { HeaderComponent } from './components/header/header.component';
+import {ChartsModule} from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { HeaderComponent } from './components/header/header.component';
         MatCardModule,
         MatGridListModule,
         MatSnackBarModule,
+        ChartsModule,
     ],
   providers: [],
   bootstrap: [AppComponent]
