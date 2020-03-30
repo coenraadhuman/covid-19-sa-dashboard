@@ -1,5 +1,32 @@
 mat-card {
-  max-width: 625px;
-  margin: 10px;
+  max-width: 623px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+mat-card-content {
   overflow: auto;
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    display: grid;
+    grid-template-columns: 32.5% 52% 10%;
+  }
+
+  mat-card {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .container {
+    display: grid;
+    grid-template-columns: 32.5% 35% 20%;
+  }
 }

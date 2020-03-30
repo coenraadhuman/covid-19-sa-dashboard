@@ -1,6 +1,6 @@
 <app-header [header]="header"></app-header>
 <mat-progress-bar mode="indeterminate" color="warn" *ngIf="!isTableLoaded"></mat-progress-bar>
-<div>
+<div class="container">
     <mat-card *ngIf="isTableLoaded">
         <mat-card-header>
             <mat-card-title>Top 10 Affected Countries</mat-card-title>
@@ -19,9 +19,3 @@
         </mat-card-content>
     </mat-card>
 </div>
-
-
-
-<p>All data is retrieved using <a href="https://github.com/ExpDev07/coronavirus-tracker-api">https://github.com/ExpDev07/coronavirus-tracker-api</a> Web API which retrieves it's data from <a href="https://github.com/CSSEGISandData/COVID-19">https://github.com/CSSEGISandData/COVID-19</a>.</p>
-
-<p>Data is retrieved every {{ updateInterval }} minutes.</p>
