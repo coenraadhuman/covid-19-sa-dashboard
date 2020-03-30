@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import {ApiReportsModel, Table} from '../../models/api-reports.model';
-import {OverviewModel} from '../../models/overview.model';
+import { LocationsModel } from '../../models/locations.model';
+import { groupBy, mergeMap, toArray} from 'rxjs/operators';
+import {from} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,48 +12,66 @@ import {OverviewModel} from '../../models/overview.model';
 
 export class AppComponent implements OnInit {
 
-  data: ApiReportsModel;
+  data: LocationsModel = {
+    latest: {
+      confirmed: 0,
+      deaths: 0,
+      recovered: 0
+    },
+    locations: []
+  };
 
-  overviewHeader = 'COVID-19 Pandemic Overview';
-  overviewIcon = 'assessment';
+  header = 'COVID-19 Pandemic';
 
-  southAfricaHeader = 'South Africa COVID-19 Statistics';
-  southAfricaIcon = 'place';
-
-  worldHeader = 'Top 5 Most Affected Countries by COVID-19';
-  worldIcon = 'language';
-
-  overviewTableData: OverviewModel[] = [];
-  southAfricaTableData: Table[] = [];
-  worldTableData: Table[] = [];
-
-  isLoaded = false;
+  isTableLoaded = false;
   updateInterval = 15;
 
   constructor(private http: HttpClient) {
     setInterval(() => {
-      this.getHTMLFile('https://covid19-server.chrismichael.now.sh/api/v1/AllReports');
+      this.getTable( 'https://coronavirus-tracker-api.herokuapp.com/v2/locations?source=jhu');
     }, this.updateInterval * 60 * 1000);
   }
 
-  getHTMLFile(url: string) {
-    this.http.get<ApiReportsModel>(url, {responseType: 'json'})
+  getTable(url: string) {
+    this.http.get<LocationsModel>(url, {responseType: 'json'})
       .subscribe(data => {
-        this.data = data as ApiReportsModel;
-        this.southAfricaTableData = data.reports[0].table[0].filter(x => x.Country === 'South Africa');
-        this.worldTableData = data.reports[0].table[0].splice(0, 5);
-        this.overviewTableData = [ {
-          total: data.reports[0].cases,
-          critical: data.reports[0].active_cases[0].criticalStates,
-          active: data.reports[0].active_cases[0].currently_infected_patients,
-          deaths: data.reports[0].closed_cases[0].deaths,
-          recovered: data.reports[0].closed_cases[0].recovered
-        } ];
-        this.isLoaded = true;
+        this.data = data;
+        this.data.locations = this.data.locations
+            .sort((a, b) => b.latest.confirmed - a.latest.confirmed);
+
+        const source = from(data.locations);
+
+        const example = source.pipe(
+            groupBy(location => location.country),
+            mergeMap(group => group.pipe(toArray()))
+        );
+
+        const newLocations = [];
+
+        const subscribe = example.subscribe(val => newLocations.push(val.reduce(
+            (country, x) => {
+              country.country = x.country;
+              country.latest.confirmed += x.latest.confirmed;
+              country.latest.recovered += x.latest.recovered;
+              country.latest.deaths += x.latest.deaths;
+              country.coordinates = { latitude: '', longitude: ''};
+              country.country_code = '';
+              country.id = 0;
+              country.country_population += x.country_population;
+              country.province = '';
+              country.last_updated = x.last_updated > country.last_updated ? x.last_updated : country.last_updated;
+              return country;
+            })));
+
+        this.data.locations = newLocations.splice(0, 10);
+
+        subscribe.unsubscribe();
+
+        this.isTableLoaded = true;
       });
   }
 
   ngOnInit(): void {
-    this.getHTMLFile('https://covid19-server.chrismichael.now.sh/api/v1/AllReports');
+    this.getTable('https://coronavirus-tracker-api.herokuapp.com/v2/locations?source=jhu');
   }
 }

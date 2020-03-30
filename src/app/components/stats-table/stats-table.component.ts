@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Table} from '../../models/api-reports.model';
+import { Component, Input, OnInit } from '@angular/core';
+import { Location } from '../../models/locations.model';
 
 @Component({
   selector: 'app-stats-table',
@@ -8,8 +8,8 @@ import {Table} from '../../models/api-reports.model';
 })
 export class StatsTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['Number', 'Country', 'TotalCases', 'ActiveCases', 'NewCases', 'TotalDeaths', 'NewDeaths', 'TotalRecovered'];
-  @Input() tableDataSource: Table[] = [];
+  displayedColumns: string[] = ['Number', 'Country', 'TotalCases', 'TotalDeaths', 'TotalRecovered'];
+  @Input() tableDataSource: Location[] = [];
 
   constructor() { }
 

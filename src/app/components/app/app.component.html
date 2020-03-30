@@ -1,15 +1,27 @@
-<app-header [header]="overviewHeader" [icon]="overviewIcon"></app-header>
-<app-overview-table [tableDataSource]="overviewTableData" *ngIf="isLoaded"></app-overview-table>
-<mat-progress-bar mode="indeterminate" color="warn" *ngIf="!isLoaded"></mat-progress-bar>
+<app-header [header]="header"></app-header>
+<mat-progress-bar mode="indeterminate" color="warn" *ngIf="!isTableLoaded"></mat-progress-bar>
+<div>
+    <mat-card *ngIf="isTableLoaded">
+        <mat-card-header>
+            <mat-card-title>Top 10 Affected Countries</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <app-stats-table [tableDataSource]="data.locations"></app-stats-table>
+        </mat-card-content>
+    </mat-card>
 
-<app-header [header]="southAfricaHeader" [icon]="southAfricaIcon"></app-header>
-<app-stats-table [tableDataSource]="southAfricaTableData" *ngIf="isLoaded"></app-stats-table>
-<mat-progress-bar mode="indeterminate" color="warn" *ngIf="!isLoaded"></mat-progress-bar>
+    <mat-card *ngIf="isTableLoaded">
+        <mat-card-header>
+            <mat-card-title>Top 10 Affected Countries</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <app-stats-table [tableDataSource]="data.locations"></app-stats-table>
+        </mat-card-content>
+    </mat-card>
+</div>
 
-<app-header [header]="worldHeader" [icon]="worldIcon"></app-header>
-<app-stats-table [tableDataSource]="worldTableData" *ngIf="isLoaded"></app-stats-table>
-<mat-progress-bar mode="indeterminate" color="warn" *ngIf="!isLoaded"></mat-progress-bar>
 
-<p>All data is retrieved using <a href="https://github.com/ChrisMichaelPerezSantiago/covid19">Chris Michael Perez Santiago's</a> Web API which retrieves it's data from <a href="https://www.worldometers.info/coronavirus/">Worldometer</a>.</p>
+
+<p>All data is retrieved using <a href="https://github.com/ExpDev07/coronavirus-tracker-api">https://github.com/ExpDev07/coronavirus-tracker-api</a> Web API which retrieves it's data from <a href="https://github.com/CSSEGISandData/COVID-19">https://github.com/CSSEGISandData/COVID-19</a>.</p>
 
 <p>Data is retrieved every {{ updateInterval }} minutes.</p>
