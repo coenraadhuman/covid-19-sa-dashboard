@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { LocationsModel } from '../../models/locations.model';
 import { groupBy, mergeMap, toArray} from 'rxjs/operators';
-import {from} from 'rxjs';
+import { from } from 'rxjs';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,7 @@ export class AppComponent implements OnInit {
   isTableLoaded = false;
   updateInterval = 15;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {
     setInterval(() => {
       this.getTable( 'https://coronavirus-tracker-api.herokuapp.com/v2/locations?source=jhu');
     }, this.updateInterval * 60 * 1000);
@@ -67,6 +68,10 @@ export class AppComponent implements OnInit {
 
         subscribe.unsubscribe();
 
+        if (this.data.latest.recovered === 0) {
+            this.openSnackBar();
+        }
+
         this.isTableLoaded = true;
       });
   }
@@ -74,4 +79,13 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.getTable('https://coronavirus-tracker-api.herokuapp.com/v2/locations?source=jhu');
   }
+
+    openSnackBar() {
+        this.snackBar.open('"JHU (our main data provider) ' +
+            'no longer provides data for amount of recoveries, and as a result, ' +
+            'the API will be showing 0 for this statistic. Apologies for any inconvenience. ' +
+            'Hopefully we\'ll be able to find an alternative data-source that offers this."', 'Close', {
+            duration: 20000,
+        });
+    }
 }

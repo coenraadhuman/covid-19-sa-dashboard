@@ -13,7 +13,22 @@ mat-card-content {
 @media screen and (min-width: 1280px) {
   .container {
     display: grid;
-    grid-template-columns: 32.5% 52% 10%;
+    grid-template-columns: 47% 52%;
+    grid:
+            'overview table'
+            'sa table';
+  }
+
+  .table {
+    grid-area: table;
+  }
+
+  .sa {
+    grid-area: sa;
+  }
+
+  .overview {
+    grid-area: overview;
   }
 
   mat-card {
@@ -27,6 +42,20 @@ mat-card-content {
 @media screen and (min-width: 1920px) {
   .container {
     display: grid;
-    grid-template-columns: 32.5% 35% 20%;
+    grid-template-columns: 32.5% 20% 35%;
+    grid:
+            'overview sa table';
+  }
+
+  .table {
+    grid-area: table;
+  }
+
+  .sa {
+    grid-area: sa;
+  }
+
+  .overview {
+    grid-area: overview;
   }
 }

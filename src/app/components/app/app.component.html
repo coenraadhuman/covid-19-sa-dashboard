@@ -1,16 +1,25 @@
 <app-header [header]="header"></app-header>
 <mat-progress-bar mode="indeterminate" color="warn" *ngIf="!isTableLoaded"></mat-progress-bar>
 <div class="container">
-    <mat-card *ngIf="isTableLoaded">
+    <mat-card *ngIf="isTableLoaded" class="overview">
         <mat-card-header>
-            <mat-card-title>Top 10 Affected Countries</mat-card-title>
+            <mat-card-title>Overview</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <app-stats-table [tableDataSource]="data.locations"></app-stats-table>
+            <p>overview stats</p>
         </mat-card-content>
     </mat-card>
 
-    <mat-card *ngIf="isTableLoaded">
+    <mat-card class="sa">
+        <mat-card-header>
+            <mat-card-title>South Africa</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>this is meant for SA stats</p>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card *ngIf="isTableLoaded" class="table">
         <mat-card-header>
             <mat-card-title>Top 10 Affected Countries</mat-card-title>
         </mat-card-header>

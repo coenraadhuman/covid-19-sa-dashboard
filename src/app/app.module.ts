@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
     MatButtonModule,
+    MatSnackBarModule,
     MatCardModule,
     MatGridListModule,
     MatIconModule,
@@ -38,6 +39,7 @@ import { HeaderComponent } from './components/header/header.component';
         MatButtonModule,
         MatCardModule,
         MatGridListModule,
+        MatSnackBarModule,
     ],
   providers: [],
   bootstrap: [AppComponent]
