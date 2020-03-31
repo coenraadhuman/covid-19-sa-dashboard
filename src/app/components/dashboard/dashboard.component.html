@@ -15,7 +15,7 @@
 
     <mat-card *ngIf="isTableLoaded" class="sa">
         <mat-card-header>
-            <mat-card-title>South Africa</mat-card-title>
+            <mat-card-title><span class="flag-icon flag-icon-{{ southAfrica.country_code.toLowerCase() }}"></span> South Africa</mat-card-title>
         </mat-card-header>
         <mat-card-content>
             <p>Total Cases: {{ southAfrica.latest.confirmed }}</p>

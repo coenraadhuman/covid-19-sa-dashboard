@@ -1,6 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from './app.component';
+import { DashboardComponent } from './dashboard.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -9,27 +9,27 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        DashboardComponent
       ],
     }).compileComponents();
   }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  it('should create the dashboard', () => {
+    const fixture = TestBed.createComponent(DashboardComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
   it(`should have as title 'covid19-sa'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    const fixture = TestBed.createComponent(DashboardComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('covid19-sa');
   });
 
   it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    const fixture = TestBed.createComponent(DashboardComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('covid19-sa app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('covid19-sa dashboard is running!');
   });
 });

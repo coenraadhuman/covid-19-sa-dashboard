@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './components/app/app.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
@@ -27,7 +27,7 @@ import { DataTransformingService } from './services/data-transforming/data-trans
 
 @NgModule({
   declarations: [
-    AppComponent,
+    DashboardComponent,
     StatsTableComponent,
     HeaderComponent,
     TimelineGraphComponent,
@@ -55,6 +55,6 @@ import { DataTransformingService } from './services/data-transforming/data-trans
       DataTransformingService,
       SnackBarNotificationService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [DashboardComponent]
 })
 export class AppModule { }

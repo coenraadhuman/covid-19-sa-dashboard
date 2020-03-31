@@ -26,7 +26,7 @@ export class DataTransformingService {
           country.latest.recovered += x.latest.recovered;
           country.latest.deaths += x.latest.deaths;
           country.coordinates = { latitude: '', longitude: ''};
-          country.country_code = '';
+          country.country_code = x.country_code;
           country.id = 0;
           country.country_population += x.country_population;
           country.province = '';

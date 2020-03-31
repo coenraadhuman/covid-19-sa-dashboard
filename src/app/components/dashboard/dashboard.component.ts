@@ -7,11 +7,11 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
 
-export class AppComponent implements OnInit {
+export class DashboardComponent implements OnInit {
 
   private rawData = {} as MultipleLocationsModel;
   private southAfrica = {} as LocationDetails;
@@ -35,11 +35,18 @@ export class AppComponent implements OnInit {
   private getDashboard() {
     this.subscription = this.dataRetrieval.getLocationsData().subscribe(retrievedData => {
       this.rawData = {...retrievedData};
+      this.checkRecoveryDataIssue();
       this.southAfrica = this.dataTransforming.retrieveSouthAfricaFromLocations(retrievedData.locations);
       this.aggregatedLocations = this.dataTransforming.aggregateLocationsData(retrievedData.locations);
       this.topTenLocations = [...this.aggregatedLocations].splice(0, 10);
       this.isTableLoaded = true;
     });
+  }
+
+  private checkRecoveryDataIssue() {
+    if (this.rawData.latest.recovered === 0) {
+      this.snackBar.openZeroRecoveriesIssue();
+    }
   }
 
   ngOnInit(): void {
