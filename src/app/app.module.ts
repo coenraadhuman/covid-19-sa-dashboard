@@ -14,12 +14,14 @@ import {
     MatProgressBarModule,
     MatSliderModule,
     MatTableModule,
-    MatToolbarModule, MatChipsModule
+    MatToolbarModule,
+    MatChipsModule,
 } from '@angular/material';
 import { StatsTableComponent } from './components/stats-table/stats-table.component';
 import { HeaderComponent } from './components/header/header.component';
-import {ChartsModule} from 'ng2-charts';
+import { ChartsModule } from 'ng2-charts';
 import { TimelineGraphComponent } from './components/timeline-graph/timeline-graph.component';
+import { DataRetrievalService } from './services/data-retrieval/data-retrieval.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,7 @@ import { TimelineGraphComponent } from './components/timeline-graph/timeline-gra
         ChartsModule,
         MatChipsModule,
     ],
-  providers: [],
+  providers: [DataRetrievalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
