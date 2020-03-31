@@ -17,7 +17,7 @@ import {
     MatToolbarModule,
     MatChipsModule,
 } from '@angular/material';
-import { StatsTableComponent } from './components/stats-table/stats-table.component';
+import { DashboardTableComponent } from './components/dashboard-stats-table/dashboard-table.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ChartsModule } from 'ng2-charts';
 import { TimelineGraphComponent } from './components/timeline-graph/timeline-graph.component';
@@ -28,7 +28,7 @@ import { DataTransformingService } from './services/data-transforming/data-trans
 @NgModule({
   declarations: [
     DashboardComponent,
-    StatsTableComponent,
+    DashboardTableComponent,
     HeaderComponent,
     TimelineGraphComponent,
   ],

@@ -3,10 +3,10 @@ import { LocationDetails } from '../../models/locations.model';
 
 @Component({
   selector: 'app-stats-table',
-  templateUrl: './stats-table.component.html',
-  styleUrls: ['./stats-table.component.scss']
+  templateUrl: './dashboard-table.component.html',
+  styleUrls: ['./dashboard-table.component.scss']
 })
-export class StatsTableComponent implements OnInit {
+export class DashboardTableComponent implements OnInit {
 
   displayedColumns: string[] = ['Number', 'Country', 'TotalCases', 'TotalDeaths', 'TotalRecovered'];
   @Input() tableDataSource: LocationDetails[] = [];
