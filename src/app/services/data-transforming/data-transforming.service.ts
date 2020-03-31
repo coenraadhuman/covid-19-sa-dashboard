@@ -34,6 +34,8 @@ export class DataTransformingService {
           return country;
         })));
 
+    subscription.unsubscribe();
+
     return aggregatedResult
         .sort((a, b) => b.latest.confirmed - a.latest.confirmed);
   }

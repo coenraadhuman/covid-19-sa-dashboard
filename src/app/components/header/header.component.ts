@@ -1,5 +1,5 @@
 import { Component, Input, OnInit} from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { SnackBarNotificationService } from '../../services/snack-bar-notification/snack-bar-notification.service';
 
 @Component({
   selector: 'app-header',
@@ -11,14 +11,8 @@ export class HeaderComponent implements OnInit {
   @Input() header: string;
   @Input() icon: string;
 
-  constructor(private snackBar: MatSnackBar) { }
+  constructor(private snackBar: SnackBarNotificationService) { }
 
   ngOnInit() {
-  }
-
-  openSnackBar() {
-    this.snackBar.open('This is a simple dashboard primarily for personal use of a South African citizen.', 'Close', {
-      duration: 8000,
-    });
   }
 }

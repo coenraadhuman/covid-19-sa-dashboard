@@ -6,9 +6,9 @@
             <mat-card-title>Overview</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <p>Total Cases: {{data.latest.confirmed}}</p>
-            <p>Total Deaths: {{data.latest.deaths}}</p>
-            <p>Total Recovered: {{data.latest.recovered}}</p>
+            <p>Total Cases: {{ rawData.latest.confirmed }}</p>
+            <p>Total Deaths: {{ rawData.latest.deaths }}</p>
+            <p>Total Recovered: {{ rawData.latest.recovered }}</p>
             <button mat-raised-button color="primary">See Timeline Graph</button>
         </mat-card-content>
     </mat-card>
@@ -18,9 +18,9 @@
             <mat-card-title>South Africa</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <p>Total Cases: {{ sa.latest.confirmed }}</p>
-            <p>Total Deaths: {{ sa.latest.deaths }}</p>
-            <p>Total Recovered: {{ sa.latest.recovered }}</p>
+            <p>Total Cases: {{ southAfrica.latest.confirmed }}</p>
+            <p>Total Deaths: {{ southAfrica.latest.deaths }}</p>
+            <p>Total Recovered: {{ southAfrica.latest.recovered }}</p>
             <button mat-raised-button color="primary">See Timeline Graph</button>
         </mat-card-content>
     </mat-card>
@@ -30,7 +30,7 @@
             <mat-card-title>Top 10 Affected Countries</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <app-stats-table [tableDataSource]="data.locations"></app-stats-table>
+            <app-stats-table [tableDataSource]="aggregatedLocations.splice(0,10)"></app-stats-table>
         </mat-card-content>
     </mat-card>
 </div>
