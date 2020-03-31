@@ -14,17 +14,19 @@ import {
     MatProgressBarModule,
     MatSliderModule,
     MatTableModule,
-    MatToolbarModule
+    MatToolbarModule, MatChipsModule
 } from '@angular/material';
 import { StatsTableComponent } from './components/stats-table/stats-table.component';
 import { HeaderComponent } from './components/header/header.component';
 import {ChartsModule} from 'ng2-charts';
+import { TimelineGraphComponent } from './components/timeline-graph/timeline-graph.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StatsTableComponent,
     HeaderComponent,
+    TimelineGraphComponent,
   ],
     imports: [
         BrowserModule,
@@ -42,6 +44,7 @@ import {ChartsModule} from 'ng2-charts';
         MatGridListModule,
         MatSnackBarModule,
         ChartsModule,
+        MatChipsModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

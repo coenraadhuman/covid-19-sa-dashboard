@@ -1,5 +1,5 @@
 <app-header [header]="header"></app-header>
-<mat-progress-bar mode="indeterminate" color="warn" *ngIf="!isTableLoaded"></mat-progress-bar>
+<mat-progress-bar mode="indeterminate" color="accent" *ngIf="!isTableLoaded"></mat-progress-bar>
 <div class="container">
     <mat-card *ngIf="isTableLoaded" class="overview">
         <mat-card-header>
@@ -9,6 +9,7 @@
             <p>Total Cases: {{data.latest.confirmed}}</p>
             <p>Total Deaths: {{data.latest.deaths}}</p>
             <p>Total Recovered: {{data.latest.recovered}}</p>
+            <button mat-raised-button color="primary">See Timeline Graph</button>
         </mat-card-content>
     </mat-card>
 
@@ -20,6 +21,7 @@
             <p>Total Cases: {{ sa.latest.confirmed }}</p>
             <p>Total Deaths: {{ sa.latest.deaths }}</p>
             <p>Total Recovered: {{ sa.latest.recovered }}</p>
+            <button mat-raised-button color="primary">See Timeline Graph</button>
         </mat-card-content>
     </mat-card>
 

@@ -1,26 +1,42 @@
-export interface LocationsModel {
-    latest: LatestLs;
-    locations: LocationLs[];
+export interface SingleLocationModel {
+    location: LocationDetails;
 }
 
-export interface LatestLs {
+export interface MultipleLocationsModel {
+    latest: LatestValues;
+    locations: LocationDetails[];
+}
+
+export interface LatestValues {
     confirmed: number;
     deaths: number;
     recovered: number;
 }
 
-export interface LocationLs {
+export interface LocationDetails {
     id: number;
     country: string;
     country_code: string;
     country_population: number | null;
     province: string;
     last_updated: Date;
-    coordinates: CoordinatesLs;
-    latest: LatestLs;
+    coordinates: LocationCoordinates;
+    latest: LatestValues;
+    timelines: LocationTimelines | null;
 }
 
-export interface CoordinatesLs {
+export interface LocationCoordinates {
     latitude: string;
     longitude: string;
+}
+
+export interface LocationTimelines {
+    confirmed: Timeline | null;
+    deaths: Timeline | null;
+    recovered: Timeline | null;
+}
+
+export interface Timeline {
+    latest: number;
+    timeline: { [key: string]: number };
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import {LocationLs, LocationsModel} from '../../models/locations.model';
 import { groupBy, mergeMap, toArray} from 'rxjs/operators';
 import { from } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
+import { LocationDetails, MultipleLocationsModel } from '../../models/locations.model';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +13,9 @@ import { MatSnackBar } from '@angular/material';
 
 export class AppComponent implements OnInit {
 
-    initialLocations: LocationLs[];
+    initialLocations: LocationDetails[];
 
-  data: LocationsModel = {
+  data: MultipleLocationsModel = {
     latest: {
       confirmed: 0,
       deaths: 0,
@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     locations: []
   };
 
-  sa: LocationLs = {
+  sa: LocationDetails = {
       latest: {
           confirmed: 0,
           deaths: 0,
@@ -39,7 +39,8 @@ export class AppComponent implements OnInit {
       country_population: 0,
       id: 0,
       last_updated: Date.prototype,
-      province: ''
+      province: '',
+      timelines: null
   };
 
   header = 'COVID-19 Pandemic';
@@ -54,7 +55,7 @@ export class AppComponent implements OnInit {
   }
 
   getTable(url: string) {
-    this.http.get<LocationsModel>(url, {responseType: 'json'})
+    this.http.get<MultipleLocationsModel>(url, {responseType: 'json'})
       .subscribe(data => {
 
           this.initialLocations = [...data.locations];
@@ -73,7 +74,7 @@ export class AppComponent implements OnInit {
       });
   }
 
-    aggregateData(locations: LocationLs[]) {
+    aggregateData(locations: LocationDetails[]) {
       const source = from(locations);
 
       const example = source.pipe(
@@ -105,7 +106,7 @@ export class AppComponent implements OnInit {
       subscribe.unsubscribe();
   }
 
-  getSa(locations: LocationLs[]) {
+  getSa(locations: LocationDetails[]) {
       locations.forEach(x => {
           if (x.id === 200) {
               this.sa = x;
