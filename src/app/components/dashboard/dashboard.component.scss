@@ -10,6 +10,10 @@ mat-card-content {
   overflow: auto;
 }
 
+.add-margin {
+  margin-top: 10px;
+}
+
 @media screen and (min-width: 1280px) {
   .container {
     display: grid;
@@ -29,6 +33,10 @@ mat-card-content {
 
   .overview {
     grid-area: overview;
+  }
+
+  .add-margin {
+    margin-top: 0px;
   }
 
   mat-card {
@@ -57,5 +65,9 @@ mat-card-content {
 
   .overview {
     grid-area: overview;
+  }
+
+  .add-margin {
+    margin-top: 0px;
   }
 }

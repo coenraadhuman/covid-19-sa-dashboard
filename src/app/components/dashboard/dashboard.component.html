@@ -1,36 +1,35 @@
-<app-header [header]="header"></app-header>
-<mat-progress-bar mode="indeterminate" color="accent" *ngIf="!isTableLoaded"></mat-progress-bar>
+<mat-progress-bar mode="indeterminate" color="accent" *ngIf="!dataStore.isTableLoaded"></mat-progress-bar>
 <div class="container">
-    <mat-card *ngIf="isTableLoaded" class="overview">
+    <mat-card *ngIf="dataStore.isTableLoaded" class="overview">
         <mat-card-header>
             <mat-card-title>Overview</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <p>Total Cases: {{ rawData.latest.confirmed }}</p>
-            <p>Total Deaths: {{ rawData.latest.deaths }}</p>
-            <p>Total Recovered: {{ rawData.latest.recovered }}</p>
+            <p>Total Cases: {{ dataStore.rawData.latest.confirmed }}</p>
+            <p>Total Deaths: {{ dataStore.rawData.latest.deaths }}</p>
+            <p>Total Recovered: {{ dataStore.rawData.latest.recovered }}</p>
             <button mat-raised-button color="primary">See Timeline Graph</button>
         </mat-card-content>
     </mat-card>
 
-    <mat-card *ngIf="isTableLoaded" class="sa">
+    <mat-card *ngIf="dataStore.isTableLoaded" class="sa">
         <mat-card-header>
-            <mat-card-title><span class="flag-icon flag-icon-{{ southAfrica.country_code.toLowerCase() }}"></span> South Africa</mat-card-title>
+            <mat-card-title><span class="flag-icon flag-icon-{{ dataStore.southAfrica.country_code.toLowerCase() }}"></span> South Africa</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <p>Total Cases: {{ southAfrica.latest.confirmed }}</p>
-            <p>Total Deaths: {{ southAfrica.latest.deaths }}</p>
-            <p>Total Recovered: {{ southAfrica.latest.recovered }}</p>
+            <p>Total Cases: {{ dataStore.southAfrica.latest.confirmed }}</p>
+            <p>Total Deaths: {{ dataStore.southAfrica.latest.deaths }}</p>
+            <p>Total Recovered: {{ dataStore.southAfrica.latest.recovered }}</p>
             <button mat-raised-button color="primary">See Timeline Graph</button>
         </mat-card-content>
     </mat-card>
 
-    <mat-card *ngIf="isTableLoaded" class="table">
+    <mat-card *ngIf="dataStore.isTableLoaded" class="table">
         <mat-card-header>
-            <mat-card-title>Top 10 Affected Countries</mat-card-title>
+            <mat-card-title>Top 10 Affected Countries <button mat-raised-button color="primary" class="add-margin" routerLink="table-all-locations">See All</button></mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <app-stats-table [tableDataSource]="topTenLocations"></app-stats-table>
+            <app-stats-table [tableDataSource]="dataStore.topTenLocations"></app-stats-table>
         </mat-card-content>
     </mat-card>
 </div>

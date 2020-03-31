@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { SnackBarNotificationService } from '../../services/snack-bar-notification/snack-bar-notification.service';
-import { DataRetrievalService } from '../../services/data-retrieval/data-retrieval.service';
-import { DataTransformingService } from '../../services/data-transforming/data-transforming.service';
-import { Subscription } from 'rxjs';
-import { DataStoreService } from '../../services/data-store/data-store.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { LocationDetails } from '../../models/locations.model';
+import {SnackBarNotificationService} from '../../services/snack-bar-notification/snack-bar-notification.service';
+import {DataRetrievalService} from '../../services/data-retrieval/data-retrieval.service';
+import {DataTransformingService} from '../../services/data-transforming/data-transforming.service';
+import {DataStoreService} from '../../services/data-store/data-store.service';
+import {Subscription} from 'rxjs';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  selector: 'app-all-stats-table',
+  templateUrl: './all-stats-table.component.html',
+  styleUrls: ['./all-stats-table.component.scss']
 })
+export class AllStatsTableComponent implements OnInit {
 
-export class DashboardComponent implements OnInit {
+  displayedColumns: string[] = ['Number', 'Country', 'TotalCases', 'TotalDeaths', 'TotalRecovered'];
 
   private subscription: Subscription;
 
@@ -43,9 +45,10 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     if (!this.dataStore.isDataAssigned) {
       this.getInitialData();
     }
   }
+
 }

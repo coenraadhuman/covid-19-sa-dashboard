@@ -24,13 +24,18 @@ import { TimelineGraphComponent } from './components/timeline-graph/timeline-gra
 import { DataRetrievalService } from './services/data-retrieval/data-retrieval.service';
 import { SnackBarNotificationService } from './services/snack-bar-notification/snack-bar-notification.service';
 import { DataTransformingService } from './services/data-transforming/data-transforming.service';
+import { AllStatsTableComponent } from './components/all-stats-table/all-stats-table.component';
+import { RouterOutletComponent } from './components/router-outlet/router-outlet.component';
+import { DataStoreService } from './services/data-store/data-store.service';
 
 @NgModule({
   declarations: [
+    RouterOutletComponent,
     DashboardComponent,
     DashboardTableComponent,
     HeaderComponent,
     TimelineGraphComponent,
+    AllStatsTableComponent,
   ],
     imports: [
         BrowserModule,
@@ -53,8 +58,9 @@ import { DataTransformingService } from './services/data-transforming/data-trans
   providers: [
       DataRetrievalService,
       DataTransformingService,
+      DataStoreService,
       SnackBarNotificationService,
   ],
-  bootstrap: [DashboardComponent]
+  bootstrap: [RouterOutletComponent]
 })
 export class AppModule { }
