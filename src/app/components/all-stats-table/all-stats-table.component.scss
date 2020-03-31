@@ -13,3 +13,7 @@ mat-card {
   margin-bottom: 10px;
   margin-right: 10px;
 }
+
+mat-card-content {
+  overflow: auto;
+}
