@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { LocationLs } from '../../models/locations.model';
+import { LocationDetails } from '../../models/locations.model';
 
 @Component({
   selector: 'app-stats-table',
@@ -9,7 +9,7 @@ import { LocationLs } from '../../models/locations.model';
 export class StatsTableComponent implements OnInit {
 
   displayedColumns: string[] = ['Number', 'Country', 'TotalCases', 'TotalDeaths', 'TotalRecovered'];
-  @Input() tableDataSource: LocationLs[] = [];
+  @Input() tableDataSource: LocationDetails[] = [];
 
   constructor() { }
 

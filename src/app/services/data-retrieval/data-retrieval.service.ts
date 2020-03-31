@@ -8,10 +8,10 @@ import { MultipleLocationsModel, SingleLocationModel } from '../../models/locati
 })
 
 export class DataRetrievalService {
-  locationsTimelineUri = 'https://coronavirus-tracker-api.herokuapp.com/v2/locations?source=jhu&timelines=true';
-  locationsUri = 'https://coronavirus-tracker-api.herokuapp.com/v2/locations?source=jhu';
-  southAfricaTimelineUri = 'https://coronavirus-tracker-api.herokuapp.com/v2/locations/200?source=jhu&timelines=true';
-  southAfricaUri = 'https://coronavirus-tracker-api.herokuapp.com/v2/locations/200?source=jhu&timelines=false';
+  private locationsTimelineUri = 'https://coronavirus-tracker-api.herokuapp.com/v2/locations?source=jhu&timelines=true';
+  private locationsUri = 'https://coronavirus-tracker-api.herokuapp.com/v2/locations?source=jhu';
+  private southAfricaTimelineUri = 'https://coronavirus-tracker-api.herokuapp.com/v2/locations/200?source=jhu&timelines=true';
+  private southAfricaUri = 'https://coronavirus-tracker-api.herokuapp.com/v2/locations/200?source=jhu&timelines=false';
 
   constructor(private http: HttpClient) { }
 

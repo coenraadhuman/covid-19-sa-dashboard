@@ -23,6 +23,7 @@ import { ChartsModule } from 'ng2-charts';
 import { TimelineGraphComponent } from './components/timeline-graph/timeline-graph.component';
 import { DataRetrievalService } from './services/data-retrieval/data-retrieval.service';
 import { SnackBarNotificationService } from './services/snack-bar-notification/snack-bar-notification.service';
+import { DataTransformingService } from './services/data-transforming/data-transforming.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,11 @@ import { SnackBarNotificationService } from './services/snack-bar-notification/s
         ChartsModule,
         MatChipsModule,
     ],
-  providers: [DataRetrievalService, SnackBarNotificationService],
+  providers: [
+      DataRetrievalService,
+      DataTransformingService,
+      SnackBarNotificationService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

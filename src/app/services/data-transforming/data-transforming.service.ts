@@ -45,7 +45,7 @@ export class DataTransformingService {
 
     locations.forEach(x => {
       if (x.id === 200) {
-        southAfrica = x;
+        southAfrica = {...x};
       }
     });
 

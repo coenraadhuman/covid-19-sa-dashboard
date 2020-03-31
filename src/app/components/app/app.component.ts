@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LocationDetails, MultipleLocationsModel } from '../../models/locations.model';
 import { SnackBarNotificationService } from '../../services/snack-bar-notification/snack-bar-notification.service';
+import { DataRetrievalService } from '../../services/data-retrieval/data-retrieval.service';
+import { DataTransformingService } from '../../services/data-transforming/data-transforming.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,26 +13,36 @@ import { SnackBarNotificationService } from '../../services/snack-bar-notificati
 
 export class AppComponent implements OnInit {
 
-  rawData = {} as MultipleLocationsModel;
-  southAfrica = {} as LocationDetails;
-  aggregatedLocations = [] as LocationDetails[];
+  private rawData = {} as MultipleLocationsModel;
+  private southAfrica = {} as LocationDetails;
+  private aggregatedLocations = [] as LocationDetails[];
+  private topTenLocations = [] as LocationDetails[];
 
-  header = 'COVID-19 Pandemic';
+  private header = 'COVID-19 Pandemic';
 
-  isTableLoaded = false;
-  updateInterval = 15;
+  private isTableLoaded = false;
+  private updateInterval = 15;
+  private subscription: Subscription;
 
-  constructor(private snackBar: SnackBarNotificationService) {
+  constructor(private snackBar: SnackBarNotificationService,
+              private dataRetrieval: DataRetrievalService,
+              private dataTransforming: DataTransformingService) {
     setInterval(() => {
       this.getDashboard();
     }, this.updateInterval * 60 * 1000);
   }
 
   private getDashboard() {
-
+    this.subscription = this.dataRetrieval.getLocationsData().subscribe(retrievedData => {
+      this.rawData = {...retrievedData};
+      this.southAfrica = this.dataTransforming.retrieveSouthAfricaFromLocations(retrievedData.locations);
+      this.aggregatedLocations = this.dataTransforming.aggregateLocationsData(retrievedData.locations);
+      this.topTenLocations = [...this.aggregatedLocations].splice(0, 10);
+      this.isTableLoaded = true;
+    });
   }
 
   ngOnInit(): void {
-
+    this.getDashboard();
   }
 }
