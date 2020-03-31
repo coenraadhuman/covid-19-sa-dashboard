@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
   @Input() header: string;
   @Input() icon: string;
 
-  constructor(private snackBar: SnackBarNotificationService) { }
+  constructor(public snackBar: SnackBarNotificationService) { }
 
   ngOnInit() {
   }

@@ -17,10 +17,10 @@ export class AllStatsTableComponent implements OnInit {
 
   private subscription: Subscription;
 
-  constructor(private snackBar: SnackBarNotificationService,
+  constructor(public snackBar: SnackBarNotificationService,
               private dataRetrieval: DataRetrievalService,
               private dataTransforming: DataTransformingService,
-              private dataStore: DataStoreService) {
+              public dataStore: DataStoreService) {
     setInterval(() => {
       this.getInitialData();
     }, this.dataStore.updateInterval * 60 * 1000);

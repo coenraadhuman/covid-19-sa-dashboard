@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RouterOutletComponent implements OnInit {
 
-  private header = 'COVID-19 Pandemic';
+  public header = 'COVID-19 Pandemic';
 
   constructor() { }
 
