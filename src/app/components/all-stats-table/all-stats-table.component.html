@@ -3,7 +3,7 @@
         <mat-card-title>All Affected Countries</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <table mat-table [dataSource]="this.dataStore.Locations" class="mat-elevation-z8">
+        <table mat-table [dataSource]="this.dataStore.locations" class="mat-elevation-z8">
             <ng-container matColumnDef="Number">
                 <th mat-header-cell *matHeaderCellDef> No. </th>
                 <td mat-cell *matCellDef="let element; let i = index;"> {{ i + 1 }} </td>

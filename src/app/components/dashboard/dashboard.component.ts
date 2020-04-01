@@ -26,20 +26,13 @@ export class DashboardComponent implements OnInit {
 
   private getInitialData() {
     this.subscription = this.dataRetrieval.getTotalsData().subscribe(retrievedData => {
-      this.dataStore.rawData = {...retrievedData};
-      this.checkRecoveryDataIssue();
-      this.dataStore.southAfrica = this.dataTransforming.retrieveSouthAfricaFromLocations(retrievedData.locations);
-      this.dataStore.topTenLocations = [...this.dataStore.Locations].splice(0, 10);
+      this.dataStore.rawData = {...retrievedData.reports[0]};
+      this.dataStore.locations = [...retrievedData.reports[0].table[0]];
+      this.dataStore.southAfrica = this.dataTransforming.retrieveSouthAfricaFromLocations(retrievedData.reports[0].table[0]);
+      this.dataStore.topTenLocations = [...retrievedData.reports[0].table[0]].splice(0, 10);
       this.dataStore.isDataAssigned = true;
       this.dataStore.isTableLoaded = true;
     });
-  }
-
-  private checkRecoveryDataIssue() {
-    if (this.dataStore.rawData.recovered === 0 && !this.dataStore.wasRecoveryIssueShown) {
-      this.snackBar.openZeroRecoveriesIssue();
-      this.dataStore.wasRecoveryIssueShown = true;
-    }
   }
 
   ngOnInit(): void {

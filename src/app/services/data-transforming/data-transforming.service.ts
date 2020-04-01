@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LocationDetails } from '../../models/locations.model';
+import { Table } from '../../models/locations.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +8,8 @@ export class DataTransformingService {
 
   constructor() { }
 
-  retrieveSouthAfricaFromLocations(locations: LocationDetails[]): LocationDetails {
-    let southAfrica = {} as LocationDetails;
+  retrieveSouthAfricaFromLocations(locations: Table[]): Table {
+    let southAfrica = {} as Table;
 
     locations.forEach(x => {
       if (x.Country === 'South Africa') {

@@ -1,10 +1,14 @@
-export interface Totals {
+export interface Reports {
+    reports: Report[];
+}
+
+export interface Report {
     cases: number;
     deaths: number;
     recovered: number;
     active_cases: ActiveCase[];
     closed_cases: ClosedCase[];
-    locations: LocationDetails[];
+    table: Array<Table[]>;
 }
 
 export interface ActiveCase {
@@ -19,7 +23,7 @@ export interface ClosedCase {
     deaths: number;
 }
 
-export interface LocationDetails {
+export interface Table {
     TotalCases: string;
     NewCases: string;
     TotalDeaths: string;
@@ -31,24 +35,4 @@ export interface LocationDetails {
     Country: string;
     Serious_Critical: string;
     TotCases_1M_Pop: string;
-}
-
-export interface SingleLocationModel {
-    location: LocationDetails;
-}
-
-export interface LocationCoordinates {
-    latitude: string;
-    longitude: string;
-}
-
-export interface LocationTimelines {
-    confirmed: Timeline | null;
-    deaths: Timeline | null;
-    recovered: Timeline | null;
-}
-
-export interface Timeline {
-    latest: number;
-    timeline: { [key: string]: number };
 }
