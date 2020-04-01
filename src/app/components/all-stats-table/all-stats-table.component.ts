@@ -29,6 +29,7 @@ export class AllStatsTableComponent implements OnInit {
     this.subscription = this.dataRetrieval.getTotalsData().subscribe(retrievedData => {
       this.dataStore.rawData = {...retrievedData};
       this.checkRecoveryDataIssue();
+      this.dataStore.Locations = {...retrievedData.locations};
       this.dataStore.southAfrica = this.dataTransforming.retrieveSouthAfricaFromLocations(retrievedData.locations);
       this.dataStore.topTenLocations = [...this.dataStore.Locations].splice(0, 10);
       this.dataStore.isDataAssigned = true;
