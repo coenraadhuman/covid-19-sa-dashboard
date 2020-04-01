@@ -8,6 +8,18 @@ export class DataTransformingService {
 
   constructor() { }
 
+  addZeroCounts(locations: Table[])  {
+    locations.forEach(x => {
+      if (!x.TotalDeaths) {
+        x.TotalDeaths = '0';
+      }
+
+      if (!x.TotalRecovered) {
+        x.TotalRecovered = '0';
+      }
+    });
+  }
+
   retrieveSouthAfricaFromLocations(locations: Table[]): Table {
     let southAfrica = {} as Table;
 
