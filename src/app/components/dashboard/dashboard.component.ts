@@ -25,19 +25,18 @@ export class DashboardComponent implements OnInit {
   }
 
   private getInitialData() {
-    this.subscription = this.dataRetrieval.getLocationsData().subscribe(retrievedData => {
+    this.subscription = this.dataRetrieval.getTotalsData().subscribe(retrievedData => {
       this.dataStore.rawData = {...retrievedData};
       this.checkRecoveryDataIssue();
       this.dataStore.southAfrica = this.dataTransforming.retrieveSouthAfricaFromLocations(retrievedData.locations);
-      this.dataStore.aggregatedLocations = this.dataTransforming.aggregateLocationsData(retrievedData.locations);
-      this.dataStore.topTenLocations = [...this.dataStore.aggregatedLocations].splice(0, 10);
+      this.dataStore.topTenLocations = [...this.dataStore.Locations].splice(0, 10);
       this.dataStore.isDataAssigned = true;
       this.dataStore.isTableLoaded = true;
     });
   }
 
   private checkRecoveryDataIssue() {
-    if (this.dataStore.rawData.latest.recovered === 0 && !this.dataStore.wasRecoveryIssueShown) {
+    if (this.dataStore.rawData.recovered === 0 && !this.dataStore.wasRecoveryIssueShown) {
       this.snackBar.openZeroRecoveriesIssue();
       this.dataStore.wasRecoveryIssueShown = true;
     }
