@@ -12,7 +12,7 @@ import {Subscription} from 'rxjs';
 })
 export class AllStatsTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['Number', 'Country', 'TotalCases', 'TotalDeaths', 'TotalRecovered'];
+  displayedColumns: string[] = ['Number', 'Country', 'TotalCases', 'TotalDeaths', 'TotalRecovered', 'TotalActive'];
 
   private subscription: Subscription;
 

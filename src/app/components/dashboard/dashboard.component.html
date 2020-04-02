@@ -4,7 +4,7 @@
         <mat-grid-tile>
     <mat-card *ngIf="dataStore.isTableLoaded" class="overview">
         <mat-card-header>
-            <mat-card-title>Overview</mat-card-title>
+            <mat-card-title>Global</mat-card-title>
         </mat-card-header>
         <mat-card-content>
             <p>Cases: {{ dataStore.globalStats.cases}}</p>
@@ -23,9 +23,9 @@
         </mat-card-header>
         <mat-card-content>
             <p>Cases: {{ dataStore.southAfrica.cases }}</p>
-            <p>Active Cases: {{ dataStore.southAfrica.active }}</p>
             <p>Deaths: {{ dataStore.southAfrica.deaths }}</p>
             <p>Recovered: {{ dataStore.southAfrica.recovered }}</p>
+            <p>Active Cases: {{ dataStore.southAfrica.active }}</p>
             <p>Cases Today: {{ dataStore.southAfrica.todayCases }}</p>
             <button mat-raised-button disabled color="primary">See Timeline Graph</button>
         </mat-card-content>
