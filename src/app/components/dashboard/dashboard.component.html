@@ -1,7 +1,7 @@
 <mat-progress-bar mode="indeterminate" color="accent" *ngIf="!dataStore.isTableLoaded"></mat-progress-bar>
 <div class="container">
     <mat-card class="overview">
-    <mat-card><mat-grid-list cols="2" rowHeight="1:1.4">
+        <mat-grid-list cols="2" rowHeight="1:1.4">
         <mat-grid-tile>
     <mat-card *ngIf="dataStore.isTableLoaded" class="overview">
         <mat-card-header>
@@ -59,7 +59,8 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
-        </mat-card-content></mat-card>
+        </mat-card-content>
+    </mat-card>
 
     <mat-card class="table">
         <mat-card-header>
