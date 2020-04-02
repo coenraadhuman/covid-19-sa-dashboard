@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import {GlobalStats, Report, Table} from '../../models/locations.model';
+import {CountriesModel} from '../../models/locations.model';
+import {GlobalStatsModel} from '../../models/global-stats.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataStoreService {
 
-  public rawData = {} as Report;
-  public globalStats = {} as GlobalStats;
-  public southAfrica = {} as Table;
-  public locations = [] as Table[];
-  public topTenLocations = [] as Table[];
+  public rawData = [] as CountriesModel[];
+  public globalStats = {} as GlobalStatsModel;
+  public southAfrica = {} as CountriesModel;
+  public locations = [] as CountriesModel[];
+  public topTenLocations = [] as CountriesModel[];
 
   public isDataAssigned = false;
   public wasRecoveryIssueShown = false;

@@ -27,9 +27,9 @@ export class DashboardComponent implements OnInit {
 
   private getInitialData() {
     this.subscription = this.dataRetrieval.getLocationsData().subscribe(retrievedData => {
-      this.dataStore.locations = [...retrievedData.table];
-      this.dataStore.southAfrica = this.dataTransforming.retrieveSouthAfricaFromLocations(retrievedData.table);
-      this.dataStore.topTenLocations = [...retrievedData.table].splice(0, 10);
+      this.dataStore.locations = [...retrievedData.sort((a, b) => b.cases - a.cases)];
+      this.dataStore.southAfrica = this.dataTransforming.retrieveSouthAfricaFromLocations(retrievedData);
+      this.dataStore.topTenLocations = [...this.dataStore.locations].splice(0, 10);
       this.dataStore.isDataAssigned = true;
       this.dataStore.isTableLoaded = true;
     });

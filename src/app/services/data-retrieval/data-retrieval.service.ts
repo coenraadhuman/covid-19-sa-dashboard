@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {GlobalStats, Report, Reports, Table} from '../../models/locations.model';
+import { CountriesModel } from '../../models/locations.model';
+import { GlobalStatsModel } from '../../models/global-stats.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +18,10 @@ export class DataRetrievalService {
     return this.http.get<T>(uri, {responseType: 'json'});
   }
 
-  public  getLocationsData(): Observable<Report> {
-    return this.executeRequest<Report>(this.locationsApi);
+  public  getLocationsData(): Observable<CountriesModel[]> {
+    return this.executeRequest<CountriesModel[]>(this.locationsApi);
   }
-  public  getTotalsData(): Observable<GlobalStats> {
-    return this.executeRequest<GlobalStats>(this.totalsApi);
+  public  getTotalsData(): Observable<GlobalStatsModel> {
+    return this.executeRequest<GlobalStatsModel>(this.totalsApi);
   }
 }
