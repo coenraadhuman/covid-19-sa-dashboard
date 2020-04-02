@@ -10,12 +10,12 @@ export class DataTransformingService {
 
   addZeroCounts(locations: Table[])  {
     locations.forEach(x => {
-      if (!x.TotalDeaths) {
-        x.TotalDeaths = '0';
+      if (!x.deaths) {
+        x.deaths = 0;
       }
 
-      if (!x.TotalRecovered) {
-        x.TotalRecovered = '0';
+      if (!x.recovered) {
+        x.recovered = 0;
       }
     });
   }
@@ -24,7 +24,7 @@ export class DataTransformingService {
     let southAfrica = {} as Table;
 
     locations.forEach(x => {
-      if (x.Country === 'South Africa') {
+      if (x.country === 'South Africa') {
         southAfrica = {...x};
       }
     });

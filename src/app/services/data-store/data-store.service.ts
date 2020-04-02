@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Report, Table } from '../../models/locations.model';
+import {GlobalStats, Report, Table} from '../../models/locations.model';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +7,7 @@ import { Report, Table } from '../../models/locations.model';
 export class DataStoreService {
 
   public rawData = {} as Report;
+  public globalStats = {} as GlobalStats;
   public southAfrica = {} as Table;
   public locations = [] as Table[];
   public topTenLocations = [] as Table[];

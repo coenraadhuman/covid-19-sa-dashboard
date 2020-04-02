@@ -3,36 +3,38 @@ export interface Reports {
 }
 
 export interface Report {
+    table: Table[];
+}
+
+export interface GlobalStats {
     cases: number;
     deaths: number;
     recovered: number;
-    active_cases: ActiveCase[];
-    closed_cases: ClosedCase[];
-    table: Array<Table[]>;
-}
-
-export interface ActiveCase {
-    currently_infected_patients: number;
-    inMidCondition: number;
-    criticalStates: number;
-}
-
-export interface ClosedCase {
-    cases_which_had_an_outcome: number;
-    recovered: number;
-    deaths: number;
+    updated: number;
+    active: number;
+    affectedCountries: number;
 }
 
 export interface Table {
-    TotalCases: string;
-    NewCases: string;
-    TotalDeaths: string;
-    NewDeaths: string;
-    TotalRecovered: string;
-    ActiveCases: string;
-    Deaths_1M_pop: string;
-    FirstCase: string;
-    Country: string;
-    Serious_Critical: string;
-    TotCases_1M_Pop: string;
+    country: string;
+    countryInfo: CountryInfo;
+    cases: number;
+    todayCases: number;
+    deaths: number;
+    todayDeaths: number;
+    recovered: number;
+    active: number;
+    critical: number;
+    casesPerOneMillion: number | null;
+    deathsPerOneMillion: number | null;
+    updated: number;
+}
+
+export interface CountryInfo {
+    _id: number | null;
+    iso2: null | string;
+    iso3: null | string;
+    lat: number;
+    long: number;
+    flag: string;
 }

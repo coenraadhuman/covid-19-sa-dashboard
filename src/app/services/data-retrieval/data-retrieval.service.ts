@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Reports } from '../../models/locations.model';
+import {GlobalStats, Report, Reports, Table} from '../../models/locations.model';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class DataRetrievalService {
-  private newApi = 'https://covid19-server.chrismichael.now.sh/api/v1/AllReports';
+  private locationsApi = 'https://corona.lmao.ninja/countries';
+  private totalsApi = 'https://corona.lmao.ninja/all';
 
   constructor(private http: HttpClient) { }
 
@@ -16,7 +17,10 @@ export class DataRetrievalService {
     return this.http.get<T>(uri, {responseType: 'json'});
   }
 
-  public  getTotalsData(): Observable<Reports> {
-    return this.executeRequest<Reports>(this.newApi);
+  public  getLocationsData(): Observable<Report> {
+    return this.executeRequest<Report>(this.locationsApi);
+  }
+  public  getTotalsData(): Observable<GlobalStats> {
+    return this.executeRequest<GlobalStats>(this.totalsApi);
   }
 }
