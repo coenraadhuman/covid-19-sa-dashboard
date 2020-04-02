@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SnackBarNotificationService } from '../../services/snack-bar-notification/snack-bar-notification.service';
-import { DataRetrievalService } from '../../services/data-retrieval/data-retrieval.service';
-import { DataTransformingService } from '../../services/data-transforming/data-transforming.service';
-import { Subscription } from 'rxjs';
 import { DataStoreService } from '../../services/data-store/data-store.service';
 import {DataAssignmentService} from '../../services/data-assignment/data-assignment.service';
 
@@ -13,6 +9,7 @@ import {DataAssignmentService} from '../../services/data-assignment/data-assignm
 })
 
 export class DashboardComponent implements OnInit {
+  displayedColumns: string[] = ['Number', 'Province', 'TotalCases'];
 
   constructor(public dataStore: DataStoreService,
               private dataAssignment: DataAssignmentService) {

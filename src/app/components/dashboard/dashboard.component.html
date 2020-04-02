@@ -14,15 +14,28 @@
 
     <mat-card class="sa">
         <mat-card-header>
-            <mat-card-title>South Africa Details</mat-card-title>
+            <mat-card-title>SA Known Province Details</mat-card-title>
         </mat-card-header>
         <mat-card-content *ngIf="dataStore.isCaseDetailsLoaded">
-            <h4>Affected Ages</h4>
-            <p *ngFor="let x of dataStore.southAfricaCaseDetails.ages">Age: {{x.age}}, Total: {{x.count}}</p>
-            <h4>Affected Genders</h4>
-            <p *ngFor="let x of dataStore.southAfricaCaseDetails.genders">Gender: {{x.gender}}, Total: {{x.count}}</p>
-            <h4>Affected Provinces</h4>
-            <p *ngFor="let x of dataStore.southAfricaCaseDetails.provinces">Province: {{x.province}}, Total: {{x.count}}</p>
+            <table mat-table [dataSource]=" dataStore.southAfricaCaseDetails.provinces" class="mat-elevation-z8">
+                <ng-container matColumnDef="Number">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let element; let i = index;"> {{ i + 1 }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Province">
+                    <th mat-header-cell *matHeaderCellDef> Province </th>
+                    <td mat-cell *matCellDef="let element">{{element.province}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="TotalCases">
+                    <th mat-header-cell *matHeaderCellDef> Total Cases </th>
+                    <td mat-cell *matCellDef="let element"> {{element.count}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
         </mat-card-content>
     </mat-card>
 

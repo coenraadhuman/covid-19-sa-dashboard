@@ -20,6 +20,7 @@ export class DataTransformingService {
     };
     const cloneCases = [...cases];
     const source = from(cloneCases);
+
     const groupedByAge = source.pipe(
         groupBy(x => x.age.trim()),
         mergeMap(group => group.pipe(toArray()))
@@ -47,7 +48,7 @@ export class DataTransformingService {
         mergeMap(group => group.pipe(toArray()))
     );
 
-    subscription = groupedByProvince.subscribe(val => {
+    subscription = groupedByGender.subscribe(val => {
       aggregatedResult.genders.push({gender: val[0].gender, count: val.length});
     });
 
@@ -67,5 +68,4 @@ export class DataTransformingService {
 
     return southAfrica;
   }
-
 }
