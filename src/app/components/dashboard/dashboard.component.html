@@ -5,21 +5,21 @@
             <mat-card-title>Overview</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <p>Total Cases: {{ dataStore.rawData.latest.confirmed }}</p>
-            <p>Total Deaths: {{ dataStore.rawData.latest.deaths }}</p>
-            <p>Total Recovered: {{ dataStore.rawData.latest.recovered }}</p>
+            <p>Total Cases: {{ dataStore.globalStats.cases}}</p>
+            <p>Total Deaths: {{ dataStore.globalStats.deaths }}</p>
+            <p>Total Recovered: {{ dataStore.globalStats.recovered }}</p>
             <button mat-raised-button disabled color="primary">See Timeline Graph</button>
         </mat-card-content>
     </mat-card>
 
     <mat-card *ngIf="dataStore.isTableLoaded" class="sa">
         <mat-card-header>
-            <mat-card-title><span class="flag-icon flag-icon-{{ dataStore.southAfrica.country_code.toLowerCase() }}"></span> South Africa</mat-card-title>
+            <mat-card-title> South Africa</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <p>Total Cases: {{ dataStore.southAfrica.latest.confirmed }}</p>
-            <p>Total Deaths: {{ dataStore.southAfrica.latest.deaths }}</p>
-            <p>Total Recovered: {{ dataStore.southAfrica.latest.recovered }}</p>
+            <p>Total Cases: {{ dataStore.southAfrica.cases }}</p>
+            <p>Total Deaths: {{ dataStore.southAfrica.deaths }}</p>
+            <p>Total Recovered: {{ dataStore.southAfrica.recovered }}</p>
             <button mat-raised-button disabled color="primary">See Timeline Graph</button>
         </mat-card-content>
     </mat-card>
