@@ -6,6 +6,10 @@ mat-card {
   margin-right: 10px;
 }
 
+th {
+  min-width: 75px;
+}
+
 mat-card-content {
   overflow: auto;
 }

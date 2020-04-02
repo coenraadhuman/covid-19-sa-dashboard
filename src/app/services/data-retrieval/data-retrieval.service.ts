@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CountriesModel } from '../../models/locations.model';
+import { CountriesModel } from '../../models/countries.model';
 import { GlobalStatsModel } from '../../models/global-stats.model';
+import { SouthAfricaCaseModel } from '../../models/south-africa-case.model';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class DataRetrievalService {
-  private locationsApi = 'https://corona.lmao.ninja/countries';
-  private totalsApi = 'https://corona.lmao.ninja/all';
+  private countriesUri = 'https://corona.lmao.ninja/countries';
+  private overviewTotalsUri = 'https://corona.lmao.ninja/all';
+  private southAfricaCasesUri = 'https://covid-za-api.herokuapp.com/cases/confirmed';
 
   constructor(private http: HttpClient) { }
 
@@ -18,10 +20,15 @@ export class DataRetrievalService {
     return this.http.get<T>(uri, {responseType: 'json'});
   }
 
-  public  getLocationsData(): Observable<CountriesModel[]> {
-    return this.executeRequest<CountriesModel[]>(this.locationsApi);
+  public getLocationsData(): Observable<CountriesModel[]> {
+    return this.executeRequest<CountriesModel[]>(this.countriesUri);
   }
-  public  getTotalsData(): Observable<GlobalStatsModel> {
-    return this.executeRequest<GlobalStatsModel>(this.totalsApi);
+
+  public getTotalsData(): Observable<GlobalStatsModel> {
+    return this.executeRequest<GlobalStatsModel>(this.overviewTotalsUri);
+  }
+
+  public getSouthAfricaCases(): Observable<SouthAfricaCaseModel[]> {
+    return this.executeRequest<SouthAfricaCaseModel[]>(this.southAfricaCasesUri);
   }
 }
