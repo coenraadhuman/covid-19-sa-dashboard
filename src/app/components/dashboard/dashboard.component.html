@@ -1,28 +1,40 @@
 <mat-progress-bar mode="indeterminate" color="accent" *ngIf="!dataStore.isTableLoaded"></mat-progress-bar>
 <div class="container">
+    <mat-card><mat-grid-list cols="2" rowHeight="1:1.4">
+        <mat-grid-tile>
     <mat-card *ngIf="dataStore.isTableLoaded" class="overview">
         <mat-card-header>
             <mat-card-title>Overview</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <p>Total Cases: {{ dataStore.globalStats.cases}}</p>
-            <p>Total Deaths: {{ dataStore.globalStats.deaths }}</p>
-            <p>Total Recovered: {{ dataStore.globalStats.recovered }}</p>
+            <p>Cases: {{ dataStore.globalStats.cases}}</p>
+            <p>Deaths: {{ dataStore.globalStats.deaths }}</p>
+            <p>Recovered: {{ dataStore.globalStats.recovered }}</p>
+            <p>Active Cases: {{ dataStore.globalStats.active}}</p>
+            <p>Affected Countries: {{ dataStore.globalStats.affectedCountries}}</p>
             <button mat-raised-button disabled color="primary">See Timeline Graph</button>
         </mat-card-content>
     </mat-card>
-
+        </mat-grid-tile>
+        <mat-grid-tile>
     <mat-card *ngIf="dataStore.isTableLoaded" class="sa">
         <mat-card-header>
             <mat-card-title> South Africa</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <p>Total Cases: {{ dataStore.southAfrica.cases }}</p>
-            <p>Total Deaths: {{ dataStore.southAfrica.deaths }}</p>
-            <p>Total Recovered: {{ dataStore.southAfrica.recovered }}</p>
+            <p>Cases: {{ dataStore.southAfrica.cases }}</p>
+            <p>Active Cases: {{ dataStore.southAfrica.active }}</p>
+            <p>Deaths: {{ dataStore.southAfrica.deaths }}</p>
+            <p>Recovered: {{ dataStore.southAfrica.recovered }}</p>
+            <p>Cases Today: {{ dataStore.southAfrica.todayCases }}</p>
             <button mat-raised-button disabled color="primary">See Timeline Graph</button>
         </mat-card-content>
     </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+    </mat-card>
+
+    <mat-card></mat-card>
 
     <mat-card *ngIf="dataStore.isTableLoaded" class="table">
         <mat-card-header>
