@@ -9,7 +9,8 @@ import { DataAssignmentService } from '../../services/data-assignment/data-assig
 })
 export class AllStatsTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['Number', 'Country', 'TotalCases', 'TotalDeaths', 'TotalRecovered', 'TotalActive'];
+  displayedColumns: string[] = ['Number', 'Country', 'TotalCases', 'TotalDeaths', 'TotalRecovered', 'TotalActive',
+    'CasesToday', 'DeathsToday', 'CriticalCondition'];
 
   constructor(public dataStore: DataStoreService,
               private dataAssignment: DataAssignmentService) {
