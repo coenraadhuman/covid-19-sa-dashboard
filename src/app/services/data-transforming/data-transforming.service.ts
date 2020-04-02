@@ -41,6 +41,8 @@ export class DataTransformingService {
       aggregatedResult.provinces.push({province: val[0].validators, count: val.length});
     });
 
+    aggregatedResult.provinces = aggregatedResult.provinces.filter(x => x.province !== 'UNK');
+
     subscription.unsubscribe();
 
     const groupedByGender = source.pipe(
