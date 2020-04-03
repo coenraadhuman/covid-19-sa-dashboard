@@ -34,6 +34,7 @@
     "DSFSI": "DSFSI Covid API",
     "WORLDOMETERS": "Worldometers' CORONAVIRUS",
     "JOHNHOPKINS": "Johns Hopkins CSSE",
-    "REPORT": "Report Any Issues"
+    "REPORT": "Report Any Issues",
+    "BUILD": "Version "
   }
 }
