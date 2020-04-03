@@ -1,32 +1,56 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
     <span>{{ header }}</span>
+    <button mat-icon-button routerLink="">
+      <mat-icon>home</mat-icon>
+    </button>
   </mat-toolbar-row>
 </mat-toolbar>
-
 
 <mat-menu #menu="matMenu">
   <button mat-menu-item (click)="snackBar.openAbout()">
     <mat-icon>info</mat-icon>
     <span>About</span>
   </button>
-  <button mat-menu-item>
-    <mat-icon>data_usage</mat-icon>
-    <a href="https://github.com/CSSEGISandData/COVID-19" target="_blank">Data Repository</a>
-  </button>
   <button mat-menu-item routerLink="">
     <mat-icon>home</mat-icon>
     <span>Home</span>
   </button>
-  <button mat-menu-item>
-    <mat-icon>public</mat-icon>
-    <a href="https://github.com/ChrisMichaelPerezSantiago/covid19" target="_blank">Web API Repository</a>
+  <button mat-menu-item [matMenuTriggerFor]="infoMenu">
+    <mat-icon>info</mat-icon>
+    <span>External Information</span>
+  </button>
+</mat-menu>
+
+<mat-menu #infoMenu="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="dataMenu">
+    <span>Data Repositories</span>
+  </button>
+  <button mat-menu-item [matMenuTriggerFor]="apiMenu">
+    <span>Web API Repositories</span>
   </button>
   <button mat-menu-item>
-    <mat-icon>public</mat-icon>
-    <a href="https://github.com/coenraadhuman/COVID-19_SA-Dashboard" target="_blank">Web Application Repository</a>
+    <a href="https://github.com/coenraadhuman/COVID-19_SA-Dashboard" target="_blank">COVID-19 SA Dashboard Repository</a>
+  </button>
+</mat-menu>
+
+<mat-menu #apiMenu="matMenu">
+  <button mat-menu-item>
+    <a href="https://github.com/novelcovid/api" target="_blank">NovelCOVID API</a>
+  </button>
+  <button mat-menu-item>
+    <a href="https://github.com/dsfsi/covid19za/tree/master/api" target="_blank">DSFSI Covid API</a>
+  </button>
+</mat-menu>
+
+<mat-menu #dataMenu="matMenu">
+  <button mat-menu-item>
+    <a href="https://github.com/novelcovid/api" target="_blank">NovelCOVID API</a>
+  </button>
+  <button mat-menu-item>
+    <a href="https://github.com/dsfsi/covid19za/tree/master/api" target="_blank">DSFSI Covid API</a>
   </button>
 </mat-menu>
