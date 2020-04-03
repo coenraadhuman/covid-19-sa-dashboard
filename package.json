@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --output-path docs --base-href 'https://coenraadhuman.github.io/COVID-19_SA-Dashboard/'",
+    "build": "ng build --prod --output-path docs --base-href 'https://sacovid.co.za/'",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

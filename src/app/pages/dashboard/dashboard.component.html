@@ -35,8 +35,8 @@
 
     <mat-card class="sa">
         <mat-card-header>
-        <mat-card-title>SA Known Province Details</mat-card-title>
-    </mat-card-header>
+            <mat-card-title>{{ 'TITLES.KNOWNPROVINCE' | translate }}</mat-card-title>
+        </mat-card-header>
         <mat-card-content>
             <app-progress-bar [loadState]="dataStore.isCaseDetailsLoaded"></app-progress-bar>
             <table mat-table [dataSource]=" dataStore.southAfricaCaseDetails.provinces" class="mat-elevation-z8" *ngIf="dataStore.isCaseDetailsLoaded">

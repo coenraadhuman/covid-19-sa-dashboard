@@ -12,5 +12,8 @@
     "OVERVIEW": "Overview",
     "GLOBAL": "Global",
     "CASESTODAY": "Cases Today"
+  },
+  "TITLES" : {
+    "KNOWNPROVINCE": "SA Known Province Details"
   }
 }
