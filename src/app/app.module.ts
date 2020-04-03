@@ -31,6 +31,7 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { TitleComponent } from './components/title/title.component';
+import { SaTableComponent } from './components/sa-table/sa-table.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -47,6 +48,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AllStatsTableComponent,
     ProgressBarComponent,
     TitleComponent,
+    SaTableComponent,
   ],
     imports: [
         BrowserModule,

@@ -11,6 +11,10 @@
     "SOUTHAFRICA": "South Africa",
     "OVERVIEW": "Overview",
     "GLOBAL": "Global",
-    "CASESTODAY": "Cases Today"
+    "CASESTODAY": "Cases Today",
+    "SAPROVINCE": "SA Known Province Details",
+    "TOP10": "Top 10 Affected Countries",
+    "SEEALL": "See All",
+    "ALLAFFECTEDCOUNTRIES": "All Affected Countries"
   }
 }
