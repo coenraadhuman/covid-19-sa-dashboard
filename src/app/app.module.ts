@@ -27,6 +27,7 @@ import { DataTransformingService } from './services/data-transforming/data-trans
 import { AllStatsTableComponent } from './pages/all-stats-table/all-stats-table.component';
 import { RouterOutletComponent } from './components/router-outlet/router-outlet.component';
 import { DataStoreService } from './services/data-store/data-store.service';
+import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { DataStoreService } from './services/data-store/data-store.service';
     HeaderComponent,
     TimelineGraphComponent,
     AllStatsTableComponent,
+    ProgressBarComponent,
   ],
     imports: [
         BrowserModule,

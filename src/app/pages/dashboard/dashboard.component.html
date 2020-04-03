@@ -7,7 +7,7 @@
             <div class="overview-container">
                 <div class="global">
                     <h3>Global</h3>
-                    <mat-progress-bar mode="indeterminate" color="accent" *ngIf="!dataStore.isOverviewLoaded"></mat-progress-bar>
+                    <app-progress-bar [loadState]="dataStore.isCaseDetailsLoaded"></app-progress-bar>
                     <div *ngIf="dataStore.isOverviewLoaded">
                         <p>Cases: {{ dataStore.globalStats.cases}}</p>
                         <p>Deaths: {{ dataStore.globalStats.deaths }}</p>
@@ -19,7 +19,7 @@
                 </div>
                 <div class="south-africa">
                     <h3><span class="flag-icon flag-icon-za"></span>South Africa</h3>
-                    <mat-progress-bar mode="indeterminate" color="accent" *ngIf="!dataStore.isTableLoaded"></mat-progress-bar>
+                    <app-progress-bar [loadState]="dataStore.isTableLoaded"></app-progress-bar>
                     <div *ngIf="dataStore.isTableLoaded">
                         <p>Cases: {{ dataStore.southAfrica.cases }}</p>
                         <p>Deaths: {{ dataStore.southAfrica.deaths }}</p>
@@ -38,7 +38,7 @@
         <mat-card-title>SA Known Province Details</mat-card-title>
     </mat-card-header>
         <mat-card-content>
-            <mat-progress-bar mode="indeterminate" color="accent" *ngIf="!dataStore.isCaseDetailsLoaded"></mat-progress-bar>
+            <app-progress-bar [loadState]="dataStore.isCaseDetailsLoaded"></app-progress-bar>
             <table mat-table [dataSource]=" dataStore.southAfricaCaseDetails.provinces" class="mat-elevation-z8" *ngIf="dataStore.isCaseDetailsLoaded">
                 <ng-container matColumnDef="Number">
                     <th mat-header-cell *matHeaderCellDef> No. </th>
@@ -66,7 +66,7 @@
             <mat-card-title>Top 10 Affected Countries <button mat-raised-button color="primary" class="add-margin" routerLink="table-all-locations">See All</button></mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <mat-progress-bar mode="indeterminate" color="accent" *ngIf="!dataStore.isTableLoaded"></mat-progress-bar>
+            <app-progress-bar [loadState]="dataStore.isTableLoaded"></app-progress-bar>
             <app-stats-table [tableDataSource]="dataStore.topTenLocations" *ngIf="dataStore.isTableLoaded"></app-stats-table>
         </mat-card-content>
     </mat-card>
