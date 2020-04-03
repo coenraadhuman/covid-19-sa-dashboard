@@ -1,6 +1,7 @@
 {
   "BUTTONS" : {
-    "TIMELINE" : "See Timeline Graph"
+    "TIMELINE" : "See Timeline Graph",
+    "SEEALL": "See All"
   },
   "COMMON": {
     "TOTALCASES": "Total Cases",
@@ -12,7 +13,6 @@
     "OVERVIEW": "Overview",
     "GLOBAL": "Global",
     "SAPROVINCE": "SA Known Province Details",
-    "SEEALL": "See All",
     "ALLAFFECTEDCOUNTRIES": "All Affected Countries",
     "CASESTODAY": "Cases Today"
   },

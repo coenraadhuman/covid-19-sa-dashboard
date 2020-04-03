@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {SouthAfricaCaseModel} from '../../models/south-africa-case.model';
+import {SouthAfricaCasesDetailsModel} from '../../models/south-africa-cases-details.model';
 
 @Component({
   selector: 'app-sa-table',
@@ -7,6 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SaTableComponent implements OnInit {
 
+  displayedColumns: string[] = ['Number', 'Province', 'TotalCases'];
+
+  @Input() tableDataSource: SouthAfricaCasesDetailsModel[] = [];
+  @Input() loadstate: boolean;
   constructor() { }
 
   ngOnInit() {
