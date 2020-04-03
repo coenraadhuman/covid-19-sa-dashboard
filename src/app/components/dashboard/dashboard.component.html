@@ -1,27 +1,34 @@
-<mat-progress-bar mode="indeterminate" color="accent" *ngIf="!dataStore.isTableLoaded"></mat-progress-bar>
 <div class="container">
-    <mat-card *ngIf="dataStore.isTableLoaded" class="overview">
+    <mat-card class="overview">
         <mat-card-header>
             <mat-card-title>Overview</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <div>
-                <h3>Global</h3>
-                <p>Cases: {{ dataStore.globalStats.cases}}</p>
-                <p>Deaths: {{ dataStore.globalStats.deaths }}</p>
-                <p>Recovered: {{ dataStore.globalStats.recovered }}</p>
-                <p>Active Cases: {{ dataStore.globalStats.active}}</p>
-                <p>Affected Countries: {{ dataStore.globalStats.affectedCountries}}</p>
-                <button mat-raised-button disabled color="primary">See Timeline Graph</button>
-            </div>
-            <div>
-                <h3> South Africa</h3>
-                <p>Cases: {{ dataStore.southAfrica.cases }}</p>
-                <p>Deaths: {{ dataStore.southAfrica.deaths }}</p>
-                <p>Recovered: {{ dataStore.southAfrica.recovered }}</p>
-                <p>Active Cases: {{ dataStore.southAfrica.active }}</p>
-                <p>Cases Today: {{ dataStore.southAfrica.todayCases }}</p>
-                <button mat-raised-button disabled color="primary">See Timeline Graph</button>
+            <div class="overview-container">
+                <div class="global">
+                    <mat-progress-bar mode="indeterminate" color="accent" *ngIf="!dataStore.isOverviewLoaded"></mat-progress-bar>
+                    <div *ngIf="dataStore.isOverviewLoaded">
+                        <h3>Global</h3>
+                        <p>Cases: {{ dataStore.globalStats.cases}}</p>
+                        <p>Deaths: {{ dataStore.globalStats.deaths }}</p>
+                        <p>Recovered: {{ dataStore.globalStats.recovered }}</p>
+                        <p>Active Cases: {{ dataStore.globalStats.active}}</p>
+                        <p>Affected Countries: {{ dataStore.globalStats.affectedCountries}}</p>
+                        <button mat-raised-button disabled color="primary">See Timeline Graph</button>
+                    </div>
+                </div>
+                <div class="south-africa">
+                    <mat-progress-bar mode="indeterminate" color="accent" *ngIf="!dataStore.isTableLoaded"></mat-progress-bar>
+                    <div *ngIf="dataStore.isTableLoaded">
+                        <h3><span class="flag-icon flag-icon-za"></span>South Africa</h3>
+                        <p>Cases: {{ dataStore.southAfrica.cases }}</p>
+                        <p>Deaths: {{ dataStore.southAfrica.deaths }}</p>
+                        <p>Recovered: {{ dataStore.southAfrica.recovered }}</p>
+                        <p>Active Cases: {{ dataStore.southAfrica.active }}</p>
+                        <p>Cases Today: {{ dataStore.southAfrica.todayCases }}</p>
+                        <button mat-raised-button disabled color="primary">See Timeline Graph</button>
+                    </div>
+                </div>
             </div>
         </mat-card-content>
     </mat-card>
@@ -30,8 +37,9 @@
         <mat-card-header>
         <mat-card-title>SA Known Province Details</mat-card-title>
     </mat-card-header>
-        <mat-card-content *ngIf="dataStore.isCaseDetailsLoaded">
-            <table mat-table [dataSource]=" dataStore.southAfricaCaseDetails.provinces" class="mat-elevation-z8">
+        <mat-card-content>
+            <mat-progress-bar mode="indeterminate" color="accent" *ngIf="!dataStore.isCaseDetailsLoaded"></mat-progress-bar>
+            <table mat-table [dataSource]=" dataStore.southAfricaCaseDetails.provinces" class="mat-elevation-z8" *ngIf="dataStore.isCaseDetailsLoaded">
                 <ng-container matColumnDef="Number">
                     <th mat-header-cell *matHeaderCellDef> No. </th>
                     <td mat-cell *matCellDef="let element; let i = index;"> {{ i + 1 }} </td>
@@ -57,8 +65,9 @@
         <mat-card-header>
             <mat-card-title>Top 10 Affected Countries <button mat-raised-button color="primary" class="add-margin" routerLink="table-all-locations">See All</button></mat-card-title>
         </mat-card-header>
-        <mat-card-content *ngIf="dataStore.isTableLoaded">
-            <app-stats-table [tableDataSource]="dataStore.topTenLocations"></app-stats-table>
+        <mat-card-content>
+            <mat-progress-bar mode="indeterminate" color="accent" *ngIf="!dataStore.isTableLoaded"></mat-progress-bar>
+            <app-stats-table [tableDataSource]="dataStore.topTenLocations" *ngIf="dataStore.isTableLoaded"></app-stats-table>
         </mat-card-content>
     </mat-card>
 </div>

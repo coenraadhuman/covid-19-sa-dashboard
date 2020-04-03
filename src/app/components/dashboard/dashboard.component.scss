@@ -18,10 +18,27 @@ mat-card-content {
   margin-top: 10px;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 450px) {
+  .overview-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid:
+            'ov za';
+  }
+
+  .overview {
+    grid-area: ov;
+  }
+
+  .south-africa {
+    grid-area: za;
+  }
+}
+
+@media screen and (min-width: 1200px) {
   .container {
     display: grid;
-    grid-template-columns: 47% 52%;
+    grid-template-columns: auto auto;
     grid:
             'overview table'
             'sa table';
@@ -44,6 +61,7 @@ mat-card-content {
   }
 
   mat-card {
+    max-width: 770px;
     margin-top: 10px;
     margin-left: 10px;
     margin-bottom: 0px;
@@ -52,9 +70,25 @@ mat-card-content {
 }
 
 @media screen and (min-width: 1900px) {
+  .overview-container {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid:
+            'ov'
+            'za';
+  }
+
+  .overview {
+    grid-area: ov;
+  }
+
+  .south-africa {
+    grid-area: za;
+  }
+
   .container {
     display: grid;
-    grid-template-columns: 20% 20% 60%;
+    grid-template-columns: auto auto auto;
     grid:
             'overview sa table';
   }
