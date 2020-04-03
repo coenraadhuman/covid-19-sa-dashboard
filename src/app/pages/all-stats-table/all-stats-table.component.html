@@ -1,7 +1,5 @@
 <mat-card *ngIf="dataStore.isTableLoaded">
-    <mat-card-header>
-        <mat-card-title>All Affected Countries</mat-card-title>
-    </mat-card-header>
+    <app-title [Title]="'ALLAFFECTEDCOUNTRIES'"></app-title>
     <mat-card-content>
         <table mat-table [dataSource]="this.dataStore.locations" class="mat-elevation-z8">
             <ng-container matColumnDef="Number">
