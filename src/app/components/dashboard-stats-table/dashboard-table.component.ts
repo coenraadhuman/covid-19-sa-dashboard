@@ -8,7 +8,7 @@ import {CountriesModel} from '../../models/countries.model';
 })
 export class DashboardTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['Number', 'Country', 'TotalCases', 'TotalDeaths', 'TotalRecovered', 'TotalActive',
+  displayedColumns: string[] = ['Number', 'Country', 'TotalCases', 'TotalActive', 'TotalDeaths', 'TotalRecovered',
     'CasesToday', 'DeathsToday', 'CriticalCondition'];
   @Input() tableDataSource: CountriesModel[] = [];
 

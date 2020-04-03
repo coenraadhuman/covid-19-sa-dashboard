@@ -19,6 +19,11 @@
                 <td mat-cell *matCellDef="let element"> {{element.cases}} </td>
             </ng-container>
 
+            <ng-container matColumnDef="TotalActive">
+                <th mat-header-cell *matHeaderCellDef> Total Active </th>
+                <td mat-cell *matCellDef="let element" style="color: deepskyblue"> {{element.active}} </td>
+            </ng-container>
+
             <ng-container matColumnDef="TotalDeaths">
                 <th mat-header-cell *matHeaderCellDef> Total Deaths </th>
                 <td mat-cell *matCellDef="let element"  style="color: lightsalmon;"> {{element.deaths}} </td>
@@ -27,11 +32,6 @@
             <ng-container matColumnDef="TotalRecovered">
                 <th mat-header-cell *matHeaderCellDef> Total Recovered </th>
                 <td mat-cell *matCellDef="let element" style="color: lightgreen;"> {{element.recovered}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="TotalActive">
-                <th mat-header-cell *matHeaderCellDef> Total Active </th>
-                <td mat-cell *matCellDef="let element" style="color: deepskyblue"> {{element.active}} </td>
             </ng-container>
 
             <ng-container matColumnDef="CasesToday">
