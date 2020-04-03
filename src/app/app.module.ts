@@ -35,6 +35,7 @@ import { SaTableComponent } from './components/tables/sa-table/sa-table.componen
 import { AnchorMenuButtonComponent } from './components/menu/anchor-menu-button/anchor-menu-button.component';
 import { CustomIconAnchorMenuButtonComponent } from './components/menu/custom-icon-anchor-menu-button/custom-icon-anchor-menu-button.component';
 import { IconAnchorMenuButtonComponent } from './components/menu/icon-anchor-menu-button/icon-anchor-menu-button.component';
+import {GtagModule} from 'angular-gtag';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -67,6 +68,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
                 deps: [HttpClient]
             }
         }),
+        GtagModule.forRoot({ trackingId: 'UA-162744052-1', trackPageviews: true }),
         BrowserAnimationsModule,
         MatSliderModule,
         MatTableModule,

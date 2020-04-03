@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStoreService } from '../../services/data-store/data-store.service';
-import {DataAssignmentService} from '../../services/data-assignment/data-assignment.service';
-import {TranslateService} from '@ngx-translate/core';
+import { DataAssignmentService } from '../../services/data-assignment/data-assignment.service';
+import { TranslateService } from '@ngx-translate/core';
+import { Gtag } from 'angular-gtag';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +15,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(public dataStore: DataStoreService,
               private dataAssignment: DataAssignmentService,
-              public translate: TranslateService) {
+              public translate: TranslateService,
+              public gtag: Gtag) {
 
     if (translate.langs.length === 0) {
       translate.addLangs(['en']);
