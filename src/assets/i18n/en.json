@@ -13,16 +13,24 @@
     "OVERVIEW": "Overview",
     "GLOBAL": "Global",
     "SAPROVINCE": "SA Known Province Details",
-    "ALLAFFECTEDCOUNTRIES": "All Affected Countries",
     "CASESTODAY": "Cases Today"
   },
   "TITLES" : {
     "KNOWNPROVINCE": "SA Known Province Details",
-    "TOP10": "Top 10 Affected Countries"
+    "TOP10": "Top 10 Affected Countries",
+    "ALLAFFECTEDCOUNTRIES": "All Affected Countries"
   },
   "TABLECOLUMNS" : {
+    "TOTALCASES": "Total Cases",
     "NUMBER": "Number",
-    "PROVINCE": "Province"
+    "PROVINCE": "Province",
+    "COUNTRY" : "Country",
+    "TOTALACTIVE" : "Total Active",
+    "TOTALDEATHS" : "Total Deaths",
+    "TOTALRECOVERED" : "Total Recovered",
+    "NEWCASES" : "New Cases",
+    "NEWDEATHS" : "New Deaths",
+    "CRITICALCASES": "Critical Cases"
   },
   "MENU": {
     "HEADER" : "COVID-19 Pandemic",
