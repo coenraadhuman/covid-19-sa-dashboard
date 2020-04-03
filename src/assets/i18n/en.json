@@ -21,6 +21,7 @@
     "TOP10": "Top 10 Affected Countries"
   },
   "TABLECOLUMNS" : {
-
+    "NUMBER": "Number",
+    "PROVINCE": "Province"
   }
 }
