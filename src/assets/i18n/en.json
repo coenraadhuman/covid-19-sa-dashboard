@@ -11,14 +11,16 @@
     "SOUTHAFRICA": "South Africa",
     "OVERVIEW": "Overview",
     "GLOBAL": "Global",
-    "CASESTODAY": "Cases Today",
     "SAPROVINCE": "SA Known Province Details",
-    "TOP10": "Top 10 Affected Countries",
     "SEEALL": "See All",
-    "ALLAFFECTEDCOUNTRIES": "All Affected Countries"
+    "ALLAFFECTEDCOUNTRIES": "All Affected Countries",
     "CASESTODAY": "Cases Today"
   },
   "TITLES" : {
-    "KNOWNPROVINCE": "SA Known Province Details"
+    "KNOWNPROVINCE": "SA Known Province Details",
+    "TOP10": "Top 10 Affected Countries"
+  },
+  "TABLECOLUMNS" : {
+
   }
 }

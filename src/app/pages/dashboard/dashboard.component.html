@@ -1,6 +1,6 @@
 <div class="container">
     <mat-card class="overview">
-        <app-title [Title]="'OVERVIEW'"></app-title>
+        <app-card-title [translationKey]="'COMMON.OVERVIEW'"></app-card-title>
         <mat-card-content>
             <div class="overview-container">
                 <div class="global">
@@ -32,7 +32,7 @@
     </mat-card>
 
     <mat-card class="sa">
-       <app-title [Title]="'SAPROVINCE'"></app-title>
+        <app-card-title [translationKey]="'TITLES.KNOWNPROVINCE' | translate"></app-card-title>
         <mat-card-content>
             <app-progress-bar [loadState]="dataStore.isCaseDetailsLoaded"></app-progress-bar>
             <table mat-table [dataSource]=" dataStore.southAfricaCaseDetails.provinces" class="mat-elevation-z8" *ngIf="dataStore.isCaseDetailsLoaded">
@@ -59,7 +59,7 @@
 
     <mat-card class="table">
         <mat-card-header>
-            <mat-card-title>{{'COMMON.TOP10' | translate}} <button mat-raised-button color="primary" class="add-margin" routerLink="table-all-locations">{{'COMMON.SEEALL' | translate}}</button></mat-card-title>
+            <mat-card-title>{{'TITLES.TOP10' | translate}} <button mat-raised-button color="primary" class="add-margin" routerLink="table-all-locations">{{'COMMON.SEEALL' | translate}}</button></mat-card-title>
         </mat-card-header>
         <mat-card-content>
             <app-progress-bar [loadState]="dataStore.isTableLoaded"></app-progress-bar>

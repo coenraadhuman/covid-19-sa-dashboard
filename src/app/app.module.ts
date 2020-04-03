@@ -30,7 +30,7 @@ import { DataStoreService } from './services/data-store/data-store.service';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
-import { TitleComponent } from './components/title/title.component';
+import { CardTitleComponent } from './components/title/card-title.component';
 import { SaTableComponent } from './components/sa-table/sa-table.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -47,7 +47,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     TimelineGraphComponent,
     AllStatsTableComponent,
     ProgressBarComponent,
-    TitleComponent,
+    CardTitleComponent,
     SaTableComponent,
   ],
     imports: [
