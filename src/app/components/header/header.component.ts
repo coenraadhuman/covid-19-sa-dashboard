@@ -1,5 +1,7 @@
 import { Component, Input, OnInit} from '@angular/core';
 import { SnackBarNotificationService } from '../../services/snack-bar-notification/snack-bar-notification.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +13,14 @@ export class HeaderComponent implements OnInit {
   @Input() header: string;
   @Input() icon: string;
 
-  constructor(public snackBar: SnackBarNotificationService) { }
+  constructor(public snackBar: SnackBarNotificationService,
+              private matIconRegistry: MatIconRegistry,
+              private domSanitizer: DomSanitizer) {
+    this.matIconRegistry.addSvgIcon(
+        'github',
+        this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/github.svg')
+    );
+  }
 
   ngOnInit() {
   }
