@@ -3,7 +3,7 @@
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
-    <span>{{ header }}</span>
+    <span>{{ "MENU.HEADER" | translate }}</span>
     <button mat-icon-button routerLink="">
       <mat-icon>home</mat-icon>
     </button>
@@ -13,15 +13,15 @@
 <mat-menu #menu="matMenu">
   <button mat-menu-item (click)="snackBar.openAbout()">
     <mat-icon>info</mat-icon>
-    <span>About</span>
+    <span>{{ "MENU.ABOUT" | translate }}</span>
   </button>
   <button mat-menu-item [matMenuTriggerFor]="infoMenu">
     <mat-icon>public</mat-icon>
-    <span>External Information</span>
+    <span>{{ "MENU.EXTERNALINFORMATION" | translate }}</span>
   </button>
   <button mat-menu-item>
     <mat-icon svgIcon="github"></mat-icon>
-    <a href="https://github.com/coenraadhuman/COVID-19_SA-Dashboard" target="_blank">Project's Github Page</a>
+    <a href="https://github.com/coenraadhuman/COVID-19_SA-Dashboard" target="_blank">{{ "MENU.GITHUB" | translate }}</a>
   </button>
   <button mat-menu-item>
     <mat-icon>present_to_all</mat-icon>
@@ -31,27 +31,19 @@
 
 <mat-menu #infoMenu="matMenu">
   <button mat-menu-item [matMenuTriggerFor]="dataMenu">
-    <span>Data Repositories</span>
+    <span>{{ "MENU.DATA" | translate }}</span>
   </button>
   <button mat-menu-item [matMenuTriggerFor]="apiMenu">
-    <span>Web API Repositories</span>
+    <span>{{ "MENU.API" | translate }}</span>
   </button>
 </mat-menu>
 
 <mat-menu #apiMenu="matMenu">
-  <button mat-menu-item>
-    <a href="https://github.com/novelcovid/api" target="_blank">NovelCOVID API</a>
-  </button>
-  <button mat-menu-item>
-    <a href="https://github.com/dsfsi/covid19za/tree/master/api" target="_blank">DSFSI Covid API</a>
-  </button>
+  <app-anchor-menu-button [name]="'MENU.NOVELCOVID' | translate" link="https://github.com/novelcovid/api"></app-anchor-menu-button>
+  <app-anchor-menu-button [name]="'MENU.DSFSI' | translate" link="https://github.com/dsfsi/covid19za/tree/master/api"></app-anchor-menu-button>
 </mat-menu>
 
 <mat-menu #dataMenu="matMenu">
-  <button mat-menu-item>
-    <a href="https://github.com/novelcovid/api" target="_blank">NovelCOVID API</a>
-  </button>
-  <button mat-menu-item>
-    <a href="https://github.com/dsfsi/covid19za/tree/master/api" target="_blank">DSFSI Covid API</a>
-  </button>
+  <app-anchor-menu-button [name]="'MENU.WORLDOMETERS' | translate" link="https://www.worldometers.info/coronavirus/"></app-anchor-menu-button>
+  <app-anchor-menu-button [name]="'MENU.JOHNHOPKINS' | translate" link="https://github.com/CSSEGISandData/COVID-19"></app-anchor-menu-button>
 </mat-menu>

@@ -21,7 +21,6 @@ export class DashboardComponent implements OnInit {
     }
     translate.setDefaultLang('en');
 
-    const browserLang = translate.getBrowserLang();
     translate.use('en');
 
     setInterval(() => {

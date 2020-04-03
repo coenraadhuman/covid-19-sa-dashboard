@@ -17,21 +17,22 @@ import {
     MatToolbarModule,
     MatChipsModule,
 } from '@angular/material';
-import { DashboardTableComponent } from './components/dashboard-stats-table/dashboard-table.component';
-import { HeaderComponent } from './components/header/header.component';
+import { DashboardTableComponent } from './components/tables/dashboard-stats-table/dashboard-table.component';
+import { HeaderComponent } from './components/menu/header/header.component';
 import { ChartsModule } from 'ng2-charts';
-import { TimelineGraphComponent } from './components/timeline-graph/timeline-graph.component';
+import { TimelineGraphComponent } from './components/graphs/timeline-graph/timeline-graph.component';
 import { DataRetrievalService } from './services/data-retrieval/data-retrieval.service';
 import { SnackBarNotificationService } from './services/snack-bar-notification/snack-bar-notification.service';
 import { DataTransformingService } from './services/data-transforming/data-transforming.service';
 import { AllStatsTableComponent } from './pages/all-stats-table/all-stats-table.component';
-import { RouterOutletComponent } from './components/router-outlet/router-outlet.component';
+import { RouterOutletComponent } from './router-outlet/router-outlet.component';
 import { DataStoreService } from './services/data-store/data-store.service';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
-import { CardTitleComponent } from './components/title/card-title.component';
-import { SaTableComponent } from './components/sa-table/sa-table.component';
+import { ProgressBarComponent } from './components/common/progress-bar/progress-bar.component';
+import { CardTitleComponent } from './components/cards/card-title/card-title.component';
+import { SaTableComponent } from './components/tables/sa-table/sa-table.component';
+import { AnchorMenuButtonComponent } from './components/menu/anchor-menu-button/anchor-menu-button.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -49,6 +50,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ProgressBarComponent,
     CardTitleComponent,
     SaTableComponent,
+    AnchorMenuButtonComponent,
   ],
     imports: [
         BrowserModule,

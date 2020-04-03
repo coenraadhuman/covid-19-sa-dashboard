@@ -22,5 +22,17 @@
   },
   "TABLECOLUMNS" : {
 
+  },
+  "MENU": {
+    "HEADER" : "COVID-19 Pandemic",
+    "ABOUT": "About",
+    "EXTERNALINFORMATION": "External Information",
+    "GITHUB": "Project's Github Page",
+    "DATA": "Data Repositories",
+    "API": "Web API Repositories",
+    "NOVELCOVID": "NovelCOVID API",
+    "DSFSI": "DSFSI Covid API",
+    "WORLDOMETERS": "Worldometers' CORONAVIRUS",
+    "JOHNHOPKINS": "Johns Hopkins CSSE"
   }
 }

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {CountriesModel} from '../../models/countries.model';
+import {CountriesModel} from '../../../models/countries.model';
 
 @Component({
   selector: 'app-stats-table',
