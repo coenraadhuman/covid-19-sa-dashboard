@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CountriesModel } from '../../models/countries.model';
-import { SouthAfricaCasesDetailsModel } from '../../models/south-africa-cases-details.model';
+import {ProvinceCount, SouthAfricaCasesDetailsModel} from '../../models/south-africa-cases-details.model';
 import { SouthAfricaCaseModel } from '../../models/south-africa-case.model';
 import {from} from 'rxjs';
 import {groupBy, mergeMap, toArray} from 'rxjs/operators';
@@ -9,6 +9,18 @@ import {groupBy, mergeMap, toArray} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DataTransformingService {
+
+  provinceNames = [
+    {key: 'GP', name: 'Gauteng'},
+    {key: 'WC', name: 'Western Cape'},
+    {key: 'KZN', name: 'KwaZulu-Natal'},
+    {key: 'FS', name: 'Free State'},
+    {key: 'MP', name: 'Mpumalanga'},
+    {key: 'NW', name: 'North West'},
+    {key: 'LP', name: 'Limpopo'},
+    {key: 'EC', name: 'Eastern Cape'},
+    {key: 'NC', name: 'Northern Cape'},
+  ];
 
   constructor() { }
 
@@ -38,10 +50,18 @@ export class DataTransformingService {
     );
 
     subscription = groupedByProvince.subscribe(val => {
-      aggregatedResult.provinces.push({province: val[0].validators, count: val.length});
+      aggregatedResult.provinces.push({province: this.getProperProvinceName(val[0].validators), count: val.length});
     });
 
     aggregatedResult.provinces = aggregatedResult.provinces.filter(x => x.province !== 'UNK');
+    const totals: ProvinceCount = {
+      province: 'Total',
+      count: 0
+    };
+    aggregatedResult.provinces.forEach(x => {
+      totals.count += x.count;
+    });
+    aggregatedResult.provinces.push(totals);
     aggregatedResult.provinces = aggregatedResult.provinces.sort((a, b) => b.count - a.count);
 
     subscription.unsubscribe();
@@ -70,5 +90,15 @@ export class DataTransformingService {
     });
 
     return southAfrica;
+  }
+
+  public getProperProvinceName(key: string): string {
+    let name = key;
+    this.provinceNames.forEach(x => {
+      if (key.includes(x.key)) {
+        name = x.name;
+      }
+    });
+    return name;
   }
 }

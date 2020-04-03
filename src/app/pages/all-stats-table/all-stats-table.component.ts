@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStoreService } from '../../services/data-store/data-store.service';
 import { DataAssignmentService } from '../../services/data-assignment/data-assignment.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-all-stats-table',
@@ -9,11 +10,20 @@ import { DataAssignmentService } from '../../services/data-assignment/data-assig
 })
 export class AllStatsTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['Number', 'Country', 'TotalCases', 'TotalDeaths', 'TotalRecovered', 'TotalActive',
+  displayedColumns: string[] = ['Number', 'Country', 'TotalCases', 'TotalActive', 'TotalDeaths', 'TotalRecovered',
     'CasesToday', 'DeathsToday', 'CriticalCondition'];
 
   constructor(public dataStore: DataStoreService,
-              private dataAssignment: DataAssignmentService) {
+              private dataAssignment: DataAssignmentService,
+              public translate: TranslateService) {
+
+    if (translate.langs.length === 0) {
+      translate.addLangs(['en']);
+    }
+    translate.setDefaultLang('en');
+
+    const browserLang = translate.getBrowserLang();
+    translate.use('en');
     setInterval(() => {
       this.dataAssignment.getTablesData();
     }, this.dataStore.updateInterval * 60 * 1000);

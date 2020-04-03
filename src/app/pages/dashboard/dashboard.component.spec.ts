@@ -26,7 +26,7 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('covid19-sa');
   });
 
-  it('should render title', () => {
+  it('should render card-title', () => {
     const fixture = TestBed.createComponent(DashboardComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {CountriesModel} from '../../models/countries.model';
+import {CountriesModel} from '../../../models/countries.model';
 
 @Component({
   selector: 'app-stats-table',
@@ -8,7 +8,7 @@ import {CountriesModel} from '../../models/countries.model';
 })
 export class DashboardTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['Number', 'Country', 'TotalCases', 'TotalDeaths', 'TotalRecovered', 'TotalActive',
+  displayedColumns: string[] = ['Number', 'Country', 'TotalCases', 'TotalActive', 'TotalDeaths', 'TotalRecovered',
     'CasesToday', 'DeathsToday', 'CriticalCondition'];
   @Input() tableDataSource: CountriesModel[] = [];
 

@@ -1,32 +1,30 @@
 <div class="container">
     <mat-card class="overview">
-        <mat-card-header>
-            <mat-card-title>Overview</mat-card-title>
-        </mat-card-header>
+        <app-card-title [translationKey]="'COMMON.OVERVIEW'"></app-card-title>
         <mat-card-content>
             <div class="overview-container">
                 <div class="global">
-                    <h3>Global</h3>
-                    <mat-progress-bar mode="indeterminate" color="accent" *ngIf="!dataStore.isOverviewLoaded"></mat-progress-bar>
+                    <h3>{{ 'COMMON.GLOBAL' | translate }}</h3>
+                    <app-progress-bar [loadState]="dataStore.isCaseDetailsLoaded"></app-progress-bar>
                     <div *ngIf="dataStore.isOverviewLoaded">
-                        <p>Cases: {{ dataStore.globalStats.cases}}</p>
-                        <p>Deaths: {{ dataStore.globalStats.deaths }}</p>
-                        <p>Recovered: {{ dataStore.globalStats.recovered }}</p>
-                        <p>Active Cases: {{ dataStore.globalStats.active}}</p>
-                        <p>Affected Countries: {{ dataStore.globalStats.affectedCountries}}</p>
-                        <button mat-raised-button disabled color="primary">See Timeline Graph</button>
+                        <p>{{ 'COMMON.TOTALCASES' | translate }}: {{ dataStore.globalStats.cases}}</p>
+                        <p>{{ 'COMMON.DEATHS' | translate }}: {{ dataStore.globalStats.deaths }}</p>
+                        <p>{{ 'COMMON.RECOVERED' | translate }}: {{ dataStore.globalStats.recovered }}</p>
+                        <p>{{ 'COMMON.ACTIVECASES' | translate }}: {{ dataStore.globalStats.active}}</p>
+                        <p>{{ 'COMMON.AFFECTEDCOUNTRIES' | translate }}: {{ dataStore.globalStats.affectedCountries}}</p>
+                        <button mat-raised-button disabled color="primary">{{ 'BUTTONS.TIMELINE' | translate }}</button>
                     </div>
                 </div>
                 <div class="south-africa">
-                    <h3><span class="flag-icon flag-icon-za"></span>South Africa</h3>
-                    <mat-progress-bar mode="indeterminate" color="accent" *ngIf="!dataStore.isTableLoaded"></mat-progress-bar>
+                    <h3><span class="flag-icon flag-icon-za"></span>{{ 'COMMON.SOUTHAFRICA' | translate }}</h3>
+                    <app-progress-bar [loadState]="dataStore.isTableLoaded"></app-progress-bar>
                     <div *ngIf="dataStore.isTableLoaded">
-                        <p>Cases: {{ dataStore.southAfrica.cases }}</p>
-                        <p>Deaths: {{ dataStore.southAfrica.deaths }}</p>
-                        <p>Recovered: {{ dataStore.southAfrica.recovered }}</p>
-                        <p>Active Cases: {{ dataStore.southAfrica.active }}</p>
-                        <p>Cases Today: {{ dataStore.southAfrica.todayCases }}</p>
-                        <button mat-raised-button disabled color="primary">See Timeline Graph</button>
+                        <p>{{ 'COMMON.TOTALCASES' | translate }}: {{ dataStore.southAfrica.cases }}</p>
+                        <p>{{ 'COMMON.DEATHS' | translate }}: {{ dataStore.southAfrica.deaths }}</p>
+                        <p>{{ 'COMMON.RECOVERED' | translate }}: {{ dataStore.southAfrica.recovered }}</p>
+                        <p>{{ 'COMMON.ACTIVECASES' | translate }}: {{ dataStore.southAfrica.active }}</p>
+                        <p>{{ 'COMMON.CASESTODAY' | translate }}: {{ dataStore.southAfrica.todayCases }}</p>
+                        <button mat-raised-button disabled color="primary">{{ 'BUTTONS.TIMELINE' | translate }}</button>
                     </div>
                 </div>
             </div>
@@ -34,39 +32,19 @@
     </mat-card>
 
     <mat-card class="sa">
-        <mat-card-header>
-        <mat-card-title>SA Known Province Details</mat-card-title>
-    </mat-card-header>
+        <app-card-title [translationKey]="'TITLES.KNOWNPROVINCE' | translate"></app-card-title>
         <mat-card-content>
-            <mat-progress-bar mode="indeterminate" color="accent" *ngIf="!dataStore.isCaseDetailsLoaded"></mat-progress-bar>
-            <table mat-table [dataSource]=" dataStore.southAfricaCaseDetails.provinces" class="mat-elevation-z8" *ngIf="dataStore.isCaseDetailsLoaded">
-                <ng-container matColumnDef="Number">
-                    <th mat-header-cell *matHeaderCellDef> No. </th>
-                    <td mat-cell *matCellDef="let element; let i = index;"> {{ i + 1 }} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="Province">
-                    <th mat-header-cell *matHeaderCellDef> Province </th>
-                    <td mat-cell *matCellDef="let element">{{element.province}}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="TotalCases">
-                    <th mat-header-cell *matHeaderCellDef> Total Cases </th>
-                    <td mat-cell *matCellDef="let element"> {{element.count}} </td>
-                </ng-container>
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
+            <app-progress-bar [loadState]="dataStore.isCaseDetailsLoaded"></app-progress-bar>
+            <app-sa-table [tableDataSource]="dataStore.southAfricaCaseDetails.provinces" [loadstate]="dataStore.isCaseDetailsLoaded"></app-sa-table>
         </mat-card-content>
     </mat-card>
 
     <mat-card class="table">
         <mat-card-header>
-            <mat-card-title>Top 10 Affected Countries <button mat-raised-button color="primary" class="add-margin" routerLink="table-all-locations">See All</button></mat-card-title>
+            <mat-card-title>{{'TITLES.TOP10' | translate}} <button mat-raised-button color="primary" class="add-margin" routerLink="table-all-locations">{{'BUTTONS.SEEALL' | translate}}</button></mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <mat-progress-bar mode="indeterminate" color="accent" *ngIf="!dataStore.isTableLoaded"></mat-progress-bar>
+            <app-progress-bar [loadState]="dataStore.isTableLoaded"></app-progress-bar>
             <app-stats-table [tableDataSource]="dataStore.topTenLocations" *ngIf="dataStore.isTableLoaded"></app-stats-table>
         </mat-card-content>
     </mat-card>
