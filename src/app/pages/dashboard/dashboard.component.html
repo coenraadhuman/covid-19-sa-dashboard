@@ -1,32 +1,32 @@
 <div class="container">
     <mat-card class="overview">
         <mat-card-header>
-            <mat-card-title>Overview</mat-card-title>
+            <mat-card-title>{{ 'COMMON.OVERVIEW' | translate }}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
             <div class="overview-container">
                 <div class="global">
-                    <h3>Global</h3>
+                    <h3>{{ 'COMMON.GLOBAL' | translate }}</h3>
                     <mat-progress-bar mode="indeterminate" color="accent" *ngIf="!dataStore.isOverviewLoaded"></mat-progress-bar>
                     <div *ngIf="dataStore.isOverviewLoaded">
-                        <p>Cases: {{ dataStore.globalStats.cases}}</p>
-                        <p>Deaths: {{ dataStore.globalStats.deaths }}</p>
-                        <p>Recovered: {{ dataStore.globalStats.recovered }}</p>
-                        <p>Active Cases: {{ dataStore.globalStats.active}}</p>
-                        <p>Affected Countries: {{ dataStore.globalStats.affectedCountries}}</p>
-                        <button mat-raised-button disabled color="primary">See Timeline Graph</button>
+                        <p>{{ 'COMMON.TOTALCASES' | translate }}: {{ dataStore.globalStats.cases}}</p>
+                        <p>{{ 'COMMON.DEATHS' | translate }}: {{ dataStore.globalStats.deaths }}</p>
+                        <p>{{ 'COMMON.RECOVERED' | translate }}: {{ dataStore.globalStats.recovered }}</p>
+                        <p>{{ 'COMMON.ACTIVECASES' | translate }}: {{ dataStore.globalStats.active}}</p>
+                        <p>{{ 'COMMON.AFFECTEDCOUNTRIES' | translate }}: {{ dataStore.globalStats.affectedCountries}}</p>
+                        <button mat-raised-button disabled color="primary">{{ 'BUTTONS.TIMELINE' | translate }}</button>
                     </div>
                 </div>
                 <div class="south-africa">
-                    <h3><span class="flag-icon flag-icon-za"></span>South Africa</h3>
+                    <h3><span class="flag-icon flag-icon-za"></span>{{ 'COMMON.SOUTHAFRICA' | translate }}</h3>
                     <mat-progress-bar mode="indeterminate" color="accent" *ngIf="!dataStore.isTableLoaded"></mat-progress-bar>
                     <div *ngIf="dataStore.isTableLoaded">
-                        <p>Cases: {{ dataStore.southAfrica.cases }}</p>
-                        <p>Deaths: {{ dataStore.southAfrica.deaths }}</p>
-                        <p>Recovered: {{ dataStore.southAfrica.recovered }}</p>
-                        <p>Active Cases: {{ dataStore.southAfrica.active }}</p>
-                        <p>Cases Today: {{ dataStore.southAfrica.todayCases }}</p>
-                        <button mat-raised-button disabled color="primary">See Timeline Graph</button>
+                        <p>{{ 'COMMON.TOTALCASES' | translate }}: {{ dataStore.southAfrica.cases }}</p>
+                        <p>{{ 'COMMON.DEATHS' | translate }}: {{ dataStore.southAfrica.deaths }}</p>
+                        <p>{{ 'COMMON.RECOVERED' | translate }}: {{ dataStore.southAfrica.recovered }}</p>
+                        <p>{{ 'COMMON.ACTIVECASES' | translate }}: {{ dataStore.southAfrica.active }}</p>
+                        <p>{{ 'COMMON.CASESTODAY' | translate }}: {{ dataStore.southAfrica.todayCases }}</p>
+                        <button mat-raised-button disabled color="primary">{{ 'BUTTONS.TIMELINE' | translate }}</button>
                     </div>
                 </div>
             </div>

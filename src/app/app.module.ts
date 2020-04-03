@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { HttpClientModule } from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
     MatButtonModule,
@@ -27,6 +27,13 @@ import { DataTransformingService } from './services/data-transforming/data-trans
 import { AllStatsTableComponent } from './pages/all-stats-table/all-stats-table.component';
 import { RouterOutletComponent } from './components/router-outlet/router-outlet.component';
 import { DataStoreService } from './services/data-store/data-store.service';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(httpClient: HttpClient) {
+    return new TranslateHttpLoader(httpClient);
+}
+
 
 @NgModule({
   declarations: [
@@ -41,6 +48,13 @@ import { DataStoreService } from './services/data-store/data-store.service';
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
         BrowserAnimationsModule,
         MatSliderModule,
         MatTableModule,

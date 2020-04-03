@@ -1,0 +1,16 @@
+{
+  "BUTTONS" : {
+    "TIMELINE" : "See Timeline Graph"
+  },
+  "COMMON": {
+    "TOTALCASES": "Total Cases",
+    "DEATHS": "Deaths",
+    "RECOVERED": "Recovered",
+    "ACTIVECASES": "Active Cases",
+    "AFFECTEDCOUNTRIES": "Affected Countries",
+    "SOUTHAFRICA": "South Africa",
+    "OVERVIEW": "Overview",
+    "GLOBAL": "Global",
+    "CASESTODAY": "Cases Today"
+  }
+}
