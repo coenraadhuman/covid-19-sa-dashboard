@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {SouthAfricaCaseModel} from '../../models/south-africa-case.model';
-import {SouthAfricaCasesDetailsModel} from '../../models/south-africa-cases-details.model';
+import {SouthAfricaCasesDetailsModel} from '../../../models/south-africa-cases-details.model';
 
 @Component({
   selector: 'app-sa-table',
