@@ -42,6 +42,7 @@ export class DataTransformingService {
     });
 
     aggregatedResult.provinces = aggregatedResult.provinces.filter(x => x.province !== 'UNK');
+    aggregatedResult.provinces = aggregatedResult.provinces.sort((a, b) => b.count - a.count);
 
     subscription.unsubscribe();
 

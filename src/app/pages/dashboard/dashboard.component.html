@@ -6,9 +6,9 @@
         <mat-card-content>
             <div class="overview-container">
                 <div class="global">
+                    <h3>Global</h3>
                     <mat-progress-bar mode="indeterminate" color="accent" *ngIf="!dataStore.isOverviewLoaded"></mat-progress-bar>
                     <div *ngIf="dataStore.isOverviewLoaded">
-                        <h3>Global</h3>
                         <p>Cases: {{ dataStore.globalStats.cases}}</p>
                         <p>Deaths: {{ dataStore.globalStats.deaths }}</p>
                         <p>Recovered: {{ dataStore.globalStats.recovered }}</p>
@@ -18,9 +18,9 @@
                     </div>
                 </div>
                 <div class="south-africa">
+                    <h3><span class="flag-icon flag-icon-za"></span>South Africa</h3>
                     <mat-progress-bar mode="indeterminate" color="accent" *ngIf="!dataStore.isTableLoaded"></mat-progress-bar>
                     <div *ngIf="dataStore.isTableLoaded">
-                        <h3><span class="flag-icon flag-icon-za"></span>South Africa</h3>
                         <p>Cases: {{ dataStore.southAfrica.cases }}</p>
                         <p>Deaths: {{ dataStore.southAfrica.deaths }}</p>
                         <p>Recovered: {{ dataStore.southAfrica.recovered }}</p>

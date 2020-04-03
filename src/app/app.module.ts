@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
@@ -24,7 +24,7 @@ import { TimelineGraphComponent } from './components/timeline-graph/timeline-gra
 import { DataRetrievalService } from './services/data-retrieval/data-retrieval.service';
 import { SnackBarNotificationService } from './services/snack-bar-notification/snack-bar-notification.service';
 import { DataTransformingService } from './services/data-transforming/data-transforming.service';
-import { AllStatsTableComponent } from './components/all-stats-table/all-stats-table.component';
+import { AllStatsTableComponent } from './pages/all-stats-table/all-stats-table.component';
 import { RouterOutletComponent } from './components/router-outlet/router-outlet.component';
 import { DataStoreService } from './services/data-store/data-store.service';
 

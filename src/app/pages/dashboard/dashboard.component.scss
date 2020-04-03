@@ -108,4 +108,12 @@ mat-card-content {
   .add-margin {
     margin-top: 0px;
   }
+
+  mat-card {
+    max-width: 983px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+  }
 }
