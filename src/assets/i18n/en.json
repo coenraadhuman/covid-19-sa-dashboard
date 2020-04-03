@@ -21,7 +21,8 @@
     "TOP10": "Top 10 Affected Countries"
   },
   "TABLECOLUMNS" : {
-
+    "NUMBER": "Number",
+    "PROVINCE": "Province"
   },
   "MENU": {
     "HEADER" : "COVID-19 Pandemic",
