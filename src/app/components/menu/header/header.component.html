@@ -15,13 +15,13 @@
     <mat-icon>info</mat-icon>
     <span>{{ "MENU.ABOUT" | translate }}</span>
   </button>
+  <app-icon-anchor-menu-button [name]="'MENU.SPONSOR' | translate" link="https://paypal.me/coenraadhuman?locale.x=en_US" iconName="favorite"></app-icon-anchor-menu-button>
   <button mat-menu-item [matMenuTriggerFor]="infoMenu">
     <mat-icon>public</mat-icon>
     <span>{{ "MENU.EXTERNALINFORMATION" | translate }}</span>
   </button>
-  <app-custom-icon-anchor-menu-button [name]="'MENU.GITHUB' | translate" link="https://github.com/coenraadhuman/COVID-19_SA-Dashboard" iconName="github"></app-custom-icon-anchor-menu-button>
   <app-custom-icon-anchor-menu-button [name]="'MENU.REPORT' | translate" link="https://github.com/coenraadhuman/COVID-19_SA-Dashboard/issues" iconName="github"></app-custom-icon-anchor-menu-button>
-<!--  <app-icon-anchor-menu-button [name]="'MENU.BUILD' | translate" link="" iconName="present_to_all" ></app-icon-anchor-menu-button>-->
+  <app-custom-icon-anchor-menu-button [name]="'MENU.GITHUB' | translate" link="https://github.com/coenraadhuman/COVID-19_SA-Dashboard" iconName="github"></app-custom-icon-anchor-menu-button>
 </mat-menu>
 
 <mat-menu #infoMenu="matMenu">

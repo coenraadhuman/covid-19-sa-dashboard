@@ -45,6 +45,7 @@
     "WORLDOMETERS": "Worldometers' CORONAVIRUS",
     "JOHNHOPKINS": "Johns Hopkins CSSE",
     "REPORT": "Report Any Issues",
-    "BUILD": "Version "
+    "BUILD": "Version ",
+    "SPONSOR" : "Buy Us A Coffee!"
   }
 }

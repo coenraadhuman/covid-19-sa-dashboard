@@ -21,6 +21,8 @@ export class SnackBarNotificationService {
   }
 
   public openAbout() {
-    this.openSnackBar('This is a simple dashboard primarily for personal use of a South African citizen.', 8000);
+    this.openSnackBar(
+        'This is a simple COVID-19 tracker dashboard primarily for personal use by a South African citizen. If you can buy us a coffee :)',
+        8000);
   }
 }
