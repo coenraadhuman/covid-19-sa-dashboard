@@ -37,6 +37,7 @@ export class DataAssignmentService {
 
   public getSouthAfricaCaseDetailsData() {
     this.subscriptionThree = this.dataRetrieval.getSouthAfricaCases().subscribe(retrievedData => {
+      this.dataStore.southAfricaRawCaseData = [...retrievedData];
       this.dataStore.southAfricaCaseDetails = this.dataTransforming.aggregateSouthAfricaCases(retrievedData);
       this.dataStore.isCaseDetailsLoaded = true;
       this.subscriptionThree.unsubscribe();
