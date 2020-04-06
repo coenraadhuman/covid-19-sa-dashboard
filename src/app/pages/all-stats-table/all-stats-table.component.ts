@@ -25,8 +25,11 @@ export class AllStatsTableComponent implements OnInit {
       translate.addLangs(['en']);
       translate.setDefaultLang('en');
       this.dataStore.selectedLanguage = 'en';
+      translate.use(this.dataStore.selectedLanguage);
+    } else {
+      translate.use(translate.currentLang);
+      this.dataStore.selectedLanguage = translate.currentLang;
     }
-    translate.use(this.dataStore.selectedLanguage);
   }
 
   ngOnInit() {
