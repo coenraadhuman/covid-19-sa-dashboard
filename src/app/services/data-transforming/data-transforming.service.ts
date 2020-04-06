@@ -101,4 +101,8 @@ export class DataTransformingService {
     });
     return name;
   }
+
+  public getFirstLetterCapitalizedString(word: string): string {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  }
 }

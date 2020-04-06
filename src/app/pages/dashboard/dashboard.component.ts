@@ -22,10 +22,10 @@ export class DashboardComponent implements OnInit {
 
     if (translate.langs.length === 0) {
       translate.addLangs(['en']);
+      translate.setDefaultLang('en');
+      this.dataStore.selectedLanguage = 'en';
     }
-    translate.setDefaultLang('en');
-
-    translate.use('en');
+    translate.use(this.dataStore.selectedLanguage);
   }
 
   ngOnInit(): void {

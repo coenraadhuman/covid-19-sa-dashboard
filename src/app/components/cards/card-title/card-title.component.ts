@@ -7,6 +7,8 @@ import {Component, Input} from '@angular/core';
 })
 export class CardTitleComponent {
 
+  @Input() prefix = '';
+  @Input() postfix = '';
   @Input() translationKey: string;
   constructor() { }
 

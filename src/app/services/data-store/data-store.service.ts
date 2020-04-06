@@ -24,5 +24,7 @@ export class DataStoreService {
 
   public updateInterval = 15;
 
+  public selectedLanguage: string;
+
   constructor() { }
 }
