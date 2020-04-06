@@ -5,6 +5,7 @@ import { SouthAfricaCaseModel } from '../../models/south-africa-case.model';
 import {from} from 'rxjs';
 import {groupBy, mergeMap, toArray} from 'rxjs/operators';
 import {GlobalTimeSeriesModel} from '../../models/global-timeSeries.model';
+import {DataStoreService} from '../data-store/data-store.service';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class DataTransformingService {
     {key: 'NC', name: 'Northern Cape'},
   ];
 
-  constructor() { }
+  constructor(private dataStore: DataStoreService) { }
 
   public aggregateSouthAfricaCases(cases: SouthAfricaCaseModel[]): SouthAfricaCasesDetailsModel {
     const aggregatedResult: SouthAfricaCasesDetailsModel = {

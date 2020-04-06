@@ -47,7 +47,8 @@ export class DataAssignmentService {
 
   public getTimelineData() {
     this.subscriptionFour = this.dataRetrieval.getGlobalTimeSeriesData().subscribe(retrievedData => {
-      this.dataStore.timelineData = this.dataTransforming.getAggregatedTimelineData(retrievedData);
+      this.dataStore.timelineDataCopy = this.dataTransforming.getAggregatedTimelineData(retrievedData);
+      this.dataStore.timelineData.next(this.dataTransforming.getAggregatedTimelineData(retrievedData));
       this.subscriptionFour.unsubscribe();
     });
   }

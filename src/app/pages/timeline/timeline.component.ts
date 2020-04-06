@@ -6,6 +6,7 @@ import {Gtag} from 'angular-gtag';
 import {ActivatedRoute} from '@angular/router';
 import {DataTransformingService} from '../../services/data-transforming/data-transforming.service';
 import {MultilineChartDataModel} from '../../models/multiline-chart-data.model';
+import {GlobalTimeSeriesModel} from '../../models/global-timeSeries.model';
 
 @Component({
   selector: 'app-timeline',
@@ -14,45 +15,20 @@ import {MultilineChartDataModel} from '../../models/multiline-chart-data.model';
 })
 export class TimelineComponent implements OnInit {
 
+  selectedCountryData;
+  loaded = false;
   multiLineData: MultilineChartDataModel[] = [
     {
       name: 'New Cases',
-      series: [
-        {
-          name: '2010',
-          value: 7300,
-        },
-        {
-          name: '2011',
-          value: 8940,
-        },
-      ],
+      series: [],
     },
     {
       name: 'Recovered Cases',
-      series: [
-        {
-          name: '2010',
-          value: 7870,
-        },
-        {
-          name: '2011',
-          value: 8270,
-        },
-      ],
+      series: [],
     },
     {
       name: 'Deaths',
-      series: [
-        {
-          name: '2010',
-          value: 5002,
-        },
-        {
-          name: '2011',
-          value: 5800,
-        },
-      ],
+      series: [],
     },
   ];
 
@@ -77,9 +53,32 @@ export class TimelineComponent implements OnInit {
     }
 
     this.selectedCountry = this.activatedRoute.snapshot.paramMap.get('country');
-    this.formattedPrefix = this.dataTransforming.getFirstLetterCapitalizedString(this.selectedCountry) + ' ';
 
     this.dataAssignment.getTimelineData();
+
+    this.assignDataToGraph();
+  }
+
+  assignDataToGraph() {
+    this.dataStore.getTimelineData().subscribe(x => {
+      x.forEach(y => {
+        if (y.country === this.selectedCountry) {
+          this.selectedCountryData = y;
+        }
+      });
+
+      for (const key in this.selectedCountryData.timeline.cases) {
+        this.multiLineData[0].series.push({ name: key, value: this.selectedCountryData.timeline.cases[key] });
+      }
+      for (const key in this.selectedCountryData.timeline.recovered) {
+        this.multiLineData[1].series.push({ name: key, value: this.selectedCountryData.timeline.recovered[key] });
+      }
+      for (const key in this.selectedCountryData.timeline.deaths) {
+        this.multiLineData[2].series.push({ name: key, value: this.selectedCountryData.timeline.deaths[key] });
+      }
+
+      this.loaded = true;
+    });
   }
 
   ngOnInit(): void {

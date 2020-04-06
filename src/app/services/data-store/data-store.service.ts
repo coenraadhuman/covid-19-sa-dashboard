@@ -4,6 +4,7 @@ import { GlobalStatsModel } from '../../models/global-stats.model';
 import { SouthAfricaCasesDetailsModel } from '../../models/south-africa-cases-details.model';
 import {SouthAfricaCaseModel} from '../../models/south-africa-case.model';
 import {GlobalTimeSeriesModel} from '../../models/global-timeSeries.model';
+import {Observable, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class DataStoreService {
   public southAfricaRawCaseData = [] as SouthAfricaCaseModel[];
   public southAfricaCaseDetails = {} as SouthAfricaCasesDetailsModel;
 
-  public timelineData = [] as GlobalTimeSeriesModel[];
+  public timelineData = new Subject<GlobalTimeSeriesModel[]>();
+  public timelineDataCopy = [] as GlobalTimeSeriesModel[];
 
   public wasRecoveryIssueShown = false;
   public isTableLoaded = false;
@@ -33,4 +35,8 @@ export class DataStoreService {
   public selectedLanguage: string;
 
   constructor() { }
+
+  getTimelineData(): Observable<GlobalTimeSeriesModel[]> {
+    return this.timelineData.asObservable();
+  }
 }
