@@ -36,6 +36,7 @@ import { AnchorMenuButtonComponent } from './components/menu/anchor-menu-button/
 import { CustomIconAnchorMenuButtonComponent } from './components/menu/custom-icon-anchor-menu-button/custom-icon-anchor-menu-button.component';
 import { IconAnchorMenuButtonComponent } from './components/menu/icon-anchor-menu-button/icon-anchor-menu-button.component';
 import {MatSortModule} from '@angular/material/sort';
+import {GtagModule} from 'angular-gtag';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
