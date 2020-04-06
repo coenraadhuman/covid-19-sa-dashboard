@@ -12,15 +12,15 @@ export class SnackBarNotificationService {
     this.snackBar.open(message, 'Close', { duration: durationMilliseconds });
   }
 
-  public openZeroRecoveriesIssue() {
-    this.openSnackBar('"JHU (our main data provider) ' +
-        'no longer provides data for amount of recoveries, and as a result, ' +
-        'the API will be showing 0 for this statistic. Apologies for any inconvenience. ' +
-        'Hopefully we\'ll be able to find an alternative data-source that offers this."',
-        20000);
+  public newFeatures() {
+    this.openSnackBar('New Features: we have smart tables, sort them by clicking the column header. ' +
+        'Timeline graphs are added, just click a country\'s name to view it.',
+        8000);
   }
 
   public openAbout() {
-    this.openSnackBar('This is a simple dashboard primarily for personal use of a South African citizen.', 8000);
+    this.openSnackBar(
+        'This is a simple COVID-19 tracker dashboard primarily for personal use by a South African citizen. If you can buy us a coffee :)',
+        8000);
   }
 }

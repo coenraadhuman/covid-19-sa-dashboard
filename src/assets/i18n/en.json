@@ -13,7 +13,8 @@
     "OVERVIEW": "Overview",
     "GLOBAL": "Global",
     "SAPROVINCE": "SA Known Province Details",
-    "CASESTODAY": "Cases Today"
+    "CASESTODAY": "Cases Today",
+    "TIMELINE" : "Timeline"
   },
   "TITLES" : {
     "KNOWNPROVINCE": "SA Known Province Details",
@@ -44,6 +45,7 @@
     "WORLDOMETERS": "Worldometers' CORONAVIRUS",
     "JOHNHOPKINS": "Johns Hopkins CSSE",
     "REPORT": "Report Any Issues",
-    "BUILD": "Version "
+    "BUILD": "Version ",
+    "SPONSOR" : "Buy Us A Coffee!"
   }
 }

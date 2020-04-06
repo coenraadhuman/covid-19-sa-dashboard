@@ -23,11 +23,13 @@ export class AllStatsTableComponent implements OnInit {
 
     if (translate.langs.length === 0) {
       translate.addLangs(['en']);
+      translate.setDefaultLang('en');
+      this.dataStore.selectedLanguage = 'en';
+      translate.use(this.dataStore.selectedLanguage);
+    } else {
+      translate.use(translate.currentLang);
+      this.dataStore.selectedLanguage = translate.currentLang;
     }
-    translate.setDefaultLang('en');
-
-    const browserLang = translate.getBrowserLang();
-    translate.use('en');
   }
 
   ngOnInit() {

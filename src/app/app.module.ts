@@ -19,16 +19,17 @@ import {
 } from '@angular/material';
 import { DashboardTableComponent } from './components/tables/dashboard-stats-table/dashboard-table.component';
 import { HeaderComponent } from './components/menu/header/header.component';
-import { ChartsModule } from 'ng2-charts';
-import { TimelineGraphComponent } from './components/graphs/timeline-graph/timeline-graph.component';
 import { DataRetrievalService } from './services/data-retrieval/data-retrieval.service';
 import { SnackBarNotificationService } from './services/snack-bar-notification/snack-bar-notification.service';
 import { DataTransformingService } from './services/data-transforming/data-transforming.service';
 import { AllStatsTableComponent } from './pages/all-stats-table/all-stats-table.component';
 import { RouterOutletComponent } from './router-outlet/router-outlet.component';
 import { DataStoreService } from './services/data-store/data-store.service';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {
+    TranslateModule,
+    TranslateLoader,
+} from '@ngx-translate/core';
+import { TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { ProgressBarComponent } from './components/common/progress-bar/progress-bar.component';
 import { CardTitleComponent } from './components/cards/card-title/card-title.component';
 import { SaTableComponent } from './components/tables/sa-table/sa-table.component';
@@ -39,6 +40,9 @@ import {
 import { IconAnchorMenuButtonComponent } from './components/menu/icon-anchor-menu-button/icon-anchor-menu-button.component';
 import { MatSortModule } from '@angular/material/sort';
 import { GtagModule } from 'angular-gtag';
+import { TimelineComponent } from './pages/timeline/timeline.component';
+import { LineChartComponent } from './components/charts/line-chart/line-chart.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -51,7 +55,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     DashboardComponent,
     DashboardTableComponent,
     HeaderComponent,
-    TimelineGraphComponent,
     AllStatsTableComponent,
     ProgressBarComponent,
     CardTitleComponent,
@@ -59,6 +62,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AnchorMenuButtonComponent,
     CustomIconAnchorMenuButtonComponent,
     IconAnchorMenuButtonComponent,
+    TimelineComponent,
+    LineChartComponent,
   ],
     imports: [
         BrowserModule,
@@ -72,7 +77,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
             }
         }),
         BrowserAnimationsModule,
-        GtagModule.forRoot({ trackingId: 'UA-162744052-1', trackPageviews: true }),
+        GtagModule.forRoot({trackingId: 'UA-162744052-1', trackPageviews: true}),
         MatSliderModule,
         MatTableModule,
         MatToolbarModule,
@@ -83,9 +88,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         MatCardModule,
         MatGridListModule,
         MatSnackBarModule,
-        ChartsModule,
         MatChipsModule,
         MatSortModule,
+        NgxChartsModule,
     ],
   providers: [
       DataRetrievalService,

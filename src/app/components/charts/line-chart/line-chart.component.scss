@@ -1,0 +1,15 @@
+::ng-deep .ngx-charts {
+  text{
+    fill: #fff!important;
+  }
+
+  .gridline-path {
+    stroke: rgb(79, 81, 82) !important;
+    stroke-width: 1;
+    fill: none;
+  }
+}
+
+ngx-charts-line-chart {
+  width: 100%;
+}

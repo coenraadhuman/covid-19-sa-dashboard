@@ -12,6 +12,7 @@ export class DataAssignmentService {
   private subscriptionOne: Subscription;
   private subscriptionTwo: Subscription;
   private subscriptionThree: Subscription;
+  private subscriptionFour: Subscription;
 
   constructor(private dataRetrieval: DataRetrievalService,
               public dataStore: DataStoreService,
@@ -37,9 +38,18 @@ export class DataAssignmentService {
 
   public getSouthAfricaCaseDetailsData() {
     this.subscriptionThree = this.dataRetrieval.getSouthAfricaCases().subscribe(retrievedData => {
+      this.dataStore.southAfricaRawCaseData = [...retrievedData];
       this.dataStore.southAfricaCaseDetails = this.dataTransforming.aggregateSouthAfricaCases(retrievedData);
       this.dataStore.isCaseDetailsLoaded = true;
       this.subscriptionThree.unsubscribe();
+    });
+  }
+
+  public getTimelineData() {
+    this.subscriptionFour = this.dataRetrieval.getGlobalTimeSeriesData().subscribe(retrievedData => {
+      this.dataStore.timelineDataCopy = this.dataTransforming.getAggregatedTimelineData(retrievedData);
+      this.dataStore.timelineData.next(this.dataTransforming.getAggregatedTimelineData(retrievedData));
+      this.subscriptionFour.unsubscribe();
     });
   }
 }

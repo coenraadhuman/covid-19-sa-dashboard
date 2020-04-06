@@ -4,6 +4,8 @@ import {ProvinceCount, SouthAfricaCasesDetailsModel} from '../../models/south-af
 import { SouthAfricaCaseModel } from '../../models/south-africa-case.model';
 import {from} from 'rxjs';
 import {groupBy, mergeMap, toArray} from 'rxjs/operators';
+import {GlobalTimeSeriesModel} from '../../models/global-timeSeries.model';
+import {DataStoreService} from '../data-store/data-store.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +24,7 @@ export class DataTransformingService {
     {key: 'NC', name: 'Northern Cape'},
   ];
 
-  constructor() { }
+  constructor(private dataStore: DataStoreService) { }
 
   public aggregateSouthAfricaCases(cases: SouthAfricaCaseModel[]): SouthAfricaCasesDetailsModel {
     const aggregatedResult: SouthAfricaCasesDetailsModel = {
@@ -100,5 +102,39 @@ export class DataTransformingService {
       }
     });
     return name;
+  }
+
+  public getFirstLetterCapitalizedString(word: string): string {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  }
+
+  public getAggregatedTimelineData(data: GlobalTimeSeriesModel[]): GlobalTimeSeriesModel[] {
+    const aggregatedResult = [];
+    const cloneLocations = [...data];
+    const source = from(cloneLocations);
+    const groupedData = source.pipe(
+        groupBy(item => item.country),
+        mergeMap(group => group.pipe(toArray()))
+    );
+
+    const subscription = groupedData.subscribe(val => aggregatedResult.push(val.reduce(
+        (country, x) => {
+          country.country = x.country;
+          country.province = '';
+          for (const key in country.timeline.cases) {
+            country.timeline.cases[key] += x.timeline.cases[key];
+          }
+          for (const key in country.timeline.deaths) {
+            country.timeline.deaths[key] += x.timeline.deaths[key];
+          }
+          for (const key in country.timeline.recovered) {
+            country.timeline.recovered[key] += x.timeline.recovered[key];
+          }
+          return country;
+        })));
+
+    subscription.unsubscribe();
+
+    return aggregatedResult;
   }
 }
