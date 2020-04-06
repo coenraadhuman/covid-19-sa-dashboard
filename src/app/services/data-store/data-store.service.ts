@@ -3,6 +3,7 @@ import { CountriesModel } from '../../models/countries.model';
 import { GlobalStatsModel } from '../../models/global-stats.model';
 import { SouthAfricaCasesDetailsModel } from '../../models/south-africa-cases-details.model';
 import {SouthAfricaCaseModel} from '../../models/south-africa-case.model';
+import {GlobalTimeSeriesModel} from '../../models/global-timeSeries.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class DataStoreService {
 
   public southAfricaRawCaseData = [] as SouthAfricaCaseModel[];
   public southAfricaCaseDetails = {} as SouthAfricaCasesDetailsModel;
+  public globalCaseByTime = {} as GlobalTimeSeriesModel;
 
   public wasRecoveryIssueShown = false;
   public isTableLoaded = false;
