@@ -41,6 +41,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { GtagModule } from 'angular-gtag';
 import { TimelineComponent } from './pages/timeline/timeline.component';
 import { LineChartComponent } from './components/charts/line-chart/line-chart.component';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -76,7 +77,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
             }
         }),
         BrowserAnimationsModule,
-        GtagModule.forRoot({ trackingId: 'UA-162744052-1', trackPageviews: true }),
+        GtagModule.forRoot({trackingId: 'UA-162744052-1', trackPageviews: true}),
         MatSliderModule,
         MatTableModule,
         MatToolbarModule,
@@ -90,6 +91,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ChartsModule,
         MatChipsModule,
         MatSortModule,
+        NgxChartsModule,
     ],
   providers: [
       DataRetrievalService,

@@ -24,6 +24,7 @@
     "@babel/compat-data": "^7.8.0",
     "@ngx-translate/core": "^12.1.2",
     "@ngx-translate/http-loader": "^4.0.0",
+    "@swimlane/ngx-charts": "^13.0.2",
     "angular-gtag": "^1.0.4",
     "chart.js": "^2.9.3",
     "chartjs-plugin-annotation": "^0.5.7",
