@@ -54,31 +54,41 @@ export class TimelineComponent implements OnInit {
 
     this.selectedCountry = this.activatedRoute.snapshot.paramMap.get('country');
 
-    this.dataAssignment.getTimelineData();
+    if (this.dataStore.timelineDataCopy.length === 0) {
+      this.dataAssignment.getTimelineData();
+    }
 
     this.assignDataToGraph();
   }
 
   assignDataToGraph() {
-    this.dataStore.getTimelineData().subscribe(x => {
-      x.forEach(y => {
-        if (y.country === this.selectedCountry) {
-          this.selectedCountryData = y;
-        }
+    if (this.dataStore.timelineDataCopy.length === 0) {
+      this.dataStore.getTimelineData().subscribe(x => {
+        this.mapData(x);
       });
+    } else {
+      this.mapData(this.dataStore.timelineDataCopy);
+    }
+  }
 
-      for (const key in this.selectedCountryData.timeline.cases) {
-        this.multiLineData[0].series.push({ name: key, value: this.selectedCountryData.timeline.cases[key] });
+  mapData(countries: GlobalTimeSeriesModel[]) {
+    countries.forEach(x => {
+      if (x.country === this.selectedCountry) {
+        this.selectedCountryData = x;
       }
-      for (const key in this.selectedCountryData.timeline.recovered) {
-        this.multiLineData[1].series.push({ name: key, value: this.selectedCountryData.timeline.recovered[key] });
-      }
-      for (const key in this.selectedCountryData.timeline.deaths) {
-        this.multiLineData[2].series.push({ name: key, value: this.selectedCountryData.timeline.deaths[key] });
-      }
-
-      this.loaded = true;
     });
+
+    for (const key in this.selectedCountryData.timeline.cases) {
+      this.multiLineData[0].series.push({ name: key, value: this.selectedCountryData.timeline.cases[key] });
+    }
+    for (const key in this.selectedCountryData.timeline.recovered) {
+      this.multiLineData[1].series.push({ name: key, value: this.selectedCountryData.timeline.recovered[key] });
+    }
+    for (const key in this.selectedCountryData.timeline.deaths) {
+      this.multiLineData[2].series.push({ name: key, value: this.selectedCountryData.timeline.deaths[key] });
+    }
+
+    this.loaded = true;
   }
 
   ngOnInit(): void {
