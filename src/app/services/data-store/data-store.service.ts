@@ -20,6 +20,8 @@ export class DataStoreService {
   public isOverviewLoaded = false;
   public isCaseDetailsLoaded = false;
 
+  public showTopTen = true;
+
   public updateInterval = 15;
 
   constructor() { }
