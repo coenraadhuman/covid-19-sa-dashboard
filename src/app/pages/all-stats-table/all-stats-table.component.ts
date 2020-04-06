@@ -19,6 +19,8 @@ export class AllStatsTableComponent implements OnInit {
               public translate: TranslateService,
               public gtag: Gtag) {
 
+    this.dataStore.showTopTen = false;
+
     if (translate.langs.length === 0) {
       translate.addLangs(['en']);
     }
@@ -26,9 +28,6 @@ export class AllStatsTableComponent implements OnInit {
 
     const browserLang = translate.getBrowserLang();
     translate.use('en');
-    setInterval(() => {
-      this.dataAssignment.getTablesData();
-    }, this.dataStore.updateInterval * 60 * 1000);
   }
 
   ngOnInit() {

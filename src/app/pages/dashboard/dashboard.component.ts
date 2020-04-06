@@ -18,18 +18,14 @@ export class DashboardComponent implements OnInit {
               public translate: TranslateService,
               public gtag: Gtag) {
 
+    this.dataStore.showTopTen = true;
+
     if (translate.langs.length === 0) {
       translate.addLangs(['en']);
     }
     translate.setDefaultLang('en');
 
     translate.use('en');
-
-    setInterval(() => {
-      this.dataAssignment.getTotalsData();
-      this.dataAssignment.getSouthAfricaCaseDetailsData();
-      this.dataAssignment.getTablesData();
-    }, this.dataStore.updateInterval * 60 * 1000);
   }
 
   ngOnInit(): void {
