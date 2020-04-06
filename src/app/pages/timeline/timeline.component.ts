@@ -78,6 +78,8 @@ export class TimelineComponent implements OnInit {
 
     this.selectedCountry = this.activatedRoute.snapshot.paramMap.get('country');
     this.formattedPrefix = this.dataTransforming.getFirstLetterCapitalizedString(this.selectedCountry) + ' ';
+
+    this.dataAssignment.getTimelineData();
   }
 
   ngOnInit(): void {

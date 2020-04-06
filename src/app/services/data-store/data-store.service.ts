@@ -18,7 +18,8 @@ export class DataStoreService {
 
   public southAfricaRawCaseData = [] as SouthAfricaCaseModel[];
   public southAfricaCaseDetails = {} as SouthAfricaCasesDetailsModel;
-  public globalCaseByTime = {} as GlobalTimeSeriesModel;
+
+  public timelineData = [] as GlobalTimeSeriesModel[];
 
   public wasRecoveryIssueShown = false;
   public isTableLoaded = false;
