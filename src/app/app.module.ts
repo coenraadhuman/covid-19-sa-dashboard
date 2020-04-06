@@ -39,6 +39,7 @@ import {
 import { IconAnchorMenuButtonComponent } from './components/menu/icon-anchor-menu-button/icon-anchor-menu-button.component';
 import { MatSortModule } from '@angular/material/sort';
 import { GtagModule } from 'angular-gtag';
+import { TimelineComponent } from './pages/timeline/timeline.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -59,6 +60,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AnchorMenuButtonComponent,
     CustomIconAnchorMenuButtonComponent,
     IconAnchorMenuButtonComponent,
+    TimelineComponent,
   ],
     imports: [
         BrowserModule,

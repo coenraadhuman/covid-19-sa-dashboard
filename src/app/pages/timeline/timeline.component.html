@@ -1,0 +1,31 @@
+<mat-card class="overview">
+    <app-card-title [translationKey]="'COMMON.OVERVIEW'"></app-card-title>
+    <mat-card-content>
+        <div class="overview-container">
+            <div class="global">
+                <h3>{{ 'COMMON.GLOBAL' | translate }}</h3>
+                <app-progress-bar [loadState]="dataStore.isCaseDetailsLoaded"></app-progress-bar>
+                <div *ngIf="dataStore.isOverviewLoaded">
+                    <p>{{ 'COMMON.TOTALCASES' | translate }}: {{ dataStore.globalStats.cases}}</p>
+                    <p>{{ 'COMMON.DEATHS' | translate }}: {{ dataStore.globalStats.deaths }}</p>
+                    <p>{{ 'COMMON.RECOVERED' | translate }}: {{ dataStore.globalStats.recovered }}</p>
+                    <p>{{ 'COMMON.ACTIVECASES' | translate }}: {{ dataStore.globalStats.active}}</p>
+                    <p>{{ 'COMMON.AFFECTEDCOUNTRIES' | translate }}: {{ dataStore.globalStats.affectedCountries}}</p>
+                    <button mat-raised-button disabled color="primary">{{ 'BUTTONS.TIMELINE' | translate }}</button>
+                </div>
+            </div>
+            <div class="south-africa">
+                <h3><span class="flag-icon flag-icon-za"></span>{{ 'COMMON.SOUTHAFRICA' | translate }}</h3>
+                <app-progress-bar [loadState]="dataStore.isTableLoaded"></app-progress-bar>
+                <div *ngIf="dataStore.isTableLoaded">
+                    <p>{{ 'COMMON.TOTALCASES' | translate }}: {{ dataStore.southAfrica.cases }}</p>
+                    <p>{{ 'COMMON.DEATHS' | translate }}: {{ dataStore.southAfrica.deaths }}</p>
+                    <p>{{ 'COMMON.RECOVERED' | translate }}: {{ dataStore.southAfrica.recovered }}</p>
+                    <p>{{ 'COMMON.ACTIVECASES' | translate }}: {{ dataStore.southAfrica.active }}</p>
+                    <p>{{ 'COMMON.CASESTODAY' | translate }}: {{ dataStore.southAfrica.todayCases }}</p>
+                    <button mat-raised-button disabled color="primary">{{ 'BUTTONS.TIMELINE' | translate }}</button>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
