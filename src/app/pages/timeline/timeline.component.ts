@@ -5,6 +5,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {Gtag} from 'angular-gtag';
 import {ActivatedRoute} from '@angular/router';
 import {DataTransformingService} from '../../services/data-transforming/data-transforming.service';
+import {MultilineChartDataModel} from '../../models/multiline-chart-data.model';
 
 @Component({
   selector: 'app-timeline',
@@ -12,6 +13,48 @@ import {DataTransformingService} from '../../services/data-transforming/data-tra
   styleUrls: ['./timeline.component.scss']
 })
 export class TimelineComponent implements OnInit {
+
+  multiLineData: MultilineChartDataModel[] = [
+    {
+      name: 'New Cases',
+      series: [
+        {
+          name: '2010',
+          value: 7300,
+        },
+        {
+          name: '2011',
+          value: 8940,
+        },
+      ],
+    },
+    {
+      name: 'Recovered Cases',
+      series: [
+        {
+          name: '2010',
+          value: 7870,
+        },
+        {
+          name: '2011',
+          value: 8270,
+        },
+      ],
+    },
+    {
+      name: 'Deaths',
+      series: [
+        {
+          name: '2010',
+          value: 5002,
+        },
+        {
+          name: '2011',
+          value: 5800,
+        },
+      ],
+    },
+  ];
 
   selectedCountry: string;
   formattedPrefix: string;
