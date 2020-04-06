@@ -32,6 +32,10 @@ export class LineChartComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?) {
-    this.view = [window.innerWidth - 100, window.innerHeight - 150];
+    if (window.innerWidth < 768) {
+      this.view = [1000, window.innerHeight - 150];
+    } else {
+      this.view = [window.innerWidth - 100, window.innerHeight - 150];
+    }
   }
 }
