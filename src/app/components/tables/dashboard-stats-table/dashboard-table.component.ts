@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {CountriesModel} from '../../../models/countries.model';
+import {MatTableDataSource} from '@angular/material';
+import {MatSort} from '@angular/material/sort';
 
 @Component({
   selector: 'app-stats-table',
@@ -12,9 +14,13 @@ export class DashboardTableComponent implements OnInit {
     'CasesToday', 'DeathsToday', 'CriticalCondition'];
   @Input() tableDataSource: CountriesModel[] = [];
 
+  dataSource = new MatTableDataSource(this.tableDataSource);
+  // @ViewChild(MatSort, {static: true}) sort: MatSort;
+
   constructor() { }
 
   ngOnInit() {
+    // this.dataSource.sort = this.sort;
   }
 
 }
