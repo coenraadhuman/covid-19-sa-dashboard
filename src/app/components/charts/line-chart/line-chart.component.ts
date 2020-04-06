@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-line-chart',
@@ -7,8 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class LineChartComponent implements OnInit {
 
-  view: any[] = [1000, 400];
-
+  @Input() view: any[];
   @Input() data;
 
   showLegend = true;
@@ -25,9 +24,14 @@ export class LineChartComponent implements OnInit {
 
 
   constructor() {
+    this.getScreenSize();
   }
 
   ngOnInit(): void {
   }
 
+  @HostListener('window:resize', ['$event'])
+  getScreenSize(event?) {
+    this.view = [window.innerWidth - 100, window.innerHeight - 150];
+  }
 }

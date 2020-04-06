@@ -19,7 +19,6 @@ import {
 } from '@angular/material';
 import { DashboardTableComponent } from './components/tables/dashboard-stats-table/dashboard-table.component';
 import { HeaderComponent } from './components/menu/header/header.component';
-import { TimelineGraphComponent } from './components/graphs/timeline-graph/timeline-graph.component';
 import { DataRetrievalService } from './services/data-retrieval/data-retrieval.service';
 import { SnackBarNotificationService } from './services/snack-bar-notification/snack-bar-notification.service';
 import { DataTransformingService } from './services/data-transforming/data-transforming.service';
@@ -56,7 +55,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     DashboardComponent,
     DashboardTableComponent,
     HeaderComponent,
-    TimelineGraphComponent,
     AllStatsTableComponent,
     ProgressBarComponent,
     CardTitleComponent,

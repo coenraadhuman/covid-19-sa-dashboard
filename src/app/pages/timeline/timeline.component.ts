@@ -54,6 +54,8 @@ export class TimelineComponent implements OnInit {
 
     this.selectedCountry = this.activatedRoute.snapshot.paramMap.get('country');
 
+    this.formattedPrefix = this.selectedCountry + ' ';
+
     if (this.dataStore.timelineDataCopy.length === 0) {
       this.dataAssignment.getTimelineData();
     }

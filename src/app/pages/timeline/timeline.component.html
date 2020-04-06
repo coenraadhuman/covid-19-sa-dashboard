@@ -2,7 +2,7 @@
     <mat-card>
         <app-card-title [prefix]="formattedPrefix" [translationKey]="'COMMON.TIMELINE'"></app-card-title>
         <mat-card-content>
-            <app-line-chart *ngIf="loaded" [data]="multiLineData"></app-line-chart>
+            <app-line-chart *ngIf="loaded" [view]="" [data]="multiLineData"></app-line-chart>
         </mat-card-content>
     </mat-card>
 </div>
