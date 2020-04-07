@@ -6,7 +6,7 @@
     "copy" : "copy-files-from-to",
     "start": "ng serve",
     "build": "ng build --prod --base-href 'https://sacovid.co.za/'",
-    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "prettier-format": "prettier --config .prettierrc src/**/*.ts --write",
     "publish": "npm run build && npm run copy",
     "test": "ng test",
     "lint": "ng lint",

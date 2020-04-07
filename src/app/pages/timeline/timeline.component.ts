@@ -24,15 +24,15 @@ export class TimelineComponent implements OnInit {
   loaded = false;
   multiLineData: MultilineChartDataModel[] = [
     {
-      name: 'New Cases',
+      name: 'Total Cases',
       series: [],
     },
     {
-      name: 'Recovered Cases',
+      name: 'Total Recovered Cases',
       series: [],
     },
     {
-      name: 'Deaths',
+      name: 'Total Deaths',
       series: [],
     },
   ];
@@ -59,14 +59,35 @@ export class TimelineComponent implements OnInit {
     }
 
     this.selectedCountry = this.activatedRoute.snapshot.paramMap.get('country');
-
     this.formattedPrefix = this.selectedCountry + ' ';
+
+    if (!this.dataStore.isGlobalTimelineDataRetrieved) {
+      this.dataAssignment.getGlobalData();
+    }
 
     if (this.dataStore.timelineDataCopy.length === 0) {
       this.dataAssignment.getTimelineData();
     }
 
-    this.assignDataToGraph();
+    if (this.selectedCountry === 'Global') {
+      this.dataStore.getGlobalTimelineData().subscribe((x) => {
+        this.selectedCountryData = x;
+
+        this.multiLineData[0].series = this.addToMultilineChartTimelineSeriesDataArray(
+            x.timeline.cases
+        );
+        this.multiLineData[1].series = this.addToMultilineChartTimelineSeriesDataArray(
+            x.timeline.recovered
+        );
+        this.multiLineData[2].series = this.addToMultilineChartTimelineSeriesDataArray(
+            x.timeline.deaths
+        );
+
+        this.loaded = true;
+      });
+    } else {
+      this.assignDataToGraph();
+    }
   }
 
   assignDataToGraph() {

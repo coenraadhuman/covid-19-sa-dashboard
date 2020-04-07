@@ -16,6 +16,8 @@ import {
   MatTableModule,
   MatToolbarModule,
   MatChipsModule,
+  MatFormFieldModule,
+  MatInputModule,
 } from '@angular/material';
 import { DashboardTableComponent } from './components/tables/dashboard-stats-table/dashboard-table.component';
 import { HeaderComponent } from './components/menu/header/header.component';
@@ -39,6 +41,7 @@ import { GtagModule } from 'angular-gtag';
 import { TimelineComponent } from './pages/timeline/timeline.component';
 import { LineChartComponent } from './components/charts/line-chart/line-chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { FormsModule } from '@angular/forms';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -86,6 +89,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatChipsModule,
     MatSortModule,
     NgxChartsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [
     DataRetrievalService,

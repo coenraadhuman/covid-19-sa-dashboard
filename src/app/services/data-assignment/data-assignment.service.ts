@@ -12,6 +12,7 @@ export class DataAssignmentService {
   private subscriptionTwo: Subscription;
   private subscriptionThree: Subscription;
   private subscriptionFour: Subscription;
+  private subscriptionFive: Subscription;
 
   constructor(
     private dataRetrieval: DataRetrievalService,
@@ -32,6 +33,12 @@ export class DataAssignmentService {
         this.dataStore.topTenLocations = [...this.dataStore.locations].splice(
           0,
           10
+        );
+        this.dataStore.locationsTotals = this.dataTransforming.getTotalTableObject(
+          this.dataStore.locations
+        );
+        this.dataStore.topTenLocationsTotals = this.dataTransforming.getTotalTableObject(
+          this.dataStore.topTenLocations
         );
         this.dataStore.isTableLoaded = true;
         this.subscriptionOne.unsubscribe();
@@ -72,6 +79,19 @@ export class DataAssignmentService {
           this.dataTransforming.getAggregatedTimelineData(retrievedData)
         );
         this.subscriptionFour.unsubscribe();
+      });
+  }
+
+  public getGlobalData() {
+    this.subscriptionFive = this.dataRetrieval
+      .getGlobalTimeSeriesData()
+      .subscribe((retrievedData) => {
+          const object = this.dataTransforming.getGlobalAggregatedData(
+              retrievedData
+          );
+        this.dataStore.globalTimelineData.next(object);
+        this.dataStore.globalTimelineDataCopy = object;
+        this.subscriptionFive.unsubscribe();
       });
   }
 }

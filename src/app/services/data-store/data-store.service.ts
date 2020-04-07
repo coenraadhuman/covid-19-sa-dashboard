@@ -13,14 +13,22 @@ export class DataStoreService {
   public rawData = [] as CountriesModel[];
   public globalStats = {} as GlobalStatsModel;
   public southAfrica = {} as CountriesModel;
+
   public locations = [] as CountriesModel[];
+  public locationsTotals = {} as CountriesModel;
+
   public topTenLocations = [] as CountriesModel[];
+  public topTenLocationsTotals = {} as CountriesModel;
 
   public southAfricaRawCaseData = [] as SouthAfricaCaseModel[];
   public southAfricaCaseDetails = {} as SouthAfricaCasesDetailsModel;
 
   public timelineData = new Subject<GlobalTimeSeriesModel[]>();
   public timelineDataCopy = [] as GlobalTimeSeriesModel[];
+
+  public globalTimelineDataCopy = {} as GlobalTimeSeriesModel;
+  public globalTimelineData = new Subject<GlobalTimeSeriesModel>();
+  public isGlobalTimelineDataRetrieved = false;
 
   public wasRecoveryIssueShown = false;
   public isTableLoaded = false;
@@ -37,5 +45,9 @@ export class DataStoreService {
 
   getTimelineData(): Observable<GlobalTimeSeriesModel[]> {
     return this.timelineData.asObservable();
+  }
+
+  getGlobalTimelineData(): Observable<GlobalTimeSeriesModel> {
+    return this.globalTimelineData.asObservable();
   }
 }
