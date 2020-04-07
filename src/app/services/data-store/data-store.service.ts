@@ -25,6 +25,7 @@ export class DataStoreService {
 
   public timelineData = new Subject<GlobalTimeSeriesModel[]>();
   public timelineDataCopy = [] as GlobalTimeSeriesModel[];
+  public globalTimelineData = {} as GlobalTimeSeriesModel;
 
   public wasRecoveryIssueShown = false;
   public isTableLoaded = false;
