@@ -8,9 +8,8 @@ describe('IconAnchorMenuButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IconAnchorMenuButtonComponent ]
-    })
-    .compileComponents();
+      declarations: [IconAnchorMenuButtonComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

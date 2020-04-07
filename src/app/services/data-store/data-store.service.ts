@@ -2,15 +2,14 @@ import { Injectable } from '@angular/core';
 import { CountriesModel } from '../../models/countries.model';
 import { GlobalStatsModel } from '../../models/global-stats.model';
 import { SouthAfricaCasesDetailsModel } from '../../models/south-africa-cases-details.model';
-import {SouthAfricaCaseModel} from '../../models/south-africa-case.model';
-import {GlobalTimeSeriesModel} from '../../models/global-timeSeries.model';
-import {Observable, Subject} from 'rxjs';
+import { SouthAfricaCaseModel } from '../../models/south-africa-case.model';
+import { GlobalTimeSeriesModel } from '../../models/global-timeSeries.model';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataStoreService {
-
   public rawData = [] as CountriesModel[];
   public globalStats = {} as GlobalStatsModel;
   public southAfrica = {} as CountriesModel;
@@ -34,7 +33,7 @@ export class DataStoreService {
 
   public selectedLanguage: string;
 
-  constructor() { }
+  constructor() {}
 
   getTimelineData(): Observable<GlobalTimeSeriesModel[]> {
     return this.timelineData.asObservable();
