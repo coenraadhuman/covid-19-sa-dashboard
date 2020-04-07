@@ -137,10 +137,10 @@ export class DataTransformingService {
         iso2: '',
         iso3: '',
         lat: 0,
-        long: 0
+        long: 0,
       },
       deathsPerOneMillion: 0,
-      updated: 0
+      updated: 0,
     };
 
     for (const x of arr) {

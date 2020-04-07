@@ -33,8 +33,12 @@ export class DataAssignmentService {
           0,
           10
         );
-        this.dataStore.locationsTotals = this.dataTransforming.getTotalTableObject(this.dataStore.locations);
-        this.dataStore.topTenLocationsTotals = this.dataTransforming.getTotalTableObject(this.dataStore.topTenLocations);
+        this.dataStore.locationsTotals = this.dataTransforming.getTotalTableObject(
+          this.dataStore.locations
+        );
+        this.dataStore.topTenLocationsTotals = this.dataTransforming.getTotalTableObject(
+          this.dataStore.topTenLocations
+        );
         this.dataStore.isTableLoaded = true;
         this.subscriptionOne.unsubscribe();
       });
