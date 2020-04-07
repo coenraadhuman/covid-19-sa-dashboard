@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { MatSort } from '@angular/material/sort';
 import { DataStoreService } from '../../../services/data-store/data-store.service';
@@ -34,6 +34,11 @@ export class DashboardTableComponent implements OnInit {
       this.totalObject = this.dataStore.locationsTotals;
       this.dataSource = new MatTableDataSource(this.dataStore.locations);
     }
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   ngOnInit() {
