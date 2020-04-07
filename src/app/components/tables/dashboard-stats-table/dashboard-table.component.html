@@ -1,4 +1,4 @@
-<mat-form-field>
+<mat-form-field *ngIf="!this.dataStore.showTopTen">
   <mat-label>Search</mat-label>
   <label>
     <input matInput (keyup)="applyFilter($event)" placeholder="China">

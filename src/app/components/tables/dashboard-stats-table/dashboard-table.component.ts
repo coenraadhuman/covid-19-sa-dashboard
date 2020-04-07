@@ -1,5 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { CountriesModel } from '../../../models/countries.model';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { MatSort } from '@angular/material/sort';
 import { DataStoreService } from '../../../services/data-store/data-store.service';

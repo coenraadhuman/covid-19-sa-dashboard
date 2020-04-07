@@ -15,7 +15,9 @@ import {
   MatSliderModule,
   MatTableModule,
   MatToolbarModule,
-  MatChipsModule, MatFormFieldModule, MatInputModule,
+  MatChipsModule,
+  MatFormFieldModule,
+  MatInputModule,
 } from '@angular/material';
 import { DashboardTableComponent } from './components/tables/dashboard-stats-table/dashboard-table.component';
 import { HeaderComponent } from './components/menu/header/header.component';
@@ -73,7 +75,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       },
     }),
     BrowserAnimationsModule,
-    GtagModule.forRoot({trackingId: 'UA-162744052-1', trackPageviews: true}),
+    GtagModule.forRoot({ trackingId: 'UA-162744052-1', trackPageviews: true }),
     MatSliderModule,
     MatTableModule,
     MatToolbarModule,
