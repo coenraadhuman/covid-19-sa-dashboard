@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "copy" : "copy-files-from-to",
     "start": "ng serve",
-    "build": "ng build --prod --output-path docs --base-href 'https://sacovid.co.za/'",
+    "build": "ng build --prod --base-href 'https://sacovid.co.za/'",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "publish": "npm run build && npm run copy",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -16,6 +18,16 @@
       "pre-commit": "npm run prettier-format && npm run lint"
     }
   },
+  "copyFiles": [
+    {
+      "from": "dist/covid19-sa/index.html",
+      "to": "dist/covid19-sa/404.html"
+    },
+    {
+      "from": "CNAME",
+      "to": "dist/covid19-sa/CNAME"
+    }
+  ],
   "dependencies": {
     "@angular/animations": "~8.2.14",
     "@angular/cdk": "~8.2.3",
@@ -47,6 +59,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "copy-files-from-to": "^2.3.0",
     "eslint": "^6.8.0",
     "husky": "^4.2.3",
     "jasmine-core": "~3.4.0",
