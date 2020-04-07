@@ -152,7 +152,6 @@ export class DataTransformingService {
       object.todayDeaths += x.todayDeaths;
       object.critical += x.critical;
     }
-    console.log(object);
     return object;
   }
 
@@ -197,38 +196,30 @@ export class DataTransformingService {
     return aggregatedResult;
   }
 
-  public getGlobalAggregatedData(
-    data: GlobalTimeSeriesModel[]
-  ): GlobalTimeSeriesModel {
-    const aggregatedResult = {} as GlobalTimeSeriesModel;
-    const cloneLocations = [...this.getAggregatedTimelineData(data)];
+  public getGlobalAggregatedData(data: GlobalTimeSeriesModel[]): GlobalTimeSeriesModel {
+
+    const aggregatedResult = [...this.getAggregatedTimelineData(data)].reduce((finalCountry, workingCountry) => {
+      for (const key in workingCountry.timeline.cases) {
+        if (workingCountry.timeline.cases.hasOwnProperty(key)) {
+          finalCountry.timeline.cases[key] += workingCountry.timeline.cases[key];
+        }
+      }
+      for (const key in workingCountry.timeline.deaths) {
+        if (workingCountry.timeline.deaths.hasOwnProperty(key)) {
+          finalCountry.timeline.deaths[key] += workingCountry.timeline.deaths[key];
+        }
+      }
+      for (const key in finalCountry.timeline.recovered) {
+        if (finalCountry.timeline.recovered.hasOwnProperty(key)) {
+          finalCountry.timeline.recovered[key] += workingCountry.timeline.recovered[key];
+        }
+      }
+      return finalCountry;
+    });
+
     aggregatedResult.country = 'Global';
     aggregatedResult.province = '';
-    cloneLocations.reduce((country) => {
-      for (const key in country.timeline.cases) {
-        if (aggregatedResult.timeline.cases.hasOwnProperty(key)) {
-          aggregatedResult.timeline.cases[key] += country.timeline.cases[key];
-        } else {
-          aggregatedResult.timeline.cases = country.timeline.cases;
-        }
-      }
-      for (const key in country.timeline.deaths) {
-        if (aggregatedResult.timeline.deaths.hasOwnProperty(key)) {
-          aggregatedResult.timeline.deaths[key] += country.timeline.deaths[key];
-        } else {
-          aggregatedResult.timeline.deaths = country.timeline.deaths;
-        }
-      }
-      for (const key in country.timeline.recovered) {
-        if (aggregatedResult.timeline.recovered.hasOwnProperty(key)) {
-          aggregatedResult.timeline.recovered[key] +=
-            country.timeline.recovered[key];
-        } else {
-          aggregatedResult.timeline.recovered = country.timeline.recovered;
-        }
-      }
-      return country;
-    });
+
     return aggregatedResult;
   }
 }

@@ -25,7 +25,10 @@ export class DataStoreService {
 
   public timelineData = new Subject<GlobalTimeSeriesModel[]>();
   public timelineDataCopy = [] as GlobalTimeSeriesModel[];
-  public globalTimelineData = {} as GlobalTimeSeriesModel;
+
+  public globalTimelineDataCopy = {} as GlobalTimeSeriesModel;
+  public globalTimelineData = new Subject<GlobalTimeSeriesModel>();
+  public isGlobalTimelineDataRetrieved = false;
 
   public wasRecoveryIssueShown = false;
   public isTableLoaded = false;
@@ -42,5 +45,9 @@ export class DataStoreService {
 
   getTimelineData(): Observable<GlobalTimeSeriesModel[]> {
     return this.timelineData.asObservable();
+  }
+
+  getGlobalTimelineData(): Observable<GlobalTimeSeriesModel> {
+    return this.globalTimelineData.asObservable();
   }
 }

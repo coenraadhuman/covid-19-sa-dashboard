@@ -86,9 +86,11 @@ export class DataAssignmentService {
     this.subscriptionFive = this.dataRetrieval
       .getGlobalTimeSeriesData()
       .subscribe((retrievedData) => {
-        this.dataStore.globalTimelineData = this.dataTransforming.getGlobalAggregatedData(
-          retrievedData
-        );
+          const object = this.dataTransforming.getGlobalAggregatedData(
+              retrievedData
+          );
+        this.dataStore.globalTimelineData.next(object);
+        this.dataStore.globalTimelineDataCopy = object;
         this.subscriptionFive.unsubscribe();
       });
   }
