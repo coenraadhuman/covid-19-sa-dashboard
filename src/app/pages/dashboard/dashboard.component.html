@@ -12,7 +12,7 @@
                         <p>{{ 'COMMON.RECOVERED' | translate }}: {{ dataStore.globalStats.recovered }}</p>
                         <p>{{ 'COMMON.ACTIVECASES' | translate }}: {{ dataStore.globalStats.active}}</p>
                         <p>{{ 'COMMON.AFFECTEDCOUNTRIES' | translate }}: {{ dataStore.globalStats.affectedCountries}}</p>
-                        <button mat-raised-button disabled color="primary">{{ 'BUTTONS.TIMELINE' | translate }}</button>
+                        <button mat-raised-button color="primary" routerLink="timeline/Global">{{ 'BUTTONS.TIMELINE' | translate }}</button>
                     </div>
                 </div>
                 <div class="south-africa">

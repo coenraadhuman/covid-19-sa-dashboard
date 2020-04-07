@@ -6,7 +6,7 @@ import {
 } from '../../models/south-africa-cases-details.model';
 import { SouthAfricaCaseModel } from '../../models/south-africa-case.model';
 import { from } from 'rxjs';
-import { groupBy, mergeMap, toArray } from 'rxjs/operators';
+import {groupBy, mergeMap, reduce, toArray} from 'rxjs/operators';
 import { GlobalTimeSeriesModel } from '../../models/global-timeSeries.model';
 import { DataStoreService } from '../data-store/data-store.service';
 
@@ -162,6 +162,41 @@ export class DataTransformingService {
 
     subscription.unsubscribe();
 
+    return aggregatedResult;
+  }
+
+  public getGlobalAggregatedData(data: GlobalTimeSeriesModel[]): GlobalTimeSeriesModel {
+    const aggregatedResult = {} as GlobalTimeSeriesModel;
+    const cloneLocations = [...this.getAggregatedTimelineData(data)];
+    aggregatedResult.country = 'Global';
+    aggregatedResult.province = '';
+    cloneLocations.reduce((country) => {
+      for (const key in country.timeline.cases) {
+        if (aggregatedResult.timeline.cases.hasOwnProperty(key)) {
+          aggregatedResult.timeline.cases[key] += country.timeline.cases[key];
+        }
+        else{
+          aggregatedResult.timeline.cases = country.timeline.cases;
+        }
+      }
+      for (const key in country.timeline.deaths) {
+        if (aggregatedResult.timeline.deaths.hasOwnProperty(key)) {
+          aggregatedResult.timeline.deaths[key] += country.timeline.deaths[key];
+        }
+        else{
+          aggregatedResult.timeline.deaths = country.timeline.deaths;
+        }
+      }
+      for (const key in country.timeline.recovered) {
+        if (aggregatedResult.timeline.recovered.hasOwnProperty(key)) {
+          aggregatedResult.timeline.recovered[key] += country.timeline.recovered[key];
+        }
+        else{
+          aggregatedResult.timeline.recovered = country.timeline.recovered;
+        }
+      }
+      return country;
+    });
     return aggregatedResult;
   }
 }

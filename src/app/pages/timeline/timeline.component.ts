@@ -62,6 +62,23 @@ export class TimelineComponent implements OnInit {
 
     this.formattedPrefix = this.selectedCountry + ' ';
 
+    if(this.selectedCountry === 'Global'){
+      this.selectedCountryData = this.dataStore.globalTimelineData;
+
+      this.multiLineData[0].series = this.addToMultilineChartTimelineSeriesDataArray(
+          this.selectedCountryData.timeline.cases
+      );
+      this.multiLineData[1].series = this.addToMultilineChartTimelineSeriesDataArray(
+          this.selectedCountryData.timeline.recovered
+      );
+      this.multiLineData[2].series = this.addToMultilineChartTimelineSeriesDataArray(
+          this.selectedCountryData.timeline.deaths
+      );
+
+      this.loaded = true;
+
+    }
+
     if (this.dataStore.timelineDataCopy.length === 0) {
       this.dataAssignment.getTimelineData();
     }
