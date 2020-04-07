@@ -7,18 +7,27 @@ import { Gtag } from 'angular-gtag';
 @Component({
   selector: 'app-all-stats-table',
   templateUrl: './all-stats-table.component.html',
-  styleUrls: ['./all-stats-table.component.scss']
+  styleUrls: ['./all-stats-table.component.scss'],
 })
 export class AllStatsTableComponent implements OnInit {
+  displayedColumns: string[] = [
+    'Number',
+    'Country',
+    'TotalCases',
+    'TotalActive',
+    'TotalDeaths',
+    'TotalRecovered',
+    'CasesToday',
+    'DeathsToday',
+    'CriticalCondition',
+  ];
 
-  displayedColumns: string[] = ['Number', 'Country', 'TotalCases', 'TotalActive', 'TotalDeaths', 'TotalRecovered',
-    'CasesToday', 'DeathsToday', 'CriticalCondition'];
-
-  constructor(public dataStore: DataStoreService,
-              private dataAssignment: DataAssignmentService,
-              public translate: TranslateService,
-              public gtag: Gtag) {
-
+  constructor(
+    public dataStore: DataStoreService,
+    private dataAssignment: DataAssignmentService,
+    public translate: TranslateService,
+    public gtag: Gtag
+  ) {
     this.dataStore.showTopTen = false;
 
     if (translate.langs.length === 0) {
@@ -37,5 +46,4 @@ export class AllStatsTableComponent implements OnInit {
       this.dataAssignment.getTablesData();
     }
   }
-
 }

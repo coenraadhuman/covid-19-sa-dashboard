@@ -1,11 +1,15 @@
 export interface GlobalTimeSeriesModel {
-    country: string;
-    province: null | string;
-    timeline: Timeline;
+  country: string;
+  province: null | string;
+  timeline: Timelines;
+}
+
+export interface Timelines {
+  cases: Timeline;
+  deaths: Timeline;
+  recovered: Timeline;
 }
 
 export interface Timeline {
-    cases: { [key: string]: number };
-    deaths: { [key: string]: number };
-    recovered: { [key: string]: number };
+  [key: string]: number;
 }

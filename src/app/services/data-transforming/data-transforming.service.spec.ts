@@ -6,7 +6,9 @@ describe('DataTransformingService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: DataTransformingService = TestBed.get(DataTransformingService);
+    const service: DataTransformingService = TestBed.get(
+      DataTransformingService
+    );
     expect(service).toBeTruthy();
   });
 });

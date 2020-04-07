@@ -4,17 +4,16 @@ import { AllStatsTableComponent } from './pages/all-stats-table/all-stats-table.
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { TimelineComponent } from './pages/timeline/timeline.component';
 
-
 const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'timeline/:country', component: TimelineComponent },
-  { path: 'table-all-locations', component: AllStatsTableComponent},
-  { path: 'table-all-locations', component: AllStatsTableComponent},
-  { path: '**', redirectTo: ''},
+  { path: 'table-all-locations', component: AllStatsTableComponent },
+  { path: 'table-all-locations', component: AllStatsTableComponent },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

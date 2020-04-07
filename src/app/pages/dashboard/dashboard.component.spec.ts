@@ -5,12 +5,8 @@ import { DashboardComponent } from './dashboard.component';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        DashboardComponent
-      ],
+      imports: [RouterTestingModule],
+      declarations: [DashboardComponent],
     }).compileComponents();
   }));
 
@@ -30,6 +26,8 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(DashboardComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('covid19-sa dashboard is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain(
+      'covid19-sa dashboard is running!'
+    );
   });
 });
