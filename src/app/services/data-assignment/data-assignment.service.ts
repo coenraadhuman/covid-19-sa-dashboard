@@ -76,13 +76,14 @@ export class DataAssignmentService {
       });
   }
 
-  public getGlobalData(){
-      this.subscriptionFive = this.dataRetrieval.getGlobalTimeSeriesData()
-          .subscribe((retrievedData) =>{
-              this.dataStore.globalTimelineData = this.dataTransforming.getGlobalAggregatedData(
-                  retrievedData
-              );
-              this.subscriptionFive.unsubscribe();
-          })
+  public getGlobalData() {
+    this.subscriptionFive = this.dataRetrieval
+      .getGlobalTimeSeriesData()
+      .subscribe((retrievedData) => {
+        this.dataStore.globalTimelineData = this.dataTransforming.getGlobalAggregatedData(
+          retrievedData
+        );
+        this.subscriptionFive.unsubscribe();
+      });
   }
 }

@@ -6,7 +6,7 @@ import {
 } from '../../models/south-africa-cases-details.model';
 import { SouthAfricaCaseModel } from '../../models/south-africa-case.model';
 import { from } from 'rxjs';
-import {groupBy, mergeMap, reduce, toArray} from 'rxjs/operators';
+import { groupBy, mergeMap, reduce, toArray } from 'rxjs/operators';
 import { GlobalTimeSeriesModel } from '../../models/global-timeSeries.model';
 import { DataStoreService } from '../data-store/data-store.service';
 
@@ -165,7 +165,9 @@ export class DataTransformingService {
     return aggregatedResult;
   }
 
-  public getGlobalAggregatedData(data: GlobalTimeSeriesModel[]): GlobalTimeSeriesModel {
+  public getGlobalAggregatedData(
+    data: GlobalTimeSeriesModel[]
+  ): GlobalTimeSeriesModel {
     const aggregatedResult = {} as GlobalTimeSeriesModel;
     const cloneLocations = [...this.getAggregatedTimelineData(data)];
     aggregatedResult.country = 'Global';
@@ -174,24 +176,22 @@ export class DataTransformingService {
       for (const key in country.timeline.cases) {
         if (aggregatedResult.timeline.cases.hasOwnProperty(key)) {
           aggregatedResult.timeline.cases[key] += country.timeline.cases[key];
-        }
-        else{
+        } else {
           aggregatedResult.timeline.cases = country.timeline.cases;
         }
       }
       for (const key in country.timeline.deaths) {
         if (aggregatedResult.timeline.deaths.hasOwnProperty(key)) {
           aggregatedResult.timeline.deaths[key] += country.timeline.deaths[key];
-        }
-        else{
+        } else {
           aggregatedResult.timeline.deaths = country.timeline.deaths;
         }
       }
       for (const key in country.timeline.recovered) {
         if (aggregatedResult.timeline.recovered.hasOwnProperty(key)) {
-          aggregatedResult.timeline.recovered[key] += country.timeline.recovered[key];
-        }
-        else{
+          aggregatedResult.timeline.recovered[key] +=
+            country.timeline.recovered[key];
+        } else {
           aggregatedResult.timeline.recovered = country.timeline.recovered;
         }
       }
