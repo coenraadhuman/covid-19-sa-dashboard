@@ -120,8 +120,40 @@ export class DataTransformingService {
     return name;
   }
 
-  public getFirstLetterCapitalizedString(word: string): string {
-    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  public getTotalTableObject(arr: CountriesModel[]): CountriesModel {
+    const object: CountriesModel = {
+      active: 0,
+      critical: 0,
+      todayDeaths: 0,
+      todayCases: 0,
+      recovered: 0,
+      deaths: 0,
+      cases: 0,
+      casesPerOneMillion: 0,
+      country: '',
+      countryInfo: {
+        _id: 0,
+        flag: '',
+        iso2: '',
+        iso3: '',
+        lat: 0,
+        long: 0
+      },
+      deathsPerOneMillion: 0,
+      updated: 0
+    };
+
+    for (const x of arr) {
+      object.cases += x.cases;
+      object.active += x.active;
+      object.deaths += x.deaths;
+      object.recovered += x.recovered;
+      object.todayCases += x.todayCases;
+      object.todayDeaths += x.todayDeaths;
+      object.critical += x.critical;
+    }
+    console.log(object);
+    return object;
   }
 
   public getAggregatedTimelineData(
