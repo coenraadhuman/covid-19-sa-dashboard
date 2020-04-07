@@ -25,6 +25,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v3
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BASE_BRANCH: master
           BRANCH: gh-pages
           FOLDER: dist/covid19-sa
