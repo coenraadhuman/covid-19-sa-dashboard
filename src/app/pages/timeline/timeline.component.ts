@@ -24,15 +24,15 @@ export class TimelineComponent implements OnInit {
   loaded = false;
   multiLineData: MultilineChartDataModel[] = [
     {
-      name: 'New Cases',
+      name: 'Total Cases',
       series: [],
     },
     {
-      name: 'Recovered Cases',
+      name: 'Total Recovered Cases',
       series: [],
     },
     {
-      name: 'Deaths',
+      name: 'Total Deaths',
       series: [],
     },
   ];

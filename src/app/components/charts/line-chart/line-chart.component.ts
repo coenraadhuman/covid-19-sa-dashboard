@@ -19,9 +19,9 @@ export class LineChartComponent implements OnInit {
 
   colorScheme = {
     domain: [
-      '#a8385d',
-      '#7aa3e5',
-      '#a27ea8',
+      '#1B9CFC',
+      '#BDC581',
+      '#FD7272',
       '#aae3f5',
       '#adcded',
       '#a95963',
