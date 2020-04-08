@@ -14,7 +14,7 @@ export class LanguageService {
 
   public loadTranslationService() {
     if (this.translate.langs.length === 0) {
-      this.translate.addLangs(['en', 'af']);
+      this.translate.addLangs(['en', 'af', 'zu']);
       this.translate.setDefaultLang('en');
       this.dataStore.selectedLanguage = 'en';
       this.activateEnglish();
@@ -30,22 +30,13 @@ export class LanguageService {
 
   public activateEnglish() {
     this.translate.use('en');
-    this.dataStore.timelineLegendCases = 'Total Cases';
-    this.dataStore.timelineLegendDeaths = 'Total Deaths';
-    this.dataStore.timelineLegendRecovered = 'Total Recovered';
   }
 
   public activateAfrikaans() {
     this.translate.use('af');
-    this.dataStore.timelineLegendCases = 'Totale Gevalle';
-    this.dataStore.timelineLegendDeaths = 'Totale Sterftes';
-    this.dataStore.timelineLegendRecovered = 'Totale Genesings';
   }
 
   public activateZulu() {
     this.translate.use('zu');
-    this.dataStore.timelineLegendCases = 'Total Cases';
-    this.dataStore.timelineLegendDeaths = 'Total Recovered';
-    this.dataStore.timelineLegendRecovered = 'Total Deaths';
   }
 }

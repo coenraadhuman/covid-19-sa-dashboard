@@ -7,7 +7,8 @@
   "COMMON": {
     "AFFECTEDCOUNTRIES": "Amazwe Athintekile",
     "SOUTHAFRICA": "South Africa",
-    "GLOBAL": "Emhlabeni jikelele"
+    "GLOBAL": "Emhlabeni jikelele",
+    "TESTS": "Isivivinyo esiphelele"
   },
   "TITLES" : {
     "KNOWNPROVINCE": "SA Imininingwane Yesifundazwe eyaziwayo",
@@ -41,10 +42,19 @@
     "JOHNHOPKINS": "Johns Hopkins CSSE",
     "REPORT": "Bika Izinkinga",
     "BUILD": "Inguqulo ",
-    "SPONSOR" : "Sithenge iKofi!"
-  },
-  "TOOLTIP": {
+    "SPONSOR" : "Sithenge iKofi!",
+    "LANGUAGE" : "Select Language",
+    "AFRIKAANS" : "Afrikaans",
+    "ENGLISH" : "English",
+    "ZULU" : "Zulu"
+    },
+    "TOOLTIP": {
     "COUNTRY": "Chofoza lapha ukuthola umugqa wesikhathi we ",
     "SORT" : "hlunga."
-  }
+    },
+    "SNACKBAR" : {
+    "ABOUT": "This is a simple COVID-19 tracker dashboard primarily for personal use by a South African citizen. If you can buy us a coffee :)",
+    "FEATURES": "New Features: we have smart tables, sort them by clicking the column header. Timeline graphs are added, just click a country name to view it.",
+    "INVALIDCOUNTRY": "Unknown country selected."
+    }
 }
