@@ -1,29 +1,25 @@
 {
   "BUTTONS" : {
     "TIMELINE" : "See Timeline Graph",
-    "SEEALL": "See All"
+    "SEEALL": "See All",
+    "SA": "See Other Statistics"
   },
   "COMMON": {
-    "TOTALCASES": "Total Cases",
-    "DEATHS": "Deaths",
-    "RECOVERED": "Recovered",
-    "ACTIVECASES": "Active Cases",
     "AFFECTEDCOUNTRIES": "Affected Countries",
     "SOUTHAFRICA": "South Africa",
-    "OVERVIEW": "Overview",
     "GLOBAL": "Global",
-    "SAPROVINCE": "SA Known Province Details",
-    "CASESTODAY": "Cases Today",
-    "TIMELINE" : "Timeline"
+    "TESTS": "Total Tests"
   },
   "TITLES" : {
     "KNOWNPROVINCE": "SA Known Province Details",
     "TOP10": "Top 10 Affected Countries",
-    "ALLAFFECTEDCOUNTRIES": "All Affected Countries"
+    "ALLAFFECTEDCOUNTRIES": "All Affected Countries",
+    "TIMELINE" : "Timeline Graph",
+    "OVERVIEW": "Pandemic Overview"
   },
   "TABLECOLUMNS" : {
     "TOTALCASES": "Total Cases",
-    "NUMBER": "Number",
+    "NUMBER": "No.",
     "PROVINCE": "Province",
     "COUNTRY" : "Country",
     "TOTALACTIVE" : "Total Active",
@@ -46,6 +42,19 @@
     "JOHNHOPKINS": "Johns Hopkins CSSE",
     "REPORT": "Report Any Issues",
     "BUILD": "Version ",
-    "SPONSOR" : "Buy Us A Coffee!"
+    "SPONSOR" : "Buy Us A Coffee!",
+    "LANGUAGE" : "Select Language",
+    "AFRIKAANS" : "Afrikaans",
+    "ENGLISH" : "English",
+    "ZULU" : "Zulu"
+  },
+  "TOOLTIP": {
+    "COUNTRY": "Click here for a timeline graph of ",
+    "SORT" : "Click to sort."
+  },
+  "SNACKBAR" : {
+    "ABOUT": "This is a simple COVID-19 tracker dashboard primarily for personal use by a South African citizen. If you can buy us a coffee :)",
+    "FEATURES": "New Features: we have smart tables, sort them by clicking the column header. Timeline graphs are added, just click a country name to view it.",
+    "INVALIDCOUNTRY": "Unknown country selected."
   }
 }

@@ -3,6 +3,7 @@ import { SnackBarNotificationService } from '../../../services/snack-bar-notific
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from '../../../services/language/language.service';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,8 @@ export class HeaderComponent implements OnInit {
     public snackBar: SnackBarNotificationService,
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private language: LanguageService
   ) {
     if (translate.langs.length === 0) {
       translate.addLangs(['en']);
@@ -29,7 +31,7 @@ export class HeaderComponent implements OnInit {
     this.matIconRegistry.addSvgIcon(
       'github',
       this.domSanitizer.bypassSecurityTrustResourceUrl(
-        '../assets/icons/github.svg'
+        '../assets/icons/github-small.svg'
       )
     );
   }

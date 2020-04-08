@@ -1,0 +1,28 @@
+<div class="container">
+    <mat-card class="overview">
+        <app-card-title [translationKey]="'TITLES.OVERVIEW'"></app-card-title>
+        <mat-card-content>
+            <app-progress-bar [loadState]="dataStore.isTableLoaded"></app-progress-bar>
+            <div *ngIf="dataStore.isTableLoaded">
+                <p>{{ 'TABLECOLUMNS.TOTALCASES' | translate }}: {{ dataStore.southAfrica.cases }}</p>
+                <p>{{ 'TABLECOLUMNS.TOTALACTIVE' | translate }}: {{ dataStore.southAfrica.active }}</p>
+                <p>{{ 'TABLECOLUMNS.TOTALDEATHS' | translate }}: {{ dataStore.southAfrica.deaths }}</p>
+                <p>{{ 'TABLECOLUMNS.TOTALRECOVERED' | translate }}: {{ dataStore.southAfrica.recovered }}</p>
+                <p>{{ 'TABLECOLUMNS.NEWCASES' | translate }}: {{ dataStore.southAfrica.todayCases }}</p>
+                <button mat-raised-button color="primary" routerLink="/timeline/South Africa">{{ 'BUTTONS.TIMELINE' | translate }}</button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="sa">
+        <app-card-title [translationKey]="'TITLES.KNOWNPROVINCE' | translate"></app-card-title>
+        <mat-card-content>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="table">
+        <app-card-title [translationKey]="'TITLES.KNOWNPROVINCE' | translate"></app-card-title>
+        <mat-card-content>
+        </mat-card-content>
+    </mat-card>
+</div>

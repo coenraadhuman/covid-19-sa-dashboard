@@ -13,6 +13,9 @@ import {
   GlobalTimeSeriesModel,
   Timeline,
 } from '../../models/global-timeSeries.model';
+import { DataLoadService } from '../../services/data-load/data-load.service';
+import { SnackBarNotificationService } from '../../services/snack-bar-notification/snack-bar-notification.service';
+import { LanguageService } from '../../services/language/language.service';
 
 @Component({
   selector: 'app-timeline',
@@ -28,7 +31,7 @@ export class TimelineComponent implements OnInit {
       series: [],
     },
     {
-      name: 'Total Recovered Cases',
+      name: 'Total Recovered',
       series: [],
     },
     {
@@ -37,54 +40,28 @@ export class TimelineComponent implements OnInit {
     },
   ];
 
-  selectedCountry: string;
+  selectedCountry = 'unknown';
   formattedPrefix: string;
 
   constructor(
     public dataStore: DataStoreService,
     private dataAssignment: DataAssignmentService,
-    public translate: TranslateService,
     private activatedRoute: ActivatedRoute,
     private dataTransforming: DataTransformingService,
-    public gtag: Gtag
+    private dataLoad: DataLoadService,
+    private snackBar: SnackBarNotificationService,
+    public gtag: Gtag,
+    private language: LanguageService
   ) {
-    if (translate.langs.length === 0) {
-      translate.addLangs(['en']);
-      translate.setDefaultLang('en');
-      this.dataStore.selectedLanguage = 'en';
-      translate.use(this.dataStore.selectedLanguage);
-    } else {
-      translate.use(translate.currentLang);
-      this.dataStore.selectedLanguage = translate.currentLang;
-    }
+    this.language.loadTranslationService();
 
     this.selectedCountry = this.activatedRoute.snapshot.paramMap.get('country');
     this.formattedPrefix = this.selectedCountry + ' ';
 
-    if (!this.dataStore.isGlobalTimelineDataRetrieved) {
-      this.dataAssignment.getGlobalData();
-    }
-
-    if (this.dataStore.timelineDataCopy.length === 0) {
-      this.dataAssignment.getTimelineData();
-    }
+    dataLoad.loadData();
 
     if (this.selectedCountry === 'Global') {
-      this.dataStore.getGlobalTimelineData().subscribe((x) => {
-        this.selectedCountryData = x;
-
-        this.multiLineData[0].series = this.addToMultilineChartTimelineSeriesDataArray(
-            x.timeline.cases
-        );
-        this.multiLineData[1].series = this.addToMultilineChartTimelineSeriesDataArray(
-            x.timeline.recovered
-        );
-        this.multiLineData[2].series = this.addToMultilineChartTimelineSeriesDataArray(
-            x.timeline.deaths
-        );
-
-        this.loaded = true;
-      });
+      this.assignGlobalToGraph();
     } else {
       this.assignDataToGraph();
     }
@@ -92,12 +69,40 @@ export class TimelineComponent implements OnInit {
 
   assignDataToGraph() {
     if (this.dataStore.timelineDataCopy.length === 0) {
+      this.dataAssignment.getTimelineData();
       this.dataStore.getTimelineData().subscribe((x) => {
         this.mapData(x);
       });
     } else {
       this.mapData(this.dataStore.timelineDataCopy);
     }
+  }
+
+  assignGlobalToGraph() {
+    if (this.dataStore.timelineDataCopy.length === 0) {
+      this.dataAssignment.getTimelineData();
+      this.dataStore.getGlobalTimelineData().subscribe((x) => {
+        this.mapDataGlobal(x);
+      });
+    } else {
+      this.mapDataGlobal(this.dataStore.globalTimelineDataCopy);
+    }
+  }
+
+  mapDataGlobal(x: GlobalTimeSeriesModel) {
+    this.selectedCountryData = x;
+
+    this.multiLineData[0].series = this.addToMultilineChartTimelineSeriesDataArray(
+      x.timeline.cases
+    );
+    this.multiLineData[1].series = this.addToMultilineChartTimelineSeriesDataArray(
+      x.timeline.recovered
+    );
+    this.multiLineData[2].series = this.addToMultilineChartTimelineSeriesDataArray(
+      x.timeline.deaths
+    );
+
+    this.loaded = true;
   }
 
   mapData(countries: GlobalTimeSeriesModel[]) {
@@ -107,17 +112,21 @@ export class TimelineComponent implements OnInit {
       }
     });
 
-    this.multiLineData[0].series = this.addToMultilineChartTimelineSeriesDataArray(
-      this.selectedCountryData.timeline.cases
-    );
-    this.multiLineData[1].series = this.addToMultilineChartTimelineSeriesDataArray(
-      this.selectedCountryData.timeline.recovered
-    );
-    this.multiLineData[2].series = this.addToMultilineChartTimelineSeriesDataArray(
-      this.selectedCountryData.timeline.deaths
-    );
+    if (this.selectedCountry === 'unknown') {
+      this.snackBar.unknownCountry();
+    } else {
+      this.multiLineData[0].series = this.addToMultilineChartTimelineSeriesDataArray(
+        this.selectedCountryData.timeline.cases
+      );
+      this.multiLineData[1].series = this.addToMultilineChartTimelineSeriesDataArray(
+        this.selectedCountryData.timeline.recovered
+      );
+      this.multiLineData[2].series = this.addToMultilineChartTimelineSeriesDataArray(
+        this.selectedCountryData.timeline.deaths
+      );
 
-    this.loaded = true;
+      this.loaded = true;
+    }
   }
 
   addToMultilineChartTimelineSeriesDataArray(

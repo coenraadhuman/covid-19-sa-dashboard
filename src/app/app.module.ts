@@ -18,6 +18,7 @@ import {
   MatChipsModule,
   MatFormFieldModule,
   MatInputModule,
+  MatTooltipModule,
 } from '@angular/material';
 import { DashboardTableComponent } from './components/tables/dashboard-stats-table/dashboard-table.component';
 import { HeaderComponent } from './components/menu/header/header.component';
@@ -42,6 +43,8 @@ import { TimelineComponent } from './pages/timeline/timeline.component';
 import { LineChartComponent } from './components/charts/line-chart/line-chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FormsModule } from '@angular/forms';
+import { SouthAfricaPageComponent } from './pages/south-africa-page/south-africa-page.component';
+import { DataLoadService } from './services/data-load/data-load.service';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -62,6 +65,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     IconAnchorMenuButtonComponent,
     TimelineComponent,
     LineChartComponent,
+    SouthAfricaPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,11 +96,13 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTooltipModule,
   ],
   providers: [
     DataRetrievalService,
     DataTransformingService,
     DataStoreService,
+    DataLoadService,
     SnackBarNotificationService,
   ],
   bootstrap: [RouterOutletComponent],

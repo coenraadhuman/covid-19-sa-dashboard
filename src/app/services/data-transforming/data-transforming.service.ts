@@ -9,21 +9,22 @@ import { from } from 'rxjs';
 import { groupBy, mergeMap, reduce, toArray } from 'rxjs/operators';
 import { GlobalTimeSeriesModel } from '../../models/global-timeSeries.model';
 import { DataStoreService } from '../data-store/data-store.service';
+import { TestDataModel } from '../../models/south-africa-test-data.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataTransformingService {
   provinceNames = [
-    { key: 'GP', name: 'Gauteng' },
-    { key: 'WC', name: 'Western Cape' },
-    { key: 'KZN', name: 'KwaZulu-Natal' },
-    { key: 'FS', name: 'Free State' },
-    { key: 'MP', name: 'Mpumalanga' },
-    { key: 'NW', name: 'North West' },
-    { key: 'LP', name: 'Limpopo' },
-    { key: 'EC', name: 'Eastern Cape' },
-    { key: 'NC', name: 'Northern Cape' },
+    { key: 'GP', alternativeName: 'gauteng', name: 'Gauteng' },
+    { key: 'WC', alternativeName: 'western_cape', name: 'Western Cape' },
+    { key: 'KZN', alternativeName: 'kwazulu_natal', name: 'KwaZulu-Natal' },
+    { key: 'FS', alternativeName: 'free_state', name: 'Free State' },
+    { key: 'MP', alternativeName: 'mpumlanga', name: 'Mpumalanga' },
+    { key: 'NW', alternativeName: 'north_west', name: 'North West' },
+    { key: 'LP', alternativeName: 'limpopo', name: 'Limpopo' },
+    { key: 'EC', alternativeName: 'eastern_cape', name: 'Eastern Cape' },
+    { key: 'NC', alternativeName: 'northern_cape', name: 'Northern Cape' },
   ];
 
   constructor(private dataStore: DataStoreService) {}
@@ -196,30 +197,46 @@ export class DataTransformingService {
     return aggregatedResult;
   }
 
-  public getGlobalAggregatedData(data: GlobalTimeSeriesModel[]): GlobalTimeSeriesModel {
-
-    const aggregatedResult = [...this.getAggregatedTimelineData(data)].reduce((finalCountry, workingCountry) => {
-      for (const key in workingCountry.timeline.cases) {
-        if (workingCountry.timeline.cases.hasOwnProperty(key)) {
-          finalCountry.timeline.cases[key] += workingCountry.timeline.cases[key];
+  public getGlobalAggregatedData(
+    data: GlobalTimeSeriesModel[]
+  ): GlobalTimeSeriesModel {
+    const aggregatedResult = [...data].reduce(
+      (finalCountry, workingCountry) => {
+        for (const key in workingCountry.timeline.cases) {
+          if (workingCountry.timeline.cases.hasOwnProperty(key)) {
+            finalCountry.timeline.cases[key] +=
+              workingCountry.timeline.cases[key];
+          }
         }
-      }
-      for (const key in workingCountry.timeline.deaths) {
-        if (workingCountry.timeline.deaths.hasOwnProperty(key)) {
-          finalCountry.timeline.deaths[key] += workingCountry.timeline.deaths[key];
+        for (const key in workingCountry.timeline.deaths) {
+          if (workingCountry.timeline.deaths.hasOwnProperty(key)) {
+            finalCountry.timeline.deaths[key] +=
+              workingCountry.timeline.deaths[key];
+          }
         }
-      }
-      for (const key in finalCountry.timeline.recovered) {
-        if (finalCountry.timeline.recovered.hasOwnProperty(key)) {
-          finalCountry.timeline.recovered[key] += workingCountry.timeline.recovered[key];
+        for (const key in finalCountry.timeline.recovered) {
+          if (finalCountry.timeline.recovered.hasOwnProperty(key)) {
+            finalCountry.timeline.recovered[key] +=
+              workingCountry.timeline.recovered[key];
+          }
         }
+        return finalCountry;
       }
-      return finalCountry;
-    });
+    );
 
     aggregatedResult.country = 'Global';
     aggregatedResult.province = '';
 
     return aggregatedResult;
+  }
+
+  public getMostRecentTestData(data: TestDataModel[]): TestDataModel {
+    data.sort((a, b) => {
+      return (
+        Number(b.cumulative_tests === '' ? 0 : b.cumulative_tests) -
+        Number(a.cumulative_tests === '' ? 0 : a.cumulative_tests)
+      );
+    });
+    return data[0];
   }
 }
