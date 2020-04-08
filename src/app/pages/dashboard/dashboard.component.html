@@ -18,11 +18,12 @@
                 <div class="south-africa">
                     <h3><span class="flag-icon flag-icon-za"></span> {{ 'COMMON.SOUTHAFRICA' | translate }}</h3>
                     <app-progress-bar [loadState]="dataStore.isTableLoaded"></app-progress-bar>
-                    <div *ngIf="dataStore.isTableLoaded">
+                    <div *ngIf="dataStore.isTableLoaded && dataStore.isTestDataLoaded">
                         <p>{{ 'TABLECOLUMNS.TOTALCASES' | translate }}: {{ dataStore.southAfrica.cases }}</p>
                         <p>{{ 'TABLECOLUMNS.TOTALACTIVE' | translate }}: {{ dataStore.southAfrica.active }}</p>
                         <p>{{ 'TABLECOLUMNS.TOTALDEATHS' | translate }}: {{ dataStore.southAfrica.deaths }}</p>
                         <p>{{ 'TABLECOLUMNS.TOTALRECOVERED' | translate }}: {{ dataStore.southAfrica.recovered }}</p>
+                        <p>{{ 'COMMON.TESTS' | translate }}: {{ dataStore.southAfricaTestData.cumulative_tests }}</p>
                         <p>{{ 'TABLECOLUMNS.NEWCASES' | translate }}: {{ dataStore.southAfrica.todayCases }}</p>
                         <button mat-raised-button color="primary" routerLink="timeline/South Africa">{{ 'BUTTONS.TIMELINE' | translate }}</button>
                         <br>

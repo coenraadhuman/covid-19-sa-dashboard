@@ -8,6 +8,7 @@ import { Observable, Subject } from 'rxjs';
 import { SouthAfricaDeathModel } from '../../models/south-africa-death.model';
 import { SouthAfricaProvinceModel } from '../../models/south-africa-province.model';
 import { SouthAfricaProvinceTableModel } from '../../models/south-africa-province-table.model';
+import { TestDataModel } from '../../models/south-africa-test-data.model';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +29,8 @@ export class DataStoreService {
 
   public southAfricaDeathDetails = [] as SouthAfricaDeathModel[];
   public southAfricaProvinceDetails = [] as SouthAfricaProvinceModel[];
+
+  public southAfricaTestData = {} as TestDataModel;
 
   public southAfricaProvinceTableDetails: SouthAfricaProvinceTableModel[] = [
     {
@@ -105,6 +108,7 @@ export class DataStoreService {
   public wasRecoveryIssueShown = false;
   public isTableLoaded = false;
   public isOverviewLoaded = false;
+  public isTestDataLoaded = false;
 
   public isCaseDetailsLoaded = false;
   public isDeathDetailsLoaded = false;

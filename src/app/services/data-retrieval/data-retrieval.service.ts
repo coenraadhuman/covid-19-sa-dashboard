@@ -7,6 +7,7 @@ import { SouthAfricaCaseModel } from '../../models/south-africa-case.model';
 import { GlobalTimeSeriesModel } from '../../models/global-timeSeries.model';
 import { SouthAfricaDeathModel } from '../../models/south-africa-death.model';
 import { SouthAfricaProvinceModel } from '../../models/south-africa-province.model';
+import { TestDataModel } from '../../models/south-africa-test-data.model';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,8 @@ export class DataRetrievalService {
     'https://covid-za-api.herokuapp.com/cases/deaths';
   private southAfricaProvinceUri =
     'https://covid-za-api.herokuapp.com/cases/timeline/provincial/cumulative';
+  private southAfricaTestDataUri =
+    'https://covid-za-api.herokuapp.com/cases/timeline/tests';
 
   constructor(private http: HttpClient) {}
 
@@ -59,5 +62,9 @@ export class DataRetrievalService {
     return this.executeRequest<GlobalTimeSeriesModel[]>(
       this.globalTimeSeriesUri
     );
+  }
+
+  public getTestData(): Observable<TestDataModel[]> {
+    return this.executeRequest<TestDataModel[]>(this.southAfricaTestDataUri);
   }
 }

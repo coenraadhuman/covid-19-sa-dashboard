@@ -39,5 +39,9 @@ export class DataLoadService {
     if (this.dataStore.timelineDataCopy.length === 0) {
       this.dataAssignment.getTimelineData();
     }
+
+    if (!this.dataStore.isTestDataLoaded) {
+      this.dataAssignment.getSouthAfricaTestData();
+    }
   }
 }
