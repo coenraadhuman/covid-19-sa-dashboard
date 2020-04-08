@@ -3,6 +3,7 @@ import { DataStoreService } from '../../services/data-store/data-store.service';
 import { DataAssignmentService } from '../../services/data-assignment/data-assignment.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Gtag } from 'angular-gtag';
+import { DataLoadService } from '../../services/data-load/data-load.service';
 
 @Component({
   selector: 'app-all-stats-table',
@@ -26,6 +27,7 @@ export class AllStatsTableComponent implements OnInit {
     public dataStore: DataStoreService,
     private dataAssignment: DataAssignmentService,
     public translate: TranslateService,
+    public dataLoad: DataLoadService,
     public gtag: Gtag
   ) {
     this.dataStore.showTopTen = false;
@@ -42,8 +44,6 @@ export class AllStatsTableComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.dataStore.isTableLoaded) {
-      this.dataAssignment.getTablesData();
-    }
+    this.dataLoad.loadData();
   }
 }

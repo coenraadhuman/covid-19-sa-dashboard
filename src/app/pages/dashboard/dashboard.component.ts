@@ -4,6 +4,7 @@ import { DataAssignmentService } from '../../services/data-assignment/data-assig
 import { TranslateService } from '@ngx-translate/core';
 import { Gtag } from 'angular-gtag';
 import { SnackBarNotificationService } from '../../services/snack-bar-notification/snack-bar-notification.service';
+import { DataLoadService } from '../../services/data-load/data-load.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,7 @@ import { SnackBarNotificationService } from '../../services/snack-bar-notificati
 export class DashboardComponent implements OnInit {
   constructor(
     public dataStore: DataStoreService,
-    private dataAssignment: DataAssignmentService,
+    private dataLoad: DataLoadService,
     public translate: TranslateService,
     public snackBar: SnackBarNotificationService,
     public gtag: Gtag
@@ -34,24 +35,6 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!this.dataStore.isOverviewLoaded) {
-      this.dataAssignment.getTotalsData();
-    }
-
-    if (!this.dataStore.isCaseDetailsLoaded) {
-      this.dataAssignment.getSouthAfricaCaseDetailsData();
-    }
-
-    if (!this.dataStore.isTableLoaded) {
-      this.dataAssignment.getTablesData();
-    }
-
-    if (this.dataStore.southAfricaDeathDetails.length === 0) {
-      this.dataAssignment.getSouthAfricaDeathsDetailsData();
-    }
-
-    if (this.dataStore.southAfricaProvinceDetails.length === 0) {
-      this.dataAssignment.getSouthAfricaProvinceDetailsData();
-    }
+    this.dataLoad.loadData();
   }
 }

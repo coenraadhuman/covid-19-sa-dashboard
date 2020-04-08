@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DataStoreService } from '../../services/data-store/data-store.service';
+import { Gtag } from 'angular-gtag';
+import { DataLoadService } from '../../services/data-load/data-load.service';
 
 @Component({
   selector: 'app-south-africa-page',
@@ -6,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./south-africa-page.component.scss'],
 })
 export class SouthAfricaPageComponent implements OnInit {
-  constructor() {}
+  constructor(
+    private dataStore: DataStoreService,
+    private dataLoad: DataLoadService,
+    public gtag: Gtag
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.dataLoad.loadData();
+  }
 }
