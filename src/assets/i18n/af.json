@@ -41,7 +41,11 @@
     "JOHNHOPKINS": "Johns Hopkins CSSE",
     "REPORT": "Rapporteer Enige Probleme",
     "BUILD": "Weergawe ",
-    "SPONSOR" : "Koop Vir Ons 'n Koffie!"
+    "SPONSOR" : "Koop Vir Ons 'n Koffie!",
+    "LANGUAGE" : "Kies Taal",
+    "AFRIKAANS" : "Afrikaans",
+    "ENGLISH" : "Engels",
+    "ZULU" : "Zulu"
   },
   "TOOLTIP": {
     "COUNTRY": "Klik hier vir 'n tydlyngrafiek van ",

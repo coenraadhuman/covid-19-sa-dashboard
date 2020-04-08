@@ -41,7 +41,11 @@
     "JOHNHOPKINS": "Johns Hopkins CSSE",
     "REPORT": "Report Any Issues",
     "BUILD": "Version ",
-    "SPONSOR" : "Buy Us A Coffee!"
+    "SPONSOR" : "Buy Us A Coffee!",
+    "LANGUAGE" : "Select Language",
+    "AFRIKAANS" : "Afrikaans",
+    "ENGLISH" : "English",
+    "ZULU" : "Zulu"
   },
   "TOOLTIP": {
     "COUNTRY": "Click here for a timeline graph of ",

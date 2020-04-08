@@ -16,6 +16,10 @@
     <span>{{ "MENU.ABOUT" | translate }}</span>
   </button>
   <app-icon-anchor-menu-button [name]="'MENU.SPONSOR' | translate" link="https://paypal.me/coenraadhuman?locale.x=en_US" iconName="favorite"></app-icon-anchor-menu-button>
+  <button mat-menu-item [matMenuTriggerFor]="languageMenu">
+    <mat-icon>public</mat-icon>
+    <span>{{ "MENU.LANGUAGE" | translate }}</span>
+  </button>
   <button mat-menu-item [matMenuTriggerFor]="infoMenu">
     <mat-icon>public</mat-icon>
     <span>{{ "MENU.EXTERNALINFORMATION" | translate }}</span>
@@ -41,4 +45,13 @@
 <mat-menu #dataMenu="matMenu">
   <app-anchor-menu-button [name]="'MENU.WORLDOMETERS' | translate" link="https://www.worldometers.info/coronavirus/"></app-anchor-menu-button>
   <app-anchor-menu-button [name]="'MENU.JOHNHOPKINS' | translate" link="https://github.com/CSSEGISandData/COVID-19"></app-anchor-menu-button>
+</mat-menu>
+
+<mat-menu #languageMenu="matMenu">
+  <button mat-menu-item (click)="language.activateAfrikaans()">
+    <span>{{ "MENU.AFRIKAANS" | translate }}</span>
+  </button>
+  <button mat-menu-item (click)="language.activateEnglish()">
+    <span>{{ "MENU.ENGLISH" | translate }}</span>
+  </button>
 </mat-menu>

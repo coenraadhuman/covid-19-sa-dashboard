@@ -27,4 +27,16 @@ export class LanguageService {
   public getTranslation(jsonProperty: string): Observable<string> {
     return this.translate.get(jsonProperty);
   }
+
+  public activateEnglish() {
+    this.translate.use('en');
+  }
+
+  public activateAfrikaans() {
+    this.translate.use('af');
+  }
+
+  public activateZulu() {
+    this.translate.use('zu');
+  }
 }
