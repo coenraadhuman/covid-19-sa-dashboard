@@ -11,7 +11,7 @@ import { LanguageService } from '../../services/language/language.service';
 })
 export class SouthAfricaPageComponent implements OnInit {
   constructor(
-    private dataStore: DataStoreService,
+    public dataStore: DataStoreService,
     private dataLoad: DataLoadService,
     public gtag: Gtag,
     private language: LanguageService

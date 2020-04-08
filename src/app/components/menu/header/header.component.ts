@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
     public translate: TranslateService,
-    private language: LanguageService
+    public language: LanguageService
   ) {
     if (translate.langs.length === 0) {
       translate.addLangs(['en']);
