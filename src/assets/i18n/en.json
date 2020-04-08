@@ -1,7 +1,8 @@
 {
   "BUTTONS" : {
     "TIMELINE" : "See Timeline Graph",
-    "SEEALL": "See All"
+    "SEEALL": "See All",
+    "SA": "See Other Statistics"
   },
   "COMMON": {
     "AFFECTEDCOUNTRIES": "Affected Countries",
