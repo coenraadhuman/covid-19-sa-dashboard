@@ -69,6 +69,7 @@ export class TimelineComponent implements OnInit {
 
   assignDataToGraph() {
     if (this.dataStore.timelineDataCopy.length === 0) {
+      this.dataAssignment.getTimelineData();
       this.dataStore.getTimelineData().subscribe((x) => {
         this.mapData(x);
       });
@@ -78,21 +79,30 @@ export class TimelineComponent implements OnInit {
   }
 
   assignGlobalToGraph() {
-    this.dataStore.getGlobalTimelineData().subscribe((x) => {
-      this.selectedCountryData = x;
+    if (this.dataStore.timelineDataCopy.length === 0) {
+      this.dataAssignment.getTimelineData();
+      this.dataStore.getGlobalTimelineData().subscribe((x) => {
+        this.mapDataGlobal(x);
+      });
+    } else {
+      this.mapDataGlobal(this.dataStore.globalTimelineDataCopy);
+    }
+  }
 
-      this.multiLineData[0].series = this.addToMultilineChartTimelineSeriesDataArray(
-        x.timeline.cases
-      );
-      this.multiLineData[1].series = this.addToMultilineChartTimelineSeriesDataArray(
-        x.timeline.recovered
-      );
-      this.multiLineData[2].series = this.addToMultilineChartTimelineSeriesDataArray(
-        x.timeline.deaths
-      );
+  mapDataGlobal(x: GlobalTimeSeriesModel) {
+    this.selectedCountryData = x;
 
-      this.loaded = true;
-    });
+    this.multiLineData[0].series = this.addToMultilineChartTimelineSeriesDataArray(
+      x.timeline.cases
+    );
+    this.multiLineData[1].series = this.addToMultilineChartTimelineSeriesDataArray(
+      x.timeline.recovered
+    );
+    this.multiLineData[2].series = this.addToMultilineChartTimelineSeriesDataArray(
+      x.timeline.deaths
+    );
+
+    this.loaded = true;
   }
 
   mapData(countries: GlobalTimeSeriesModel[]) {

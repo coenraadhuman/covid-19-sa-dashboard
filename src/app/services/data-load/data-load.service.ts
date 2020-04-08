@@ -32,10 +32,6 @@ export class DataLoadService {
       this.dataAssignment.getSouthAfricaProvinceDetailsData();
     }
 
-    if (!this.dataStore.isGlobalTimelineDataRetrieved) {
-      this.dataAssignment.getTimelineData();
-    }
-
     if (this.dataStore.timelineDataCopy.length === 0) {
       this.dataAssignment.getTimelineData();
     }

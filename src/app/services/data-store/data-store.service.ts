@@ -116,6 +116,10 @@ export class DataStoreService {
 
   public selectedLanguage: string;
 
+  public timelineLegendCases = 'Total Cases';
+  public timelineLegendDeaths = 'Total Deaths';
+  public timelineLegendRecovered = 'Total Recovered';
+
   constructor() {}
 
   getTimelineData(): Observable<GlobalTimeSeriesModel[]> {
