@@ -6,10 +6,10 @@ import { TimelineComponent } from './pages/timeline/timeline.component';
 import { SouthAfricaPageComponent } from './pages/south-africa-page/south-africa-page.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
   { path: 'timeline/:country', component: TimelineComponent },
   { path: 'table-all-locations', component: AllStatsTableComponent },
   { path: 'south-africa', component: SouthAfricaPageComponent },
+  { path: '', component: DashboardComponent },
   { path: '**', redirectTo: '' },
 ];
 
