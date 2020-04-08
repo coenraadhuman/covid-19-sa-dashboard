@@ -6,6 +6,7 @@
     "copy": "copy-files-from-to",
     "start": "ng serve",
     "build": "ng build --prod --base-href 'https://sacovid.co.za/'",
+    "git-add": "git add .",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "publish": "npm run build && npm run copy",
     "test": "ng test",
@@ -15,7 +16,7 @@
   "private": true,
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prettier-format && npm run lint"
+      "pre-commit": "npm run prettier-format && npm run git-add && npm run lint"
     }
   },
   "copyFiles": [

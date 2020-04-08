@@ -25,4 +25,8 @@ export class SnackBarNotificationService {
       8000
     );
   }
+
+  public unknownCountry() {
+    this.openSnackBar('Unknown country selected.', 8000);
+  }
 }

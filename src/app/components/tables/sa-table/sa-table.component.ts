@@ -23,7 +23,11 @@ export class SaTableComponent implements OnInit {
   constructor(private dataStore: DataStoreService) {
     this.tableDataSource = new MatTableDataSource<
       SouthAfricaProvinceTableModel
-    >(this.dataStore.southAfricaProvinceTableDetails);
+    >(
+      [...this.dataStore.southAfricaProvinceTableDetails].sort(
+        (a, b) => b.totalCases - a.totalCases
+      )
+    );
   }
 
   ngOnInit() {
