@@ -79,7 +79,7 @@ export class DataAssignmentService {
         );
 
         const object = this.dataTransforming.getGlobalAggregatedData(
-            this.dataStore.timelineDataCopy
+          this.dataStore.timelineDataCopy
         );
         this.dataStore.globalTimelineData.next(object);
         this.dataStore.globalTimelineDataCopy = object;
@@ -87,5 +87,4 @@ export class DataAssignmentService {
         this.subscriptionFour.unsubscribe();
       });
   }
-
 }
