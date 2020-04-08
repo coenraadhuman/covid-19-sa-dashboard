@@ -80,20 +80,14 @@ export class DataAssignmentService {
         this.dataStore.timelineData.next(
           this.dataTransforming.getAggregatedTimelineData(retrievedData)
         );
-        this.subscriptionFour.unsubscribe();
-      });
-  }
 
-  public getGlobalData() {
-    this.subscriptionFive = this.dataRetrieval
-      .getGlobalTimeSeriesData()
-      .subscribe((retrievedData) => {
         const object = this.dataTransforming.getGlobalAggregatedData(
-          retrievedData
+          this.dataStore.timelineDataCopy
         );
         this.dataStore.globalTimelineData.next(object);
         this.dataStore.globalTimelineDataCopy = object;
-        this.subscriptionFive.unsubscribe();
+
+        this.subscriptionFour.unsubscribe();
       });
   }
 

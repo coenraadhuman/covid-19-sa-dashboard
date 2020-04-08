@@ -5,15 +5,15 @@
   },
   "COMMON": {
     "TOTALCASES": "Total Cases",
-    "DEATHS": "Deaths",
-    "RECOVERED": "Recovered",
-    "ACTIVECASES": "Active Cases",
+    "DEATHS": "Total Deaths",
+    "RECOVERED": "Total Recovered",
+    "ACTIVECASES": "Total Active",
     "AFFECTEDCOUNTRIES": "Affected Countries",
     "SOUTHAFRICA": "South Africa",
     "OVERVIEW": "Overview",
     "GLOBAL": "Global",
     "SAPROVINCE": "SA Known Province Details",
-    "CASESTODAY": "Cases Today",
+    "CASESTODAY": "New Cases",
     "TIMELINE" : "Timeline"
   },
   "TITLES" : {
