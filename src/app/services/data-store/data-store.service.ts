@@ -96,6 +96,13 @@ export class DataStoreService {
       totalCases: 0,
       totalDeaths: 0,
     },
+    {
+      key: 'UNK',
+      alternativeName: 'unknown',
+      name: 'Unknown',
+      totalCases: 0,
+      totalDeaths: 0,
+    },
   ];
 
   public timelineData = new Subject<GlobalTimeSeriesModel[]>();

@@ -25,6 +25,7 @@ export class DataTransformingService {
     { key: 'LP', alternativeName: 'limpopo', name: 'Limpopo' },
     { key: 'EC', alternativeName: 'eastern_cape', name: 'Eastern Cape' },
     { key: 'NC', alternativeName: 'northern_cape', name: 'Northern Cape' },
+    { key: 'UNK', alternativeName: 'unknown', name: 'Unknown' },
   ];
 
   constructor(private dataStore: DataStoreService) {}

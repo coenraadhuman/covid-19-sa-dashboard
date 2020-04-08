@@ -91,6 +91,16 @@ export class DataAssignmentService {
       });
   }
 
+  public getSouthAfricaTestData() {
+    this.dataRetrieval.getTestData().subscribe((retrievedData) => {
+      this.dataStore.southAfricaTestData = this.dataTransforming.getMostRecentTestData(
+        retrievedData
+      );
+      this.dataStore.isTestDataLoaded = true;
+      this.subscriptionFive.unsubscribe();
+    });
+  }
+
   public getSouthAfricaDeathsDetailsData() {
     this.subscriptionSix = this.dataRetrieval
       .getSouthAfricaDeaths()
@@ -149,18 +159,11 @@ export class DataAssignmentService {
         this.dataStore.southAfricaProvinceTableDetails[8].totalCases = Number(
           retrievedData[retrievedData.length - 2].provinces.northern_cape
         );
+        this.dataStore.southAfricaProvinceTableDetails[9].totalCases = Number(
+          retrievedData[retrievedData.length - 2].provinces.unknown
+        );
         this.dataStore.isProvinceDetailsLoaded = true;
         this.subscriptionSeven.unsubscribe();
       });
-  }
-
-  public getSouthAfricaTestData() {
-    this.dataRetrieval.getTestData().subscribe((retrievedData) => {
-      this.dataStore.southAfricaTestData = this.dataTransforming.getMostRecentTestData(
-        retrievedData
-      );
-      this.dataStore.isTestDataLoaded = true;
-      this.subscriptionFive.unsubscribe();
-    });
   }
 }
