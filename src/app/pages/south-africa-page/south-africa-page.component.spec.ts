@@ -8,9 +8,8 @@ describe('SouthAfricaPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SouthAfricaPageComponent ]
-    })
-    .compileComponents();
+      declarations: [SouthAfricaPageComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
