@@ -196,26 +196,32 @@ export class DataTransformingService {
     return aggregatedResult;
   }
 
-  public getGlobalAggregatedData(data: GlobalTimeSeriesModel[]): GlobalTimeSeriesModel {
-
-    const aggregatedResult = [...this.getAggregatedTimelineData(data)].reduce((finalCountry, workingCountry) => {
-      for (const key in workingCountry.timeline.cases) {
-        if (workingCountry.timeline.cases.hasOwnProperty(key)) {
-          finalCountry.timeline.cases[key] += workingCountry.timeline.cases[key];
+  public getGlobalAggregatedData(
+    data: GlobalTimeSeriesModel[]
+  ): GlobalTimeSeriesModel {
+    const aggregatedResult = [...this.getAggregatedTimelineData(data)].reduce(
+      (finalCountry, workingCountry) => {
+        for (const key in workingCountry.timeline.cases) {
+          if (workingCountry.timeline.cases.hasOwnProperty(key)) {
+            finalCountry.timeline.cases[key] +=
+              workingCountry.timeline.cases[key];
+          }
         }
-      }
-      for (const key in workingCountry.timeline.deaths) {
-        if (workingCountry.timeline.deaths.hasOwnProperty(key)) {
-          finalCountry.timeline.deaths[key] += workingCountry.timeline.deaths[key];
+        for (const key in workingCountry.timeline.deaths) {
+          if (workingCountry.timeline.deaths.hasOwnProperty(key)) {
+            finalCountry.timeline.deaths[key] +=
+              workingCountry.timeline.deaths[key];
+          }
         }
-      }
-      for (const key in finalCountry.timeline.recovered) {
-        if (finalCountry.timeline.recovered.hasOwnProperty(key)) {
-          finalCountry.timeline.recovered[key] += workingCountry.timeline.recovered[key];
+        for (const key in finalCountry.timeline.recovered) {
+          if (finalCountry.timeline.recovered.hasOwnProperty(key)) {
+            finalCountry.timeline.recovered[key] +=
+              workingCountry.timeline.recovered[key];
+          }
         }
+        return finalCountry;
       }
-      return finalCountry;
-    });
+    );
 
     aggregatedResult.country = 'Global';
     aggregatedResult.province = '';

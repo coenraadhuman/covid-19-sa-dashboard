@@ -74,13 +74,13 @@ export class TimelineComponent implements OnInit {
         this.selectedCountryData = x;
 
         this.multiLineData[0].series = this.addToMultilineChartTimelineSeriesDataArray(
-            x.timeline.cases
+          x.timeline.cases
         );
         this.multiLineData[1].series = this.addToMultilineChartTimelineSeriesDataArray(
-            x.timeline.recovered
+          x.timeline.recovered
         );
         this.multiLineData[2].series = this.addToMultilineChartTimelineSeriesDataArray(
-            x.timeline.deaths
+          x.timeline.deaths
         );
 
         this.loaded = true;
