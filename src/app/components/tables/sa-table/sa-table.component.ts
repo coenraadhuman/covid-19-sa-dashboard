@@ -1,8 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatTableDataSource} from '@angular/material';
-import {DataStoreService} from '../../../services/data-store/data-store.service';
-import {MatSort} from '@angular/material/sort';
-import {SouthAfricaProvinceTableModel} from '../../../models/south-africa-province-table.model';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
+import { DataStoreService } from '../../../services/data-store/data-store.service';
+import { MatSort } from '@angular/material/sort';
+import { SouthAfricaProvinceTableModel } from '../../../models/south-africa-province-table.model';
 
 @Component({
   selector: 'app-sa-table',
@@ -10,13 +10,20 @@ import {SouthAfricaProvinceTableModel} from '../../../models/south-africa-provin
   styleUrls: ['./sa-table.component.scss'],
 })
 export class SaTableComponent implements OnInit {
-  displayedColumns: string[] = ['Number', 'Province', 'TotalCases', 'TotalDeaths'];
+  displayedColumns: string[] = [
+    'Number',
+    'Province',
+    'TotalCases',
+    'TotalDeaths',
+  ];
 
   tableDataSource;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private dataStore: DataStoreService) {
-    this.tableDataSource = new MatTableDataSource<SouthAfricaProvinceTableModel>(this.dataStore.southAfricaProvinceTableDetails);
+    this.tableDataSource = new MatTableDataSource<
+      SouthAfricaProvinceTableModel
+    >(this.dataStore.southAfricaProvinceTableDetails);
   }
 
   ngOnInit() {
@@ -25,7 +32,7 @@ export class SaTableComponent implements OnInit {
 
   getTotalDeaths(): number {
     let total = 0;
-    this.dataStore.southAfricaProvinceTableDetails.forEach(x => {
+    this.dataStore.southAfricaProvinceTableDetails.forEach((x) => {
       total += x.totalDeaths;
     });
     return total;
@@ -33,7 +40,7 @@ export class SaTableComponent implements OnInit {
 
   getTotalCases(): number {
     let total = 0;
-    this.dataStore.southAfricaProvinceTableDetails.forEach(x => {
+    this.dataStore.southAfricaProvinceTableDetails.forEach((x) => {
       total += x.totalCases;
     });
     return total;

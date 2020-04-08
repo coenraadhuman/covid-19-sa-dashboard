@@ -5,9 +5,9 @@ import { SouthAfricaCasesDetailsModel } from '../../models/south-africa-cases-de
 import { SouthAfricaCaseModel } from '../../models/south-africa-case.model';
 import { GlobalTimeSeriesModel } from '../../models/global-timeSeries.model';
 import { Observable, Subject } from 'rxjs';
-import {SouthAfricaDeathModel} from '../../models/south-africa-death.model';
-import {SouthAfricaProvinceModel} from '../../models/south-africa-province.model';
-import {SouthAfricaProvinceTableModel} from '../../models/south-africa-province-table.model';
+import { SouthAfricaDeathModel } from '../../models/south-africa-death.model';
+import { SouthAfricaProvinceModel } from '../../models/south-africa-province.model';
+import { SouthAfricaProvinceTableModel } from '../../models/south-africa-province-table.model';
 
 @Injectable({
   providedIn: 'root',
@@ -30,15 +30,69 @@ export class DataStoreService {
   public southAfricaProvinceDetails = [] as SouthAfricaProvinceModel[];
 
   public southAfricaProvinceTableDetails: SouthAfricaProvinceTableModel[] = [
-    {key: 'GP', alternativeName: 'gauteng', name: 'Gauteng', totalCases: 0, totalDeaths: 0 },
-    {key: 'WC', alternativeName: 'western_cape', name: 'Western Cape',totalCases: 0, totalDeaths: 0 },
-    {key: 'KZN', alternativeName: 'kwazulu_natal', name: 'KwaZulu-Natal',totalCases: 0, totalDeaths: 0 },
-    {key: 'FS', alternativeName: 'free_state', name: 'Free State' , totalCases: 0, totalDeaths: 0 },
-    { key: 'MP', alternativeName: 'mpumlanga', name: 'Mpumalanga', totalCases: 0, totalDeaths: 0 },
-    {key: 'NW', alternativeName: 'north_west', name: 'North West', totalCases: 0, totalDeaths: 0 },
-    {key: 'LP', alternativeName: 'limpopo', name: 'Limpopo', totalCases: 0, totalDeaths: 0 },
-    {key: 'EC', alternativeName: 'eastern_cape', name: 'Eastern Cape' , totalCases: 0, totalDeaths: 0 },
-    {key: 'NC', alternativeName: 'northern_cape', name: 'Northern Cape' , totalCases: 0, totalDeaths: 0 },
+    {
+      key: 'GP',
+      alternativeName: 'gauteng',
+      name: 'Gauteng',
+      totalCases: 0,
+      totalDeaths: 0,
+    },
+    {
+      key: 'WC',
+      alternativeName: 'western_cape',
+      name: 'Western Cape',
+      totalCases: 0,
+      totalDeaths: 0,
+    },
+    {
+      key: 'KZN',
+      alternativeName: 'kwazulu_natal',
+      name: 'KwaZulu-Natal',
+      totalCases: 0,
+      totalDeaths: 0,
+    },
+    {
+      key: 'FS',
+      alternativeName: 'free_state',
+      name: 'Free State',
+      totalCases: 0,
+      totalDeaths: 0,
+    },
+    {
+      key: 'MP',
+      alternativeName: 'mpumlanga',
+      name: 'Mpumalanga',
+      totalCases: 0,
+      totalDeaths: 0,
+    },
+    {
+      key: 'NW',
+      alternativeName: 'north_west',
+      name: 'North West',
+      totalCases: 0,
+      totalDeaths: 0,
+    },
+    {
+      key: 'LP',
+      alternativeName: 'limpopo',
+      name: 'Limpopo',
+      totalCases: 0,
+      totalDeaths: 0,
+    },
+    {
+      key: 'EC',
+      alternativeName: 'eastern_cape',
+      name: 'Eastern Cape',
+      totalCases: 0,
+      totalDeaths: 0,
+    },
+    {
+      key: 'NC',
+      alternativeName: 'northern_cape',
+      name: 'Northern Cape',
+      totalCases: 0,
+      totalDeaths: 0,
+    },
   ];
 
   public timelineData = new Subject<GlobalTimeSeriesModel[]>();
