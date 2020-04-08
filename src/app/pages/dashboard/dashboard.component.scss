@@ -35,7 +35,75 @@ mat-card-content {
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 600px) {
+  .overview-container {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid:
+            'ov'
+            'za';
+  }
+
+  .overview {
+    grid-area: ov;
+  }
+
+  .south-africa {
+    grid-area: za;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid:
+            'overview sa'
+            'table table';
+  }
+
+  .table {
+    grid-area: table;
+  }
+
+  .sa {
+    grid-area: sa;
+    mat-card {
+      max-width: 300px;
+    }
+  }
+
+  .overview {
+    grid-area: overview;
+  }
+
+  .add-margin {
+    margin-top: 0px;
+  }
+
+  mat-card {
+    max-width: 600px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+  }
+}
+
+@media screen and (min-width: 1250px) {
+  .overview-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid:
+            'ov za';
+  }
+
+  .overview {
+    grid-area: ov;
+  }
+
+  .south-africa {
+    grid-area: za;
+  }
+
   .container {
     display: grid;
     grid-template-columns: auto auto;
@@ -69,7 +137,7 @@ mat-card-content {
   }
 }
 
-@media screen and (min-width: 1900px) {
+@media screen and (min-width: 1596px) {
   .overview-container {
     display: grid;
     grid-template-rows: auto auto;
