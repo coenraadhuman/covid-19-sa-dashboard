@@ -49,7 +49,7 @@
     "ZULU" : "Zulu"
   },
   "TOOLTIP": {
-    "COUNTRY": "Click here for a timeline graph of ",
+    "COUNTRY": "Click on country to view it's timeline graph ",
     "SORT" : "Click to sort."
   },
   "SNACKBAR" : {
