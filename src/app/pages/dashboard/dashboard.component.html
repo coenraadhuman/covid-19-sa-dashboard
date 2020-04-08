@@ -34,8 +34,8 @@
     <mat-card class="sa">
         <app-card-title [translationKey]="'TITLES.KNOWNPROVINCE' | translate"></app-card-title>
         <mat-card-content>
-            <app-progress-bar [loadState]="dataStore.isCaseDetailsLoaded"></app-progress-bar>
-            <app-sa-table [tableDataSource]="dataStore.southAfricaCaseDetails.provinces" [loadstate]="dataStore.isCaseDetailsLoaded"></app-sa-table>
+            <app-progress-bar [loadState]="dataStore.isProvinceDetailsLoaded && dataStore.isDeathDetailsLoaded"></app-progress-bar>
+            <app-sa-table *ngIf="dataStore.isProvinceDetailsLoaded && dataStore.isDeathDetailsLoaded"></app-sa-table>
         </mat-card-content>
     </mat-card>
 

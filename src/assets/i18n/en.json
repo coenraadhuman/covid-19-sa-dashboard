@@ -23,7 +23,7 @@
   },
   "TABLECOLUMNS" : {
     "TOTALCASES": "Total Cases",
-    "NUMBER": "Number",
+    "NUMBER": "No.",
     "PROVINCE": "Province",
     "COUNTRY" : "Country",
     "TOTALACTIVE" : "Total Active",

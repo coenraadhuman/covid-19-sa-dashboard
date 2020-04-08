@@ -13,6 +13,8 @@ export class DataAssignmentService {
   private subscriptionThree: Subscription;
   private subscriptionFour: Subscription;
   private subscriptionFive: Subscription;
+  private subscriptionSix: Subscription;
+  private subscriptionSeven: Subscription;
 
   constructor(
     private dataRetrieval: DataRetrievalService,
@@ -94,4 +96,45 @@ export class DataAssignmentService {
         this.subscriptionFive.unsubscribe();
       });
   }
+
+    public getSouthAfricaDeathsDetailsData() {
+        this.subscriptionSix = this.dataRetrieval.getSouthAfricaDeaths().subscribe(retrievedData => {
+            this.dataStore.southAfricaDeathDetails = retrievedData;
+            retrievedData.forEach(x => {
+                this.dataStore.southAfricaProvinceTableDetails.forEach(y => {
+                    if (x.province === y.key) {
+                        y.totalDeaths += 1;
+                    }
+                });
+            })
+            this.dataStore.isDeathDetailsLoaded = true;
+            this.subscriptionSix.unsubscribe();
+        });
+    }
+
+    public getSouthAfricaProvinceDetailsData() {
+        this.subscriptionSeven = this.dataRetrieval.getSouthAfricaProvince().subscribe(retrievedData => {
+            this.dataStore.southAfricaProvinceDetails = retrievedData;
+            // tslint:disable-next-line:max-line-length
+            this.dataStore.southAfricaProvinceTableDetails[0].totalCases = Number(retrievedData[retrievedData.length - 2].provinces.gauteng);
+            // tslint:disable-next-line:max-line-length
+            this.dataStore.southAfricaProvinceTableDetails[1].totalCases = Number(retrievedData[retrievedData.length - 2].provinces.western_cape);
+            // tslint:disable-next-line:max-line-length
+            this.dataStore.southAfricaProvinceTableDetails[2].totalCases = Number(retrievedData[retrievedData.length - 2].provinces.kwazulu_natal);
+            // tslint:disable-next-line:max-line-length
+            this.dataStore.southAfricaProvinceTableDetails[3].totalCases = Number(retrievedData[retrievedData.length - 2].provinces.free_state);
+            // tslint:disable-next-line:max-line-length
+            this.dataStore.southAfricaProvinceTableDetails[4].totalCases = Number(retrievedData[retrievedData.length - 2].provinces.mpumlanga);
+            // tslint:disable-next-line:max-line-length
+            this.dataStore.southAfricaProvinceTableDetails[5].totalCases = Number(retrievedData[retrievedData.length - 2].provinces.north_west);
+            // tslint:disable-next-line:max-line-length
+            this.dataStore.southAfricaProvinceTableDetails[6].totalCases = Number(retrievedData[retrievedData.length - 2].provinces.limpopo);
+            // tslint:disable-next-line:max-line-length
+            this.dataStore.southAfricaProvinceTableDetails[7].totalCases = Number(retrievedData[retrievedData.length - 2].provinces.eastern_cape);
+            // tslint:disable-next-line:max-line-length
+            this.dataStore.southAfricaProvinceTableDetails[8].totalCases = Number(retrievedData[retrievedData.length - 2].provinces.northern_cape);
+            this.dataStore.isProvinceDetailsLoaded = true;
+            this.subscriptionSeven.unsubscribe();
+        });
+    }
 }
