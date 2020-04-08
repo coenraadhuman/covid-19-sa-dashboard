@@ -12,7 +12,6 @@ export class DataAssignmentService {
   private subscriptionTwo: Subscription;
   private subscriptionThree: Subscription;
   private subscriptionFour: Subscription;
-  private subscriptionFive: Subscription;
 
   constructor(
     private dataRetrieval: DataRetrievalService,
@@ -78,20 +77,15 @@ export class DataAssignmentService {
         this.dataStore.timelineData.next(
           this.dataTransforming.getAggregatedTimelineData(retrievedData)
         );
+
+        const object = this.dataTransforming.getGlobalAggregatedData(
+            this.dataStore.timelineDataCopy
+        );
+        this.dataStore.globalTimelineData.next(object);
+        this.dataStore.globalTimelineDataCopy = object;
+
         this.subscriptionFour.unsubscribe();
       });
   }
 
-  public getGlobalData() {
-    this.subscriptionFive = this.dataRetrieval
-      .getGlobalTimeSeriesData()
-      .subscribe((retrievedData) => {
-        const object = this.dataTransforming.getGlobalAggregatedData(
-          retrievedData
-        );
-        this.dataStore.globalTimelineData.next(object);
-        this.dataStore.globalTimelineDataCopy = object;
-        this.subscriptionFive.unsubscribe();
-      });
-  }
 }

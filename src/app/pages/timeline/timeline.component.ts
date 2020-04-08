@@ -62,7 +62,7 @@ export class TimelineComponent implements OnInit {
     this.formattedPrefix = this.selectedCountry + ' ';
 
     if (!this.dataStore.isGlobalTimelineDataRetrieved) {
-      this.dataAssignment.getGlobalData();
+      this.dataAssignment.getTimelineData();
     }
 
     if (this.dataStore.timelineDataCopy.length === 0) {
