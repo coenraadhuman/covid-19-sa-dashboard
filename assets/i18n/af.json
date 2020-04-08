@@ -1,0 +1,60 @@
+{
+  "BUTTONS" : {
+    "TIMELINE" : "Sien Tydlyn Grafiek",
+    "SEEALL": "Sien Alles",
+    "SA": "Sien Ander Statestieke"
+  },
+  "COMMON": {
+    "AFFECTEDCOUNTRIES": "Geraakte Lande",
+    "SOUTHAFRICA": "Suid Afrika",
+    "GLOBAL": "Wêreld Wyd",
+    "TESTS": "Totale Toetse"
+  },
+  "TITLES" : {
+    "KNOWNPROVINCE": "SA Bekende Provinsie Besonderhede",
+    "TOP10": "Top 10 Geraakte Lande",
+    "ALLAFFECTEDCOUNTRIES": "Alle Geraakte Lande",
+    "TIMELINE" : "Tydlyn Grafiek",
+    "OVERVIEW": "Pandemie Oorsig"
+  },
+  "TABLECOLUMNS" : {
+    "TOTALCASES": "Totale Gevalle",
+    "NUMBER": "No.",
+    "PROVINCE": "Provinsie",
+    "COUNTRY" : "Land",
+    "TOTALACTIVE" : "Totale Aktiewe",
+    "TOTALDEATHS" : "Totale Sterftes",
+    "TOTALRECOVERED" : "Totale Genesings",
+    "NEWCASES" : "Nuwe Gevalle",
+    "NEWDEATHS" : "Nuwe Sterftes",
+    "CRITICALCASES": "Kritiese Gevalle"
+  },
+  "MENU": {
+    "HEADER" : "COVID-19 Pandemie",
+    "ABOUT": "Meer Oor Hierdie",
+    "EXTERNALINFORMATION": "Eksterne Inligting",
+    "GITHUB": "Projek se Github Blad",
+    "DATA": "Data Bewaarplekke",
+    "API": "Web API Bewaarplekke",
+    "NOVELCOVID": "NovelCOVID API",
+    "DSFSI": "DSFSI Covid API",
+    "WORLDOMETERS": "Worldometers' CORONAVIRUS",
+    "JOHNHOPKINS": "Johns Hopkins CSSE",
+    "REPORT": "Rapporteer Enige Probleme",
+    "BUILD": "Weergawe ",
+    "SPONSOR" : "Koop Vir Ons 'n Koffie!",
+    "LANGUAGE" : "Kies Taal",
+    "AFRIKAANS" : "Afrikaans",
+    "ENGLISH" : "Engels",
+    "ZULU" : "Zulu"
+  },
+  "TOOLTIP": {
+    "COUNTRY": "Klik hier vir 'n tydlyngrafiek van ",
+    "SORT" : "Klik om te sorteer."
+  },
+  "SNACKBAR" : {
+    "ABOUT": "Hierdie is 'n eenvoudige COVID-19 spoorsnypaneelbord, hoofsaaklik vir persoonlike gebruik deur 'n Suid-Afrikaanse burger. Koop vir ons 'n koffie as jy kan :)",
+    "FEATURES": "Nuwe funksies: ons het slim tabelle, hulle kan gesorteer deur op die kolomkop te klik. Tydlyngrafieke is bygevoeg, klik net op 'n land naam om dit te sien.",
+    "INVALIDCOUNTRY": "Onbekende land gekies."
+  }
+}

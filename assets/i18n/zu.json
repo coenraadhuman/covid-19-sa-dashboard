@@ -1,0 +1,60 @@
+{
+  "BUTTONS" : {
+    "TIMELINE" : "Bheka igrafu yesikhathi",
+    "SEEALL": "Bona konke",
+    "SA": "Bona Ezinye Izibalo"
+  },
+  "COMMON": {
+    "AFFECTEDCOUNTRIES": "Amazwe Athintekile",
+    "SOUTHAFRICA": "South Africa",
+    "GLOBAL": "Emhlabeni jikelele",
+    "TESTS": "Isivivinyo esiphelele"
+  },
+  "TITLES" : {
+    "KNOWNPROVINCE": "SA Imininingwane Yesifundazwe eyaziwayo",
+    "TOP10": "Amazwe aphezulu 10 athintekile",
+    "ALLAFFECTEDCOUNTRIES": "Wonke Amazwe Athintekile",
+    "TIMELINE" : "Igrafu yesikhathi",
+    "OVERVIEW": "Ukubuka konke kwesifo"
+  },
+  "TABLECOLUMNS" : {
+    "TOTALCASES": "Amacala Aphelele",
+    "NUMBER": "No.",
+    "PROVINCE": "Isifundazwe",
+    "COUNTRY" : "Izwe",
+    "TOTALACTIVE" : "okusebenzayo",
+    "TOTALDEATHS" : "Ukufa Okuphelele",
+    "TOTALRECOVERED" : "Alulame",
+    "NEWCASES" : "Amacala Namuhla",
+    "NEWDEATHS" : "Ukufa Namhlanje",
+    "CRITICALCASES": "Amacala Abucayi"
+  },
+  "MENU": {
+    "HEADER" : "COVID-19 Isifo",
+    "ABOUT": "mayelana",
+    "EXTERNALINFORMATION": "Imininingwane Yangaphandle",
+    "GITHUB": "Ikhasi lephrojekthi le-Github",
+    "DATA": "Amarekhodi edatha",
+    "API": "Izindawo ze-Web API",
+    "NOVELCOVID": "NovelCOVID API",
+    "DSFSI": "DSFSI Covid API",
+    "WORLDOMETERS": "Worldometers' CORONAVIRUS",
+    "JOHNHOPKINS": "Johns Hopkins CSSE",
+    "REPORT": "Bika Izinkinga",
+    "BUILD": "Inguqulo ",
+    "SPONSOR" : "Sithenge iKofi!",
+    "LANGUAGE" : "Select Language",
+    "AFRIKAANS" : "Afrikaans",
+    "ENGLISH" : "English",
+    "ZULU" : "Zulu"
+    },
+    "TOOLTIP": {
+    "COUNTRY": "Chofoza lapha ukuthola umugqa wesikhathi we ",
+    "SORT" : "hlunga."
+    },
+    "SNACKBAR" : {
+    "ABOUT": "This is a simple COVID-19 tracker dashboard primarily for personal use by a South African citizen. If you can buy us a coffee :)",
+    "FEATURES": "New Features: we have smart tables, sort them by clicking the column header. Timeline graphs are added, just click a country name to view it.",
+    "INVALIDCOUNTRY": "Unknown country selected."
+    }
+}
