@@ -153,4 +153,14 @@ export class DataAssignmentService {
         this.subscriptionSeven.unsubscribe();
       });
   }
+
+  public getSouthAfricaTestData() {
+    this.dataRetrieval.getTestData().subscribe((retrievedData) => {
+      this.dataStore.southAfricaTestData = this.dataTransforming.getMostRecentTestData(
+        retrievedData
+      );
+      this.dataStore.isTestDataLoaded = true;
+      this.subscriptionFive.unsubscribe();
+    });
+  }
 }

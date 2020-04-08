@@ -7,7 +7,8 @@
   "COMMON": {
     "AFFECTEDCOUNTRIES": "Affected Countries",
     "SOUTHAFRICA": "South Africa",
-    "GLOBAL": "Global"
+    "GLOBAL": "Global",
+    "TESTS": "Total Tests"
   },
   "TITLES" : {
     "KNOWNPROVINCE": "SA Known Province Details",

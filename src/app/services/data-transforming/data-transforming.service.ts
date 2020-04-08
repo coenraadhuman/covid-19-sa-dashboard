@@ -9,6 +9,7 @@ import { from } from 'rxjs';
 import { groupBy, mergeMap, reduce, toArray } from 'rxjs/operators';
 import { GlobalTimeSeriesModel } from '../../models/global-timeSeries.model';
 import { DataStoreService } from '../data-store/data-store.service';
+import { TestDataModel } from '../../models/south-africa-test-data.model';
 
 @Injectable({
   providedIn: 'root',
@@ -227,5 +228,15 @@ export class DataTransformingService {
     aggregatedResult.province = '';
 
     return aggregatedResult;
+  }
+
+  public getMostRecentTestData(data: TestDataModel[]): TestDataModel {
+    data.sort((a, b) => {
+      return (
+        Number(b.cumulative_tests === '' ? 0 : b.cumulative_tests) -
+        Number(a.cumulative_tests === '' ? 0 : a.cumulative_tests)
+      );
+    });
+    return data[0];
   }
 }
