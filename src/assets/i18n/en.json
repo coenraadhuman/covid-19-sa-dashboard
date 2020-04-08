@@ -4,22 +4,16 @@
     "SEEALL": "See All"
   },
   "COMMON": {
-    "TOTALCASES": "Total Cases",
-    "DEATHS": "Total Deaths",
-    "RECOVERED": "Total Recovered",
-    "ACTIVECASES": "Total Active",
     "AFFECTEDCOUNTRIES": "Affected Countries",
     "SOUTHAFRICA": "South Africa",
-    "OVERVIEW": "Overview",
-    "GLOBAL": "Global",
-    "SAPROVINCE": "SA Known Province Details",
-    "CASESTODAY": "New Cases",
-    "TIMELINE" : "Timeline"
+    "GLOBAL": "Global"
   },
   "TITLES" : {
     "KNOWNPROVINCE": "SA Known Province Details",
     "TOP10": "Top 10 Affected Countries",
-    "ALLAFFECTEDCOUNTRIES": "All Affected Countries"
+    "ALLAFFECTEDCOUNTRIES": "All Affected Countries",
+    "TIMELINE" : "Timeline Graph",
+    "OVERVIEW": "Pandemic Overview"
   },
   "TABLECOLUMNS" : {
     "TOTALCASES": "Total Cases",
@@ -47,5 +41,9 @@
     "REPORT": "Report Any Issues",
     "BUILD": "Version ",
     "SPONSOR" : "Buy Us A Coffee!"
+  },
+  "TOOLTIP": {
+    "COUNTRY": "Click here for a timeline graph of ",
+    "SORT" : "Click to sort."
   }
 }
