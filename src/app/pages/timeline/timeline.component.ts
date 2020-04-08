@@ -15,6 +15,7 @@ import {
 } from '../../models/global-timeSeries.model';
 import { DataLoadService } from '../../services/data-load/data-load.service';
 import { SnackBarNotificationService } from '../../services/snack-bar-notification/snack-bar-notification.service';
+import { LanguageService } from '../../services/language/language.service';
 
 @Component({
   selector: 'app-timeline',
@@ -45,22 +46,14 @@ export class TimelineComponent implements OnInit {
   constructor(
     public dataStore: DataStoreService,
     private dataAssignment: DataAssignmentService,
-    public translate: TranslateService,
     private activatedRoute: ActivatedRoute,
     private dataTransforming: DataTransformingService,
     private dataLoad: DataLoadService,
     private snackBar: SnackBarNotificationService,
-    public gtag: Gtag
+    public gtag: Gtag,
+    private language: LanguageService
   ) {
-    if (translate.langs.length === 0) {
-      translate.addLangs(['en']);
-      translate.setDefaultLang('en');
-      this.dataStore.selectedLanguage = 'en';
-      translate.use(this.dataStore.selectedLanguage);
-    } else {
-      translate.use(translate.currentLang);
-      this.dataStore.selectedLanguage = translate.currentLang;
-    }
+    this.language.loadTranslationService();
 
     this.selectedCountry = this.activatedRoute.snapshot.paramMap.get('country');
     this.formattedPrefix = this.selectedCountry + ' ';

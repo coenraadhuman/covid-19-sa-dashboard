@@ -4,6 +4,7 @@ import { DataAssignmentService } from '../../services/data-assignment/data-assig
 import { TranslateService } from '@ngx-translate/core';
 import { Gtag } from 'angular-gtag';
 import { DataLoadService } from '../../services/data-load/data-load.service';
+import { LanguageService } from '../../services/language/language.service';
 
 @Component({
   selector: 'app-all-stats-table',
@@ -11,36 +12,16 @@ import { DataLoadService } from '../../services/data-load/data-load.service';
   styleUrls: ['./all-stats-table.component.scss'],
 })
 export class AllStatsTableComponent implements OnInit {
-  displayedColumns: string[] = [
-    'Number',
-    'Country',
-    'TotalCases',
-    'TotalActive',
-    'TotalDeaths',
-    'TotalRecovered',
-    'CasesToday',
-    'DeathsToday',
-    'CriticalCondition',
-  ];
-
   constructor(
     public dataStore: DataStoreService,
     private dataAssignment: DataAssignmentService,
     public translate: TranslateService,
     public dataLoad: DataLoadService,
-    public gtag: Gtag
+    public gtag: Gtag,
+    private language: LanguageService
   ) {
+    this.language.loadTranslationService();
     this.dataStore.showTopTen = false;
-
-    if (translate.langs.length === 0) {
-      translate.addLangs(['en']);
-      translate.setDefaultLang('en');
-      this.dataStore.selectedLanguage = 'en';
-      translate.use(this.dataStore.selectedLanguage);
-    } else {
-      translate.use(translate.currentLang);
-      this.dataStore.selectedLanguage = translate.currentLang;
-    }
   }
 
   ngOnInit() {

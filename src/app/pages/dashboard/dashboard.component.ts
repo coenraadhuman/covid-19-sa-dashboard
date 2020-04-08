@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Gtag } from 'angular-gtag';
 import { SnackBarNotificationService } from '../../services/snack-bar-notification/snack-bar-notification.service';
 import { DataLoadService } from '../../services/data-load/data-load.service';
+import { LanguageService } from '../../services/language/language.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,20 +17,11 @@ export class DashboardComponent implements OnInit {
     private dataLoad: DataLoadService,
     public translate: TranslateService,
     public snackBar: SnackBarNotificationService,
-    public gtag: Gtag
+    public gtag: Gtag,
+    private language: LanguageService
   ) {
+    this.language.loadTranslationService();
     this.dataStore.showTopTen = true;
-
-    if (translate.langs.length === 0) {
-      translate.addLangs(['en']);
-      translate.setDefaultLang('en');
-      this.dataStore.selectedLanguage = 'en';
-      translate.use(this.dataStore.selectedLanguage);
-    } else {
-      translate.use(translate.currentLang);
-      this.dataStore.selectedLanguage = translate.currentLang;
-    }
-
     this.snackBar.newFeatures();
   }
 

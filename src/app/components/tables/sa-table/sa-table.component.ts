@@ -10,12 +10,7 @@ import { SouthAfricaProvinceTableModel } from '../../../models/south-africa-prov
   styleUrls: ['./sa-table.component.scss'],
 })
 export class SaTableComponent implements OnInit {
-  displayedColumns: string[] = [
-    'Number',
-    'Province',
-    'TotalCases',
-    'TotalDeaths',
-  ];
+  displayedColumns: string[] = ['Number', 'name', 'totalCases', 'totalDeaths'];
 
   tableDataSource;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
