@@ -28,7 +28,7 @@ export class TimelineComponent implements OnInit {
       series: [],
     },
     {
-      name: 'Total Recovered Cases',
+      name: 'Total Recovered',
       series: [],
     },
     {
