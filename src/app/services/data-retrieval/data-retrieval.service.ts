@@ -5,6 +5,8 @@ import { CountriesModel } from '../../models/countries.model';
 import { GlobalStatsModel } from '../../models/global-stats.model';
 import { SouthAfricaCaseModel } from '../../models/south-africa-case.model';
 import { GlobalTimeSeriesModel } from '../../models/global-timeSeries.model';
+import { SouthAfricaDeathModel } from '../../models/south-africa-death.model';
+import { SouthAfricaProvinceModel } from '../../models/south-africa-province.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +18,10 @@ export class DataRetrievalService {
     'https://covid-za-api.herokuapp.com/cases/confirmed';
   private globalTimeSeriesUri =
     'https://corona.lmao.ninja/v2/historical?lastdays=all';
+  private southAfricaDeathsUri =
+    'https://covid-za-api.herokuapp.com/cases/deaths';
+  private southAfricaProvinceUri =
+    'https://covid-za-api.herokuapp.com/cases/timeline/provincial/cumulative';
 
   constructor(private http: HttpClient) {}
 
@@ -34,6 +40,18 @@ export class DataRetrievalService {
   public getSouthAfricaCases(): Observable<SouthAfricaCaseModel[]> {
     return this.executeRequest<SouthAfricaCaseModel[]>(
       this.southAfricaCasesUri
+    );
+  }
+
+  public getSouthAfricaDeaths(): Observable<SouthAfricaDeathModel[]> {
+    return this.executeRequest<SouthAfricaDeathModel[]>(
+      this.southAfricaDeathsUri
+    );
+  }
+
+  public getSouthAfricaProvince(): Observable<SouthAfricaProvinceModel[]> {
+    return this.executeRequest<SouthAfricaProvinceModel[]>(
+      this.southAfricaProvinceUri
     );
   }
 

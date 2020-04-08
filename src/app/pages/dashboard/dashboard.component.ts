@@ -11,8 +11,6 @@ import { SnackBarNotificationService } from '../../services/snack-bar-notificati
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  displayedColumns: string[] = ['Number', 'Province', 'TotalCases'];
-
   constructor(
     public dataStore: DataStoreService,
     private dataAssignment: DataAssignmentService,
@@ -46,6 +44,14 @@ export class DashboardComponent implements OnInit {
 
     if (!this.dataStore.isTableLoaded) {
       this.dataAssignment.getTablesData();
+    }
+
+    if (this.dataStore.southAfricaDeathDetails.length === 0) {
+      this.dataAssignment.getSouthAfricaDeathsDetailsData();
+    }
+
+    if (this.dataStore.southAfricaProvinceDetails.length === 0) {
+      this.dataAssignment.getSouthAfricaProvinceDetailsData();
     }
   }
 }

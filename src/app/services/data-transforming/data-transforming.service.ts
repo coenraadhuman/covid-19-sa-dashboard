@@ -15,15 +15,15 @@ import { DataStoreService } from '../data-store/data-store.service';
 })
 export class DataTransformingService {
   provinceNames = [
-    { key: 'GP', name: 'Gauteng' },
-    { key: 'WC', name: 'Western Cape' },
-    { key: 'KZN', name: 'KwaZulu-Natal' },
-    { key: 'FS', name: 'Free State' },
-    { key: 'MP', name: 'Mpumalanga' },
-    { key: 'NW', name: 'North West' },
-    { key: 'LP', name: 'Limpopo' },
-    { key: 'EC', name: 'Eastern Cape' },
-    { key: 'NC', name: 'Northern Cape' },
+    { key: 'GP', alternativeName: 'gauteng', name: 'Gauteng' },
+    { key: 'WC', alternativeName: 'western_cape', name: 'Western Cape' },
+    { key: 'KZN', alternativeName: 'kwazulu_natal', name: 'KwaZulu-Natal' },
+    { key: 'FS', alternativeName: 'free_state', name: 'Free State' },
+    { key: 'MP', alternativeName: 'mpumlanga', name: 'Mpumalanga' },
+    { key: 'NW', alternativeName: 'north_west', name: 'North West' },
+    { key: 'LP', alternativeName: 'limpopo', name: 'Limpopo' },
+    { key: 'EC', alternativeName: 'eastern_cape', name: 'Eastern Cape' },
+    { key: 'NC', alternativeName: 'northern_cape', name: 'Northern Cape' },
   ];
 
   constructor(private dataStore: DataStoreService) {}
