@@ -149,6 +149,9 @@ export class DataAssignmentService {
         this.dataStore.southAfricaProvinceTableDetails[8].totalCases = Number(
           retrievedData[retrievedData.length - 2].provinces.northern_cape
         );
+        this.dataStore.southAfricaProvinceTableDetails[9].totalCases = Number(
+          retrievedData[retrievedData.length - 2].provinces.unknown
+        );
         this.dataStore.isProvinceDetailsLoaded = true;
         this.subscriptionSeven.unsubscribe();
       });
