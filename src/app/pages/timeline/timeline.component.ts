@@ -74,12 +74,12 @@ export class TimelineComponent implements OnInit {
       this.isTotalCasesLoaded = true;
     });
 
-    language.getTranslation('TABLECOLUMNS.TOTALDEATHS').subscribe(x => {
+    language.getTranslation('TABLECOLUMNS.TOTALRECOVERED').subscribe(x => {
       this.multiLineData[1].name = x;
       this.isTotalRecoveredLoaded = true;
     });
 
-    language.getTranslation('TABLECOLUMNS.TOTALRECOVERED').subscribe(x => {
+    language.getTranslation('TABLECOLUMNS.TOTALDEATHS').subscribe(x => {
       this.multiLineData[2].name = x;
       this.isTotalDeathsLoaded = true;
     });
