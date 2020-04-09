@@ -30,13 +30,16 @@ export class LanguageService {
 
   public activateEnglish() {
     this.translate.use('en');
+    this.dataStore.isFeatureSnackbarShown = false;
   }
 
   public activateAfrikaans() {
     this.translate.use('af');
+    this.dataStore.isFeatureSnackbarShown = false;
   }
 
   public activateZulu() {
     this.translate.use('zu');
+    this.dataStore.isFeatureSnackbarShown = false;
   }
 }

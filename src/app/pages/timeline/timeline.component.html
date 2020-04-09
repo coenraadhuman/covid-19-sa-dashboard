@@ -2,7 +2,8 @@
     <mat-card>
         <app-card-title [prefix]="formattedPrefix" [translationKey]="'TITLES.TIMELINE'"></app-card-title>
         <mat-card-content>
-            <app-line-chart *ngIf="loaded" [view]="" [data]="multiLineData"></app-line-chart>
+            <app-progress-bar [loadState]="loaded && isTotalCasesLoaded && isTotalDeathsLoaded && isTotalRecoveredLoaded"></app-progress-bar>
+            <app-line-chart *ngIf="loaded && isTotalCasesLoaded && isTotalDeathsLoaded && isTotalRecoveredLoaded" [data]="multiLineData"></app-line-chart>
         </mat-card-content>
     </mat-card>
 </div>

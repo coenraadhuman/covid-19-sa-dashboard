@@ -20,7 +20,10 @@ export class DashboardComponent implements OnInit {
   ) {
     this.language.loadTranslationService();
     this.dataStore.showTopTen = true;
-    this.snackBar.newFeatures();
+    if (!this.dataStore.isFeatureSnackbarShown) {
+      this.snackBar.newFeatures();
+      this.dataStore.isFeatureSnackbarShown = true;
+    }
   }
 
   ngOnInit(): void {

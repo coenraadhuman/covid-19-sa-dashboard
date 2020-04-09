@@ -25,6 +25,9 @@ import { LanguageService } from '../../services/language/language.service';
 export class TimelineComponent implements OnInit {
   selectedCountryData;
   loaded = false;
+  isTotalCasesLoaded = false;
+  isTotalRecoveredLoaded = false;
+  isTotalDeathsLoaded = false;
   multiLineData: MultilineChartDataModel[] = [
     {
       name: 'Total Cases',
@@ -65,6 +68,21 @@ export class TimelineComponent implements OnInit {
     } else {
       this.assignDataToGraph();
     }
+
+    language.getTranslation('TABLECOLUMNS.TOTALACTIVE').subscribe(x => {
+      this.multiLineData[0].name = x;
+      this.isTotalCasesLoaded = true;
+    });
+
+    language.getTranslation('TABLECOLUMNS.TOTALDEATHS').subscribe(x => {
+      this.multiLineData[1].name = x;
+      this.isTotalRecoveredLoaded = true;
+    });
+
+    language.getTranslation('TABLECOLUMNS.TOTALRECOVERED').subscribe(x => {
+      this.multiLineData[2].name = x;
+      this.isTotalDeathsLoaded = true;
+    });
   }
 
   assignDataToGraph() {
