@@ -92,7 +92,7 @@ export class DataAssignmentService {
   }
 
   public getSouthAfricaTestData() {
-    this.dataRetrieval.getTestData().subscribe((retrievedData) => {
+    this.subscriptionFive = this.dataRetrieval.getTestData().subscribe((retrievedData) => {
       this.dataStore.southAfricaTestData = this.dataTransforming.getMostRecentTestData(
         retrievedData
       );

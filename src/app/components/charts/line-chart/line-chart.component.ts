@@ -1,4 +1,5 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
+import {LanguageService} from '../../../services/language/language.service';
 
 @Component({
   selector: 'app-line-chart',
@@ -17,6 +18,9 @@ export class LineChartComponent implements OnInit {
   showYAxisLabel = true;
   yAxisLabel = 'Cases';
 
+  isLabelXLoaded = false;
+  isLabelYLoaded = false;
+
   colorScheme = {
     domain: [
       '#1B9CFC',
@@ -32,8 +36,16 @@ export class LineChartComponent implements OnInit {
     ],
   };
 
-  constructor() {
+  constructor(private language: LanguageService) {
     this.getScreenSize();
+    language.getTranslation('CHART.XAXISLABEL').subscribe(x => {
+      this.xAxisLabel = x;
+      this.isLabelXLoaded = true;
+    });
+    language.getTranslation('CHART.YAXISLABEL').subscribe(y => {
+      this.yAxisLabel = y;
+      this.isLabelYLoaded = true;
+    });
   }
 
   ngOnInit(): void {}

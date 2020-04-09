@@ -1,12 +1,15 @@
-<ngx-charts-line-chart
-        [view]="view"
-        [scheme]="colorScheme"
-        [results]="data"
-        [xAxis]="showXAxis"
-        [yAxis]="showYAxis"
-        [legend]="showLegend"
-        [showXAxisLabel]="showXAxisLabel"
-        [showYAxisLabel]="showYAxisLabel"
-        [xAxisLabel]="xAxisLabel"
-        [yAxisLabel]="yAxisLabel">
-</ngx-charts-line-chart>
+<div *ngIf="xAxisLabel && yAxisLabel">
+    <ngx-charts-line-chart
+            [view]="view"
+            [scheme]="colorScheme"
+            [results]="data"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel">
+    </ngx-charts-line-chart>
+</div>
+
