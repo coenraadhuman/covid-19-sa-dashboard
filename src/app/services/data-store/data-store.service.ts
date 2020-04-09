@@ -131,6 +131,8 @@ export class DataStoreService {
   public timelineLegendDeaths = 'Total Deaths';
   public timelineLegendRecovered = 'Total Recovered';
 
+  public isFeatureSnackbarShown = false;
+
   constructor() {}
 
   getTimelineData(): Observable<GlobalTimeSeriesModel[]> {
