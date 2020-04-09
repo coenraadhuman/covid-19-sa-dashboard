@@ -69,7 +69,7 @@ export class TimelineComponent implements OnInit {
       this.assignDataToGraph();
     }
 
-    language.getTranslation('TABLECOLUMNS.TOTALACTIVE').subscribe(x => {
+    language.getTranslation('TABLECOLUMNS.TOTALCASES').subscribe(x => {
       this.multiLineData[0].name = x;
       this.isTotalCasesLoaded = true;
     });
