@@ -1,6 +1,6 @@
 {
   "name": "covid19-sa",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "copy": "copy-files-from-to",
@@ -17,7 +17,8 @@
   "private": true,
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prettier-format && npm run git-add && npm run lint"
+      "pre-commit": "npm run prettier-format && npm run git-add",
+      "pre-push": "npm run lint && npm run test-headless"
     }
   },
   "copyFiles": [
