@@ -10,6 +10,7 @@
     "prettier-format": "prettier --config .prettierrc src/**/*.ts --write",
     "publish": "npm run build && npm run copy",
     "test": "ng test",
+    "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
