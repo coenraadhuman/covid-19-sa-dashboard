@@ -113,6 +113,9 @@ MIT
 @angular/router
 MIT
 
+@ngrx/store
+MIT
+
 @ngx-translate/core
 MIT
 
