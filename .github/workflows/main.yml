@@ -14,10 +14,16 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Build
+      - name: Dependencies
         run: |
           npm install
+
+      - name: Tests
+        run: |
           npm run test-headless
+
+      - name: Build
+        run: |
           npm run publish
 
       - name: Deploy
