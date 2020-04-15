@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { DataRetrievalService } from './data-retrieval.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('DataStoreService', () => {
+describe('DataRetrievalService', () => {
     beforeEach(() => TestBed.configureTestingModule({
         imports: [HttpClientTestingModule],
     }));
