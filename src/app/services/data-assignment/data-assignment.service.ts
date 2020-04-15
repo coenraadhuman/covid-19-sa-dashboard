@@ -92,13 +92,15 @@ export class DataAssignmentService {
   }
 
   public getSouthAfricaTestData() {
-    this.subscriptionFive = this.dataRetrieval.getTestData().subscribe((retrievedData) => {
-      this.dataStore.southAfricaTestData = this.dataTransforming.getMostRecentTestData(
-        retrievedData
-      );
-      this.dataStore.isTestDataLoaded = true;
-      this.subscriptionFive.unsubscribe();
-    });
+    this.subscriptionFive = this.dataRetrieval
+      .getTestData()
+      .subscribe((retrievedData) => {
+        this.dataStore.southAfricaTestData = this.dataTransforming.getMostRecentTestData(
+          retrievedData
+        );
+        this.dataStore.isTestDataLoaded = true;
+        this.subscriptionFive.unsubscribe();
+      });
   }
 
   public getSouthAfricaDeathsDetailsData() {
@@ -122,9 +124,11 @@ export class DataAssignmentService {
     this.subscriptionSeven = this.dataRetrieval
       .getSouthAfricaProvince()
       .subscribe((retrievedData) => {
-          retrievedData = retrievedData.sort((a, b) =>
-              (b.provinces.gauteng === '' ? 0 : Number(b.provinces.gauteng)) -
-              (a.provinces.gauteng === '' ? 0 : Number(a.provinces.gauteng)));
+        retrievedData = retrievedData.sort(
+          (a, b) =>
+            (b.provinces.gauteng === '' ? 0 : Number(b.provinces.gauteng)) -
+            (a.provinces.gauteng === '' ? 0 : Number(a.provinces.gauteng))
+        );
         this.dataStore.southAfricaProvinceDetails = retrievedData;
         // tslint:disable-next-line:max-line-length
         this.dataStore.southAfricaProvinceTableDetails[0].totalCases = Number(
