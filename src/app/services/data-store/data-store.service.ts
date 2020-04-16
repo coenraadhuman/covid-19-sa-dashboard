@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 import { CountriesModel } from '../../models/countries.model';
-import { GlobalStatsModel } from '../../models/global-stats.model';
-import { SouthAfricaCasesDetailsModel } from '../../models/south-africa-cases-details.model';
-import { SouthAfricaCaseModel } from '../../models/south-africa-case.model';
 import { GlobalTimeSeriesModel } from '../../models/global-timeSeries.model';
 import { Observable, Subject } from 'rxjs';
 import { SouthAfricaDeathModel } from '../../models/south-africa-death.model';
@@ -15,17 +12,6 @@ import { TestDataModel } from '../../models/south-africa-test-data.model';
 })
 export class DataStoreService {
   public rawData = [] as CountriesModel[];
-  // public globalStats = {} as GlobalStatsModel;
-  public southAfrica = {} as CountriesModel;
-
-  public locations = [] as CountriesModel[];
-  public locationsTotals = {} as CountriesModel;
-
-  public topTenLocations = [] as CountriesModel[];
-  public topTenLocationsTotals = {} as CountriesModel;
-
-  public southAfricaRawCaseData = [] as SouthAfricaCaseModel[];
-  public southAfricaCaseDetails = {} as SouthAfricaCasesDetailsModel;
 
   public southAfricaDeathDetails = [] as SouthAfricaDeathModel[];
   public southAfricaProvinceDetails = [] as SouthAfricaProvinceModel[];
@@ -113,8 +99,8 @@ export class DataStoreService {
   public isGlobalTimelineDataRetrieved = false;
 
   public wasRecoveryIssueShown = false;
-  public isTableLoaded = false;
-  public isOverviewLoaded = false;
+
+  // public isOverviewLoaded = false;
   public isTestDataLoaded = false;
 
   public isCaseDetailsLoaded = false;

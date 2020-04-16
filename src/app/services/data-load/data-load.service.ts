@@ -12,17 +12,9 @@ export class DataLoadService {
   ) {}
 
   public loadData() {
-    if (!this.dataStore.isOverviewLoaded) {
-      this.dataAssignment.getTotalsData();
-    }
-
-    if (!this.dataStore.isCaseDetailsLoaded) {
-      this.dataAssignment.getSouthAfricaCaseDetailsData();
-    }
-
-    if (!this.dataStore.isTableLoaded) {
-      this.dataAssignment.getTablesData();
-    }
+    this.dataAssignment.getTotalsData();
+    this.dataAssignment.getSouthAfricaCaseDetailsData();
+    this.dataAssignment.getTablesData();
 
     if (this.dataStore.southAfricaDeathDetails.length === 0) {
       this.dataAssignment.getSouthAfricaDeathsDetailsData();

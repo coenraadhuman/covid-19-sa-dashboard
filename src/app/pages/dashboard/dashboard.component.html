@@ -5,28 +5,28 @@
             <div class="overview-container">
                 <div class="global">
                     <h3>{{ 'COMMON.GLOBAL' | translate }}</h3>
-                    <app-progress-bar [loadState]="dataStore.isCaseDetailsLoaded"></app-progress-bar>
-                    <div *ngIf="dataStore.isOverviewLoaded">
-                        <p>{{ 'TABLECOLUMNS.TOTALCASES' | translate }}: {{ dataStore.globalStats.cases}}</p>
-                        <p>{{ 'TABLECOLUMNS.TOTALACTIVE' | translate }}: {{ dataStore.globalStats.active}}</p>
-                        <p>{{ 'TABLECOLUMNS.TOTALDEATHS' | translate }}: {{ dataStore.globalStats.deaths }}</p>
-                        <p>{{ 'TABLECOLUMNS.TOTALRECOVERED' | translate }}: {{ dataStore.globalStats.recovered }}</p>
-                        <p>{{ 'COMMON.AFFECTEDCOUNTRIES' | translate }}: {{ dataStore.globalStats.affectedCountries}}</p>
+                    <app-progress-bar [loadState]="(globalStats$ | async).isOverviewLoaded"></app-progress-bar>
+                    <div *ngIf="(globalStats$ | async).isOverviewLoaded">
+                        <p>{{ 'TABLECOLUMNS.TOTALCASES' | translate }}: {{(globalStats$ | async).globalStats.cases}}</p>
+                        <p>{{ 'TABLECOLUMNS.TOTALACTIVE' | translate }}: {{(globalStats$ | async).globalStats.active}}</p>
+                        <p>{{ 'TABLECOLUMNS.TOTALDEATHS' | translate }}: {{(globalStats$ | async).globalStats.deaths }}</p>
+                        <p>{{ 'TABLECOLUMNS.TOTALRECOVERED' | translate }}: {{(globalStats$ | async).globalStats.recovered }}</p>
+                        <p>{{ 'COMMON.AFFECTEDCOUNTRIES' | translate }}: {{(globalStats$ | async).globalStats.affectedCountries}}</p>
                         <button mat-raised-button color="primary" routerLink="timeline/Global">{{ 'BUTTONS.TIMELINE' | translate }}</button>
                     </div>
                 </div>
                 <div class="south-africa">
                     <h3><span class="flag-icon flag-icon-za"></span> {{ 'COMMON.SOUTHAFRICA' | translate }}</h3>
-                    <app-progress-bar [loadState]="dataStore.isTableLoaded"></app-progress-bar>
-                    <div *ngIf="dataStore.isTableLoaded && dataStore.isTestDataLoaded">
-                        <p>{{ 'TABLECOLUMNS.TOTALCASES' | translate }}: {{ dataStore.southAfrica.cases }}</p>
-                        <p>{{ 'TABLECOLUMNS.TOTALACTIVE' | translate }}: {{ dataStore.southAfrica.active }}</p>
-                        <p>{{ 'TABLECOLUMNS.TOTALDEATHS' | translate }}: {{ dataStore.southAfrica.deaths }}</p>
-                        <p>{{ 'TABLECOLUMNS.TOTALRECOVERED' | translate }}: {{ dataStore.southAfrica.recovered }}</p>
-                        <p>{{ 'COMMON.TESTS' | translate }}: {{ dataStore.southAfricaTestData.cumulative_tests }}</p>
-                        <p>{{ 'TABLECOLUMNS.NEWCASES' | translate }}: {{ dataStore.southAfrica.todayCases }}</p>
-                        <button mat-raised-button color="primary" routerLink="/timeline/South Africa">{{ 'BUTTONS.TIMELINE' | translate }}</button>
-                    </div>
+                    <app-progress-bar [loadState]="(countries$ | async).isTableLoaded"></app-progress-bar>
+<!--                    <div *ngIf="(countries$ | async).isTableLoaded && (countries$ | async).isTestDataLoaded">-->
+<!--                        <p>{{ 'TABLECOLUMNS.TOTALCASES' | translate }}: {{ (countries$ | async).southAfrica.cases }}</p>-->
+<!--                        <p>{{ 'TABLECOLUMNS.TOTALACTIVE' | translate }}: {{ (countries$ | async).southAfrica.active }}</p>-->
+<!--                        <p>{{ 'TABLECOLUMNS.TOTALDEATHS' | translate }}: {{ (countries$ | async).southAfrica.deaths }}</p>-->
+<!--                        <p>{{ 'TABLECOLUMNS.TOTALRECOVERED' | translate }}: {{ (countries$ | async).southAfrica.recovered }}</p>-->
+<!--                        <p>{{ 'COMMON.TESTS' | translate }}: {{ (countries$ | async).southAfricaTestData.cumulative_tests }}</p>-->
+<!--                        <p>{{ 'TABLECOLUMNS.NEWCASES' | translate }}: {{ (countries$ | async).southAfrica.todayCases }}</p>-->
+<!--                        <button mat-raised-button color="primary" routerLink="/timeline/South Africa">{{ 'BUTTONS.TIMELINE' | translate }}</button>-->
+<!--                    </div>-->
                 </div>
             </div>
         </mat-card-content>
@@ -34,10 +34,10 @@
 
     <mat-card class="sa">
         <app-card-title [translationKey]="'TITLES.KNOWNPROVINCE' | translate"></app-card-title>
-        <mat-card-content>
-            <app-progress-bar [loadState]="dataStore.isProvinceDetailsLoaded && dataStore.isDeathDetailsLoaded"></app-progress-bar>
-            <app-sa-table *ngIf="dataStore.isProvinceDetailsLoaded && dataStore.isDeathDetailsLoaded"></app-sa-table>
-        </mat-card-content>
+<!--        <mat-card-content>-->
+<!--            <app-progress-bar [loadState]="(countries$ | async).isProvinceDetailsLoaded && (countries$ | async).isDeathDetailsLoaded"></app-progress-bar>-->
+<!--            <app-sa-table *ngIf="(countries$ | async).isProvinceDetailsLoaded && (countries$ | async).isDeathDetailsLoaded"></app-sa-table>-->
+<!--        </mat-card-content>-->
     </mat-card>
 
     <mat-card class="table">
@@ -45,8 +45,8 @@
             <mat-card-title>{{'TITLES.TOP10' | translate}} <button mat-raised-button color="primary" class="add-margin" routerLink="table-all-locations">{{'BUTTONS.SEEALL' | translate}}</button></mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <app-progress-bar [loadState]="dataStore.isTableLoaded"></app-progress-bar>
-            <app-stats-table *ngIf="dataStore.isTableLoaded"></app-stats-table>
+            <app-progress-bar [loadState]="(countries$ | async).isTableLoaded"></app-progress-bar>
+            <app-stats-table *ngIf="(countries$ | async).isTableLoaded"></app-stats-table>
         </mat-card-content>
     </mat-card>
 </div>

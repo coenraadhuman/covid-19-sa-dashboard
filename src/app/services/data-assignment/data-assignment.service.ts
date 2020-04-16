@@ -4,8 +4,10 @@ import { DataRetrievalService } from '../data-retrieval/data-retrieval.service';
 import { DataStoreService } from '../data-store/data-store.service';
 import { DataTransformingService } from '../data-transforming/data-transforming.service';
 import { Store } from '@ngrx/store';
-import { AppStateModule } from '../ngrx-store/app-state.module';
-import * as AppActions from '../ngrx-store/app.actions';
+import { AppState } from '../../store/app.reducer';
+import { AssignCountries } from '../../store/countries/countries.actions';
+import { AssignGlobalStats } from '../../store/global-stats/global-stats.actions';
+import { AssignSouthAfricaCountriesModel } from '../../store/south-africa-case/south-africa-case.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -23,30 +25,35 @@ export class DataAssignmentService {
     private dataRetrieval: DataRetrievalService,
     public dataStore: DataStoreService,
     private dataTransforming: DataTransformingService,
-    private store: Store<AppStateModule>
+    private store: Store<AppState>
   ) {}
 
   public getTablesData() {
     this.subscriptionOne = this.dataRetrieval
       .getLocationsData()
       .subscribe((retrievedData) => {
-        this.dataStore.locations = [
+        const retrievedLocations = [
           ...retrievedData.sort((a, b) => b.cases - a.cases),
         ];
-        this.dataStore.southAfrica = this.dataTransforming.retrieveSouthAfricaFromLocations(
+        const retrieveSouthAfrica = this.dataTransforming.retrieveSouthAfricaFromLocations(
           retrievedData
         );
-        this.dataStore.topTenLocations = [...this.dataStore.locations].splice(
-          0,
-          10
+        const retrievedTopTenLocations = [...retrievedLocations].splice(0, 10);
+        const retrievedLocationsTotals = this.dataTransforming.getTotalTableObject(
+          retrievedLocations
         );
-        this.dataStore.locationsTotals = this.dataTransforming.getTotalTableObject(
-          this.dataStore.locations
+        const retrievedTopTenLocationsTotals = this.dataTransforming.getTotalTableObject(
+          retrievedTopTenLocations
         );
-        this.dataStore.topTenLocationsTotals = this.dataTransforming.getTotalTableObject(
-          this.dataStore.topTenLocations
+        this.store.dispatch(
+          new AssignCountries({
+            locations: retrievedLocations,
+            southAfrica: retrieveSouthAfrica,
+            topTenLocations: retrievedTopTenLocations,
+            locationsTotals: retrievedLocationsTotals,
+            topTenLocationsTotals: retrievedTopTenLocationsTotals,
+          })
         );
-        this.dataStore.isTableLoaded = true;
         this.subscriptionOne.unsubscribe();
       });
   }
@@ -55,8 +62,7 @@ export class DataAssignmentService {
     this.subscriptionTwo = this.dataRetrieval
       .getTotalsData()
       .subscribe((retrievedData) => {
-        this.store.dispatch(new AppActions.AssignGlobalStats(retrievedData));
-        this.dataStore.isOverviewLoaded = true;
+        this.store.dispatch(new AssignGlobalStats(retrievedData));
         this.subscriptionTwo.unsubscribe();
       });
   }
@@ -65,11 +71,14 @@ export class DataAssignmentService {
     this.subscriptionThree = this.dataRetrieval
       .getSouthAfricaCases()
       .subscribe((retrievedData) => {
-        this.dataStore.southAfricaRawCaseData = [...retrievedData];
-        this.dataStore.southAfricaCaseDetails = this.dataTransforming.aggregateSouthAfricaCases(
-          retrievedData
+        this.store.dispatch(
+          new AssignSouthAfricaCountriesModel({
+            southAfricaRawCaseData: [...retrievedData],
+            southAfricaCaseDetails: this.dataTransforming.aggregateSouthAfricaCases(
+              retrievedData
+            ),
+          })
         );
-        this.dataStore.isCaseDetailsLoaded = true;
         this.subscriptionThree.unsubscribe();
       });
   }

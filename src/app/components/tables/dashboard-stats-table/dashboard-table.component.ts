@@ -3,6 +3,10 @@ import { MatTableDataSource } from '@angular/material';
 import { MatSort } from '@angular/material/sort';
 import { DataStoreService } from '../../../services/data-store/data-store.service';
 import { CountriesModel } from '../../../models/countries.model';
+import { AppState, COUNTRIES } from '../../../store/app.reducer';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { CountriesReducer } from '../../../store/countries/countries.reducer';
 
 @Component({
   selector: 'app-stats-table',
@@ -22,18 +26,25 @@ export class DashboardTableComponent implements OnInit {
     'critical',
   ];
 
+  subscription: Subscription;
+
   totalObject: CountriesModel;
   dataSource;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(public dataStore: DataStoreService) {
-    if (this.dataStore.showTopTen) {
-      this.totalObject = this.dataStore.topTenLocationsTotals;
-      this.dataSource = new MatTableDataSource(this.dataStore.topTenLocations);
-    } else {
-      this.totalObject = this.dataStore.locationsTotals;
-      this.dataSource = new MatTableDataSource(this.dataStore.locations);
-    }
+  constructor(
+    public dataStore: DataStoreService,
+    public store: Store<AppState>
+  ) {
+    this.store.select(COUNTRIES).subscribe((countries: CountriesReducer) => {
+      if (this.dataStore.showTopTen) {
+        this.totalObject = countries.topTenLocationsTotals;
+        this.dataSource = new MatTableDataSource(countries.topTenLocations);
+      } else {
+        this.totalObject = countries.locationsTotals;
+        this.dataSource = new MatTableDataSource(countries.locations);
+      }
+    });
   }
 
   applyFilter(event: Event) {
