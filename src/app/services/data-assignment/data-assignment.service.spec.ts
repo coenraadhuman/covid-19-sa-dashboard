@@ -4,11 +4,13 @@ import { DataRetrievalService } from '../data-retrieval/data-retrieval.service';
 import { DataStoreService } from '../data-store/data-store.service';
 import { DataTransformingService } from '../data-transforming/data-transforming.service';
 import { DataAssignmentService } from './data-assignment.service';
+import { appReducerMap } from '../../store/app.reducer';
+import { StoreModule } from '@ngrx/store';
 
 describe('DataAssignmentService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, StoreModule.forRoot(appReducerMap)],
       providers: [
         DataStoreService,
         DataRetrievalService,
