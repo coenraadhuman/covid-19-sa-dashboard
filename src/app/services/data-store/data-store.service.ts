@@ -15,7 +15,7 @@ import { TestDataModel } from '../../models/south-africa-test-data.model';
 })
 export class DataStoreService {
   public rawData = [] as CountriesModel[];
-  public globalStats = {} as GlobalStatsModel;
+  // public globalStats = {} as GlobalStatsModel;
   public southAfrica = {} as CountriesModel;
 
   public locations = [] as CountriesModel[];

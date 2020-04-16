@@ -3,6 +3,9 @@ import { Subscription } from 'rxjs';
 import { DataRetrievalService } from '../data-retrieval/data-retrieval.service';
 import { DataStoreService } from '../data-store/data-store.service';
 import { DataTransformingService } from '../data-transforming/data-transforming.service';
+import { Store } from '@ngrx/store';
+import { AppStateModule } from '../ngrx-store/app-state.module';
+import * as AppActions from '../ngrx-store/app.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +22,8 @@ export class DataAssignmentService {
   constructor(
     private dataRetrieval: DataRetrievalService,
     public dataStore: DataStoreService,
-    private dataTransforming: DataTransformingService
+    private dataTransforming: DataTransformingService,
+    private store: Store<AppStateModule>
   ) {}
 
   public getTablesData() {
@@ -51,7 +55,7 @@ export class DataAssignmentService {
     this.subscriptionTwo = this.dataRetrieval
       .getTotalsData()
       .subscribe((retrievedData) => {
-        this.dataStore.globalStats = retrievedData;
+        this.store.dispatch(new AppActions.AssignGlobalStats(retrievedData));
         this.dataStore.isOverviewLoaded = true;
         this.subscriptionTwo.unsubscribe();
       });

@@ -46,6 +46,7 @@ import { FormsModule } from '@angular/forms';
 import { SouthAfricaPageComponent } from './pages/south-africa-page/south-africa-page.component';
 import { DataLoadService } from './services/data-load/data-load.service';
 import { StoreModule } from '@ngrx/store';
+import * as fromApp from './services/ngrx-store/app.reducer';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -98,7 +99,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatFormFieldModule,
     MatInputModule,
     MatTooltipModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(fromApp.appReducer),
   ],
   providers: [
     DataRetrievalService,
