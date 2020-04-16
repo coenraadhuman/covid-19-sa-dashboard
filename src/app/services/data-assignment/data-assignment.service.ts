@@ -8,6 +8,7 @@ import { AppState } from '../../store/app.reducer';
 import { AssignCountries } from '../../store/countries/countries.actions';
 import { AssignGlobalStats } from '../../store/global-stats/global-stats.actions';
 import { AssignSouthAfricaCountriesModel } from '../../store/south-africa-case/south-africa-case.actions';
+import { AssignSouthAfricaTestDataModel } from '../../store/south-africa-test/south-africa-test.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -108,10 +109,11 @@ export class DataAssignmentService {
     this.subscriptionFive = this.dataRetrieval
       .getTestData()
       .subscribe((retrievedData) => {
-        this.dataStore.southAfricaTestData = this.dataTransforming.getMostRecentTestData(
-          retrievedData
+        this.store.dispatch(
+          new AssignSouthAfricaTestDataModel(
+            this.dataTransforming.getMostRecentTestData(retrievedData)
+          )
         );
-        this.dataStore.isTestDataLoaded = true;
         this.subscriptionFive.unsubscribe();
       });
   }

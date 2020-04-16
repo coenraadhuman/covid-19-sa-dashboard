@@ -18,15 +18,15 @@
                 <div class="south-africa">
                     <h3><span class="flag-icon flag-icon-za"></span> {{ 'COMMON.SOUTHAFRICA' | translate }}</h3>
                     <app-progress-bar [loadState]="(countries$ | async).isTableLoaded"></app-progress-bar>
-<!--                    <div *ngIf="(countries$ | async).isTableLoaded && (countries$ | async).isTestDataLoaded">-->
-<!--                        <p>{{ 'TABLECOLUMNS.TOTALCASES' | translate }}: {{ (countries$ | async).southAfrica.cases }}</p>-->
-<!--                        <p>{{ 'TABLECOLUMNS.TOTALACTIVE' | translate }}: {{ (countries$ | async).southAfrica.active }}</p>-->
-<!--                        <p>{{ 'TABLECOLUMNS.TOTALDEATHS' | translate }}: {{ (countries$ | async).southAfrica.deaths }}</p>-->
-<!--                        <p>{{ 'TABLECOLUMNS.TOTALRECOVERED' | translate }}: {{ (countries$ | async).southAfrica.recovered }}</p>-->
-<!--                        <p>{{ 'COMMON.TESTS' | translate }}: {{ (countries$ | async).southAfricaTestData.cumulative_tests }}</p>-->
-<!--                        <p>{{ 'TABLECOLUMNS.NEWCASES' | translate }}: {{ (countries$ | async).southAfrica.todayCases }}</p>-->
-<!--                        <button mat-raised-button color="primary" routerLink="/timeline/South Africa">{{ 'BUTTONS.TIMELINE' | translate }}</button>-->
-<!--                    </div>-->
+                    <div *ngIf="(countries$ | async).isTableLoaded && (southAfricaTestData$ | async).isTestDataLoaded">
+                        <p>{{ 'TABLECOLUMNS.TOTALCASES' | translate }}: {{ (countries$ | async).southAfrica.cases }}</p>
+                        <p>{{ 'TABLECOLUMNS.TOTALACTIVE' | translate }}: {{ (countries$ | async).southAfrica.active }}</p>
+                        <p>{{ 'TABLECOLUMNS.TOTALDEATHS' | translate }}: {{ (countries$ | async).southAfrica.deaths }}</p>
+                        <p>{{ 'TABLECOLUMNS.TOTALRECOVERED' | translate }}: {{ (countries$ | async).southAfrica.recovered }}</p>
+                        <p>{{ 'COMMON.TESTS' | translate }}: {{ (southAfricaTestData$ | async).southAfricaTestData.cumulative_tests }}</p>
+                        <p>{{ 'TABLECOLUMNS.NEWCASES' | translate }}: {{ (countries$ | async).southAfrica.todayCases }}</p>
+                        <button mat-raised-button color="primary" routerLink="/timeline/South Africa">{{ 'BUTTONS.TIMELINE' | translate }}</button>
+                    </div>
                 </div>
             </div>
         </mat-card-content>

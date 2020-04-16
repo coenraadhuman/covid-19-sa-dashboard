@@ -44,8 +44,8 @@ import { LineChartComponent } from './components/charts/line-chart/line-chart.co
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FormsModule } from '@angular/forms';
 import { DataLoadService } from './services/data-load/data-load.service';
-import { StoreModule } from '@ngrx/store';
 import { appReducerMap } from './store/app.reducer';
+import { StoreModule } from '@ngrx/store';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);

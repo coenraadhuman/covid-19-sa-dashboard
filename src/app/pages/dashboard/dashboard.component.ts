@@ -6,9 +6,17 @@ import { DataLoadService } from '../../services/data-load/data-load.service';
 import { LanguageService } from '../../services/language/language.service';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AppState, COUNTRIES, GLOBAL_STATS } from '../../store/app.reducer';
+import {
+  AppState,
+  COUNTRIES,
+  GLOBAL_STATS,
+  SOUTH_AFRICA_CASE,
+  SOUTH_AFRICA_TEST_DATA,
+} from '../../store/app.reducer';
 import { GlobalStatsReducer } from '../../store/global-stats/global-stats.reducer';
 import { CountriesReducer } from '../../store/countries/countries.reducer';
+import { SouthAfricaTestReducer } from '../../store/south-africa-test/south-africa-test.reducer';
+import { SouthAfricaCaseReducer } from '../../store/south-africa-case/south-africa-case.reducer';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,6 +28,12 @@ export class DashboardComponent implements OnInit {
     GLOBAL_STATS
   );
   countries$: Observable<CountriesReducer> = this.store.select(COUNTRIES);
+  southAfricaCases$: Observable<SouthAfricaCaseReducer> = this.store.select(
+    SOUTH_AFRICA_CASE
+  );
+  southAfricaTestData$: Observable<SouthAfricaTestReducer> = this.store.select(
+    SOUTH_AFRICA_TEST_DATA
+  );
 
   constructor(
     public dataStore: DataStoreService,

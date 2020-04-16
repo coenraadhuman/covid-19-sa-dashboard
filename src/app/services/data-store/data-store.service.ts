@@ -16,7 +16,7 @@ export class DataStoreService {
   public southAfricaDeathDetails = [] as SouthAfricaDeathModel[];
   public southAfricaProvinceDetails = [] as SouthAfricaProvinceModel[];
 
-  public southAfricaTestData = {} as TestDataModel;
+  // public southAfricaTestData = {} as TestDataModel;
 
   public southAfricaProvinceTableDetails: SouthAfricaProvinceTableModel[] = [
     {
