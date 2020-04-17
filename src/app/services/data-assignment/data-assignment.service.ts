@@ -22,49 +22,14 @@ import { SouthAfricaProvinceTableModel } from '../../store/south-africa-province
   providedIn: 'root',
 })
 export class DataAssignmentService {
-  private subscriptionTwo: Subscription;
-  private subscriptionThree: Subscription;
-  private subscriptionFour: Subscription;
-  private subscriptionFive: Subscription;
   private subscriptionSix: Subscription;
-  private subscriptionSixOne: Subscription;
   private subscriptionSeven: Subscription;
-  private subscriptionSevenOne: Subscription;
 
   constructor(
     private dataRetrieval: DataRetrievalService,
     private dataTransforming: DataTransformingService,
     private store: Store<AppState>
   ) {}
-
-  public getSouthAfricaCaseDetailsData() {
-    this.subscriptionThree = this.dataRetrieval
-      .getSouthAfricaCases()
-      .subscribe((retrievedData) => {
-        this.store.dispatch(
-          new AssignSouthAfricaCountriesModel({
-            southAfricaRawCaseData: [...retrievedData],
-            southAfricaCaseDetails: this.dataTransforming.aggregateSouthAfricaCases(
-              retrievedData
-            ),
-          })
-        );
-        this.subscriptionThree.unsubscribe();
-      });
-  }
-
-  public getSouthAfricaTestData() {
-    this.subscriptionFive = this.dataRetrieval
-      .getTestData()
-      .subscribe((retrievedData) => {
-        this.store.dispatch(
-          new AssignSouthAfricaTestDataModel(
-            this.dataTransforming.getMostRecentTestData(retrievedData)
-          )
-        );
-        this.subscriptionFive.unsubscribe();
-      });
-  }
 
   public getSouthAfricaDeathsDetailsData() {
     this.subscriptionSix = this.dataRetrieval

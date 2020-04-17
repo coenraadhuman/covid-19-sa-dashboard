@@ -15,6 +15,7 @@ import { RequestCountries } from '../../store/countries/countries.actions';
 import { RequestGlobalStats } from '../../store/global-stats/global-stats.actions';
 import { RequestTimeSeries } from '../../store/global-time-series/global-time-series.actions';
 import { RequestSouthAfricaCases } from '../../store/south-africa-case/south-africa-case.actions';
+import { RequestSouthAfricaTests } from '../../store/south-africa-test/south-africa-test.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -53,7 +54,7 @@ export class DataLoadService {
   private checkAndLoadTestData() {
     this.store.select(SOUTH_AFRICA_TEST_DATA).subscribe((x) => {
       if (!x.isTestDataLoaded) {
-        this.dataAssignment.getSouthAfricaTestData();
+        this.store.dispatch(new RequestSouthAfricaTests());
       }
     });
   }

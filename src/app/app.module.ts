@@ -51,6 +51,7 @@ import { CountriesEffects } from './store/countries/countries.effects';
 import { GlobalStatsEffects } from './store/global-stats/global-stats.effects';
 import { TimeSeriesEffects } from './store/global-time-series/global-time-series.effects';
 import { SouthAfricaCaseEffects } from './store/south-africa-case/south-africa-case.effects';
+import { SouthAfricaTestEffects } from './store/south-africa-test/south-africa-test.effects';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -108,6 +109,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       GlobalStatsEffects,
       TimeSeriesEffects,
       SouthAfricaCaseEffects,
+      SouthAfricaTestEffects,
     ]),
   ],
   providers: [
