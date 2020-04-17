@@ -5,7 +5,6 @@ import { DataStoreService } from '../data-store/data-store.service';
 import { DataTransformingService } from '../data-transforming/data-transforming.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.reducer';
-import { AssignCountries } from '../../store/countries/countries.actions';
 import { AssignGlobalStats } from '../../store/global-stats/global-stats.actions';
 import { AssignSouthAfricaCountriesModel } from '../../store/south-africa-case/south-africa-case.actions';
 
@@ -13,7 +12,6 @@ import { AssignSouthAfricaCountriesModel } from '../../store/south-africa-case/s
   providedIn: 'root',
 })
 export class DataAssignmentService {
-  private subscriptionOne: Subscription;
   private subscriptionTwo: Subscription;
   private subscriptionThree: Subscription;
   private subscriptionFour: Subscription;
@@ -27,36 +25,6 @@ export class DataAssignmentService {
     private dataTransforming: DataTransformingService,
     private store: Store<AppState>
   ) {}
-
-  public getTablesData() {
-    this.subscriptionOne = this.dataRetrieval
-      .getLocationsData()
-      .subscribe((retrievedData) => {
-        const retrievedLocations = [
-          ...retrievedData.sort((a, b) => b.cases - a.cases),
-        ];
-        const retrieveSouthAfrica = this.dataTransforming.retrieveSouthAfricaFromLocations(
-          retrievedData
-        );
-        const retrievedTopTenLocations = [...retrievedLocations].splice(0, 10);
-        const retrievedLocationsTotals = this.dataTransforming.getTotalTableObject(
-          retrievedLocations
-        );
-        const retrievedTopTenLocationsTotals = this.dataTransforming.getTotalTableObject(
-          retrievedTopTenLocations
-        );
-        this.store.dispatch(
-          new AssignCountries({
-            locations: retrievedLocations,
-            southAfrica: retrieveSouthAfrica,
-            topTenLocations: retrievedTopTenLocations,
-            locationsTotals: retrievedLocationsTotals,
-            topTenLocationsTotals: retrievedTopTenLocationsTotals,
-          })
-        );
-        this.subscriptionOne.unsubscribe();
-      });
-  }
 
   public getTotalsData() {
     this.subscriptionTwo = this.dataRetrieval
