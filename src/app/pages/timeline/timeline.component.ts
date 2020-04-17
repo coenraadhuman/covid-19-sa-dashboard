@@ -16,6 +16,8 @@ import {
 import { DataLoadService } from '../../services/data-load/data-load.service';
 import { SnackBarNotificationService } from '../../services/snack-bar-notification/snack-bar-notification.service';
 import { LanguageService } from '../../services/language/language.service';
+import { AppState, GLOBAL_TIME_SERIES } from '../../store/app.reducer';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-timeline',
@@ -53,6 +55,7 @@ export class TimelineComponent implements OnInit {
     private dataTransforming: DataTransformingService,
     private dataLoad: DataLoadService,
     private snackBar: SnackBarNotificationService,
+    private store: Store<AppState>,
     public gtag: Gtag,
     private language: LanguageService
   ) {
@@ -86,25 +89,15 @@ export class TimelineComponent implements OnInit {
   }
 
   assignDataToGraph() {
-    if (this.dataStore.timelineDataCopy.length === 0) {
-      this.dataAssignment.getTimelineData();
-      this.dataStore.getTimelineData().subscribe((x) => {
-        this.mapData(x);
-      });
-    } else {
-      this.mapData(this.dataStore.timelineDataCopy);
-    }
+    this.store.select(GLOBAL_TIME_SERIES).subscribe((x) => {
+      this.mapData(x.timelineData);
+    });
   }
 
   assignGlobalToGraph() {
-    if (this.dataStore.timelineDataCopy.length === 0) {
-      this.dataAssignment.getTimelineData();
-      this.dataStore.getGlobalTimelineData().subscribe((x) => {
-        this.mapDataGlobal(x);
-      });
-    } else {
-      this.mapDataGlobal(this.dataStore.globalTimelineDataCopy);
-    }
+    this.store.select(GLOBAL_TIME_SERIES).subscribe((x) => {
+      this.mapDataGlobal(x.globalTimelineData);
+    });
   }
 
   mapDataGlobal(x: GlobalTimeSeriesModel) {

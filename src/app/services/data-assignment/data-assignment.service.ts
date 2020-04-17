@@ -4,10 +4,11 @@ import { DataRetrievalService } from '../data-retrieval/data-retrieval.service';
 import { DataStoreService } from '../data-store/data-store.service';
 import { DataTransformingService } from '../data-transforming/data-transforming.service';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../store/app.reducer';
+import { AppState, GLOBAL_TIME_SERIES } from '../../store/app.reducer';
 import { AssignGlobalStats } from '../../store/global-stats/global-stats.actions';
 import { AssignSouthAfricaCountriesModel } from '../../store/south-africa-case/south-africa-case.actions';
 import { AssignSouthAfricaTestDataModel } from '../../store/south-africa-test/south-africa-test.actions';
+import { AssignGlobalTimeSeriesModel } from '../../store/global-time-series/global-time-series.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -56,19 +57,16 @@ export class DataAssignmentService {
     this.subscriptionFour = this.dataRetrieval
       .getGlobalTimeSeriesData()
       .subscribe((retrievedData) => {
-        this.dataStore.timelineDataCopy = this.dataTransforming.getAggregatedTimelineData(
-          retrievedData
+        this.store.dispatch(
+          new AssignGlobalTimeSeriesModel({
+            timelineData: this.dataTransforming.getAggregatedTimelineData(
+              retrievedData
+            ),
+            globalTimelineData: this.dataTransforming.getGlobalAggregatedData(
+              retrievedData
+            ),
+          })
         );
-        this.dataStore.timelineData.next(
-          this.dataTransforming.getAggregatedTimelineData(retrievedData)
-        );
-
-        const object = this.dataTransforming.getGlobalAggregatedData(
-          this.dataStore.timelineDataCopy
-        );
-        this.dataStore.globalTimelineData.next(object);
-        this.dataStore.globalTimelineDataCopy = object;
-
         this.subscriptionFour.unsubscribe();
       });
   }

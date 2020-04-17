@@ -201,7 +201,7 @@ export class DataTransformingService {
   public getGlobalAggregatedData(
     data: GlobalTimeSeriesModel[]
   ): GlobalTimeSeriesModel {
-    const aggregatedResult = [...data].reduce(
+    const aggregatedResult = this.getAggregatedTimelineData(data).reduce(
       (finalCountry, workingCountry) => {
         for (const key in workingCountry.timeline.cases) {
           if (workingCountry.timeline.cases.hasOwnProperty(key)) {

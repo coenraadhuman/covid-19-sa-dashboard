@@ -20,6 +20,7 @@ export class DataLoadService {
     this.dataAssignment.getSouthAfricaCaseDetailsData();
     this.store.dispatch(new RequestCountries());
     this.dataAssignment.getSouthAfricaTestData();
+    this.dataAssignment.getTimelineData();
 
     if (this.dataStore.southAfricaDeathDetails.length === 0) {
       this.dataAssignment.getSouthAfricaDeathsDetailsData();
@@ -28,9 +29,5 @@ export class DataLoadService {
     // if (this.dataStore.southAfricaProvinceDetails.length === 0) {
     //   this.dataAssignment.getSouthAfricaProvinceDetailsData();
     // }
-
-    if (this.dataStore.timelineDataCopy.length === 0) {
-      this.dataAssignment.getTimelineData();
-    }
   }
 }

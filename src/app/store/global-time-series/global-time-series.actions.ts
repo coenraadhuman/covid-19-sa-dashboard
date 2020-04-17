@@ -10,8 +10,8 @@ export class AssignGlobalTimeSeriesModel implements Action {
 
   constructor(
     public payload: {
-      globalTimelineDataCopy: GlobalTimeSeriesModel;
-      globalTimelineData: Subject<GlobalTimeSeriesModel>;
+      globalTimelineData: GlobalTimeSeriesModel;
+      timelineData: GlobalTimeSeriesModel[];
     }
   ) {}
 }

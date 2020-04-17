@@ -5,7 +5,6 @@ import { Observable, Subject } from 'rxjs';
 import { SouthAfricaDeathModel } from '../../models/south-africa-death.model';
 import { SouthAfricaProvinceModel } from '../../models/south-africa-province.model';
 import { SouthAfricaProvinceTableModel } from '../../models/south-africa-province-table.model';
-import { TestDataModel } from '../../models/south-africa-test-data.model';
 
 @Injectable({
   providedIn: 'root',
@@ -91,11 +90,11 @@ export class DataStoreService {
     },
   ];
 
-  public timelineData = new Subject<GlobalTimeSeriesModel[]>();
-  public timelineDataCopy = [] as GlobalTimeSeriesModel[];
+  // public timelineData = new Subject<GlobalTimeSeriesModel[]>();
+  // public timelineDataCopy = [] as GlobalTimeSeriesModel[];
 
-  public globalTimelineDataCopy = {} as GlobalTimeSeriesModel;
-  public globalTimelineData = new Subject<GlobalTimeSeriesModel>();
+  // public globalTimelineDataCopy = {} as GlobalTimeSeriesModel;
+  // public globalTimelineData = new Subject<GlobalTimeSeriesModel>();
   public isGlobalTimelineDataRetrieved = false;
 
   public wasRecoveryIssueShown = false;
@@ -121,11 +120,11 @@ export class DataStoreService {
 
   constructor() {}
 
-  getTimelineData(): Observable<GlobalTimeSeriesModel[]> {
-    return this.timelineData.asObservable();
-  }
+  // getTimelineData(): Observable<GlobalTimeSeriesModel[]> {
+  //   return this.timelineData.asObservable();
+  // }
 
-  getGlobalTimelineData(): Observable<GlobalTimeSeriesModel> {
-    return this.globalTimelineData.asObservable();
-  }
+  // getGlobalTimelineData(): Observable<GlobalTimeSeriesModel> {
+  //   return this.globalTimelineData.asObservable();
+  // }
 }

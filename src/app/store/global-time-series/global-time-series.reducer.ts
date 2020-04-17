@@ -1,18 +1,17 @@
 import { GlobalTimeSeriesModel } from '../../models/global-timeSeries.model';
-import { Observable, Subject } from 'rxjs';
 import {
   ASSIGN_GLOBAL_TIME_SERIES_MODEL,
   AssignGlobalTimeSeriesModel,
 } from './global-time-series.actions';
 
 export interface GlobalTimeSeriesReducer {
-  globalTimelineDataCopy: GlobalTimeSeriesModel;
-  globalTimelineData: Observable<GlobalTimeSeriesModel>;
+  globalTimelineData: GlobalTimeSeriesModel;
+  timelineData: GlobalTimeSeriesModel[];
 }
 
 const initialState: GlobalTimeSeriesReducer = {
-  globalTimelineDataCopy: {} as GlobalTimeSeriesModel,
-  globalTimelineData: {} as Subject<GlobalTimeSeriesModel>,
+  globalTimelineData: {} as GlobalTimeSeriesModel,
+  timelineData: [] as GlobalTimeSeriesModel[],
 };
 
 export function globalTimeSeriesReducer(
@@ -23,8 +22,8 @@ export function globalTimeSeriesReducer(
     case ASSIGN_GLOBAL_TIME_SERIES_MODEL:
       return {
         ...state,
-        globalTimelineDataCopy: { ...action.payload.globalTimelineDataCopy },
-        // globalTimelineData: { ...action.payload.globalTimelineData },
+        globalTimelineData: { ...action.payload.globalTimelineData },
+        timelineData: { ...action.payload.timelineData },
       };
     default:
       return state;
