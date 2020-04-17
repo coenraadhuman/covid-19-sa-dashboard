@@ -14,7 +14,7 @@ export class DataStoreService {
   // public rawData = [] as CountriesModel[];
 
   public southAfricaDeathDetails = [] as SouthAfricaDeathModel[];
-  // public southAfricaProvinceDetails = [] as SouthAfricaProvinceModel[];
+  public southAfricaProvinceDetails = [] as SouthAfricaProvinceModel[];
 
   // public southAfricaTestData = {} as TestDataModel;
 
@@ -105,7 +105,7 @@ export class DataStoreService {
 
   public isCaseDetailsLoaded = false;
   public isDeathDetailsLoaded = false;
-  // public isProvinceDetailsLoaded = false;
+  public isProvinceDetailsLoaded = false;
 
   public showTopTen = true;
 

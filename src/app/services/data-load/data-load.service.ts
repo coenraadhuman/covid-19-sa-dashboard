@@ -25,9 +25,9 @@ export class DataLoadService {
       this.dataAssignment.getSouthAfricaDeathsDetailsData();
     }
 
-    if (this.dataStore.southAfricaProvinceDetails.length === 0) {
-      this.dataAssignment.getSouthAfricaProvinceDetailsData();
-    }
+    // if (this.dataStore.southAfricaProvinceDetails.length === 0) {
+    //   this.dataAssignment.getSouthAfricaProvinceDetailsData();
+    // }
 
     if (this.dataStore.timelineDataCopy.length === 0) {
       this.dataAssignment.getTimelineData();
