@@ -13,6 +13,8 @@ import {
 import { Store } from '@ngrx/store';
 import { RequestCountries } from '../../store/countries/countries.actions';
 import { RequestGlobalStats } from '../../store/global-stats/global-stats.actions';
+import { RequestTimeSeries } from '../../store/global-time-series/global-time-series.actions';
+import { RequestSouthAfricaCases } from '../../store/south-africa-case/south-africa-case.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -35,7 +37,7 @@ export class DataLoadService {
   private checkAndLoadSouthAfricaCases() {
     this.store.select(SOUTH_AFRICA_CASE).subscribe((x) => {
       if (!x.isCaseDetailsLoaded) {
-        this.dataAssignment.getSouthAfricaCaseDetailsData();
+        this.store.dispatch(new RequestSouthAfricaCases());
       }
     });
   }
@@ -44,7 +46,6 @@ export class DataLoadService {
     this.store.select(GLOBAL_STATS).subscribe((x) => {
       if (!x.isOverviewLoaded) {
         this.store.dispatch(new RequestGlobalStats());
-        // this.dataAssignment.getTotalsData();
       }
     });
   }
@@ -60,7 +61,7 @@ export class DataLoadService {
   private checkAndLoadTimeline() {
     this.store.select(GLOBAL_TIME_SERIES).subscribe((x) => {
       if (!x.isLoaded) {
-        this.dataAssignment.getTimelineData();
+        this.store.dispatch(new RequestTimeSeries());
       }
     });
   }

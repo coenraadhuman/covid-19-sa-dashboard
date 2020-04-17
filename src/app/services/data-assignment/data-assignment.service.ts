@@ -37,15 +37,6 @@ export class DataAssignmentService {
     private store: Store<AppState>
   ) {}
 
-  public getTotalsData() {
-    this.subscriptionTwo = this.dataRetrieval
-      .getTotalsData()
-      .subscribe((retrievedData) => {
-        this.store.dispatch(new AssignGlobalStats(retrievedData));
-        this.subscriptionTwo.unsubscribe();
-      });
-  }
-
   public getSouthAfricaCaseDetailsData() {
     this.subscriptionThree = this.dataRetrieval
       .getSouthAfricaCases()
@@ -59,24 +50,6 @@ export class DataAssignmentService {
           })
         );
         this.subscriptionThree.unsubscribe();
-      });
-  }
-
-  public getTimelineData() {
-    this.subscriptionFour = this.dataRetrieval
-      .getGlobalTimeSeriesData()
-      .subscribe((retrievedData) => {
-        this.store.dispatch(
-          new AssignGlobalTimeSeriesModel({
-            timelineData: this.dataTransforming.getAggregatedTimelineData(
-              retrievedData
-            ),
-            globalTimelineData: this.dataTransforming.getGlobalAggregatedData(
-              retrievedData
-            ),
-          })
-        );
-        this.subscriptionFour.unsubscribe();
       });
   }
 

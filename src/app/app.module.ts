@@ -49,6 +49,8 @@ import { appReducerMap } from './store/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CountriesEffects } from './store/countries/countries.effects';
 import { GlobalStatsEffects } from './store/global-stats/global-stats.effects';
+import { TimeSeriesEffects } from './store/global-time-series/global-time-series.effects';
+import { SouthAfricaCaseEffects } from './store/south-africa-case/south-africa-case.effects';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -101,7 +103,12 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatInputModule,
     MatTooltipModule,
     StoreModule.forRoot(appReducerMap),
-    EffectsModule.forRoot([CountriesEffects, GlobalStatsEffects]),
+    EffectsModule.forRoot([
+      CountriesEffects,
+      GlobalStatsEffects,
+      TimeSeriesEffects,
+      SouthAfricaCaseEffects,
+    ]),
   ],
   providers: [
     DataRetrievalService,
