@@ -7,7 +7,7 @@ import {
   GLOBAL_STATS,
   GLOBAL_TIME_SERIES,
   SOUTH_AFRICA_CASE,
-  SOUTH_AFRICA_PROVINCE_,
+  SOUTH_AFRICA_PROVINCE,
   SOUTH_AFRICA_TEST_DATA,
 } from '../../store/app.reducer';
 import { Store } from '@ngrx/store';
@@ -65,7 +65,7 @@ export class DataLoadService {
   }
 
   private checkAndLoadDeathDetails() {
-    this.store.select(SOUTH_AFRICA_PROVINCE_).subscribe((x) => {
+    this.store.select(SOUTH_AFRICA_PROVINCE).subscribe((x) => {
       if (!x.isDeathDetailsLoaded) {
         this.dataAssignment.getSouthAfricaDeathsDetailsData();
       }
@@ -73,7 +73,7 @@ export class DataLoadService {
   }
 
   private checkAndLoadProvinceTable() {
-    this.store.select(SOUTH_AFRICA_PROVINCE_).subscribe((x) => {
+    this.store.select(SOUTH_AFRICA_PROVINCE).subscribe((x) => {
       if (!x.isProvinceDetailsLoaded) {
         this.dataAssignment.getSouthAfricaProvinceDetailsData();
       }
@@ -86,7 +86,7 @@ export class DataLoadService {
     this.checkAndLoadOverview();
     this.checkAndLoadTestData();
     this.checkAndLoadTimeline();
-    // this.checkAndLoadDeathDetails();
-    // this.checkAndLoadProvinceTable();
+    this.checkAndLoadDeathDetails();
+    this.checkAndLoadProvinceTable();
   }
 }

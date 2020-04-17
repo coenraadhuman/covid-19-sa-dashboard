@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DataRetrievalService } from '../data-retrieval/data-retrieval.service';
-import { DataStoreService } from '../data-store/data-store.service';
 import { DataTransformingService } from '../data-transforming/data-transforming.service';
 import { Store } from '@ngrx/store';
-import { AppState, GLOBAL_TIME_SERIES } from '../../store/app.reducer';
+import {
+  AppState,
+  GLOBAL_TIME_SERIES,
+  SOUTH_AFRICA_PROVINCE,
+} from '../../store/app.reducer';
 import { AssignGlobalStats } from '../../store/global-stats/global-stats.actions';
 import { AssignSouthAfricaCountriesModel } from '../../store/south-africa-case/south-africa-case.actions';
 import { AssignSouthAfricaTestDataModel } from '../../store/south-africa-test/south-africa-test.actions';
@@ -13,6 +16,7 @@ import {
   AssignSouthAfricaDeathModel,
   AssignSouthAfricaProvinceModel,
 } from '../../store/south-africa-province/south-africa-province.actions';
+import { SouthAfricaProvinceTableModel } from '../../store/south-africa-province/south-africa-province.reducer';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +27,9 @@ export class DataAssignmentService {
   private subscriptionFour: Subscription;
   private subscriptionFive: Subscription;
   private subscriptionSix: Subscription;
+  private subscriptionSixOne: Subscription;
   private subscriptionSeven: Subscription;
+  private subscriptionSevenOne: Subscription;
 
   constructor(
     private dataRetrieval: DataRetrievalService,

@@ -11,7 +11,7 @@ import {
   COUNTRIES,
   GLOBAL_STATS,
   SOUTH_AFRICA_CASE,
-  SOUTH_AFRICA_PROVINCE_,
+  SOUTH_AFRICA_PROVINCE,
   SOUTH_AFRICA_TEST_DATA,
 } from '../../store/app.reducer';
 import { GlobalStatsReducer } from '../../store/global-stats/global-stats.reducer';
@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
     SOUTH_AFRICA_TEST_DATA
   );
   provinces$: Observable<SouthAfricaProvinceReducer> = this.store.select(
-    SOUTH_AFRICA_PROVINCE_
+    SOUTH_AFRICA_PROVINCE
   );
 
   constructor(
