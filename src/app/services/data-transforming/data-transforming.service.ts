@@ -104,7 +104,7 @@ export class DataTransformingService {
     let southAfrica = {} as CountriesModel;
 
     locations.forEach((x) => {
-      if (x.country === 'South Africa') {
+      if (x.countryInfo.iso2 === 'ZA') {
         southAfrica = { ...x };
       }
     });

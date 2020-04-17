@@ -13,8 +13,8 @@ import { TestDataModel } from '../../models/south-africa-test-data.model';
   providedIn: 'root',
 })
 export class DataRetrievalService {
-  private countriesUri = 'https://corona.lmao.ninja/countries';
-  private overviewTotalsUri = 'https://corona.lmao.ninja/all';
+  private countriesUri = 'https://corona.lmao.ninja/v2/countries';
+  private overviewTotalsUri = 'https://corona.lmao.ninja/v2/all';
   private southAfricaCasesUri =
     'https://covid-za-api.herokuapp.com/cases/confirmed';
   private globalTimeSeriesUri =

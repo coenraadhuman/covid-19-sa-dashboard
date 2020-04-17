@@ -44,8 +44,10 @@ import { LineChartComponent } from './components/charts/line-chart/line-chart.co
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FormsModule } from '@angular/forms';
 import { DataLoadService } from './services/data-load/data-load.service';
-import { appReducerMap } from './store/app.reducer';
 import { StoreModule } from '@ngrx/store';
+import { appReducerMap } from './store/app.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { CountriesEffects } from './store/countries/countries.effects';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -98,6 +100,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatInputModule,
     MatTooltipModule,
     StoreModule.forRoot(appReducerMap),
+    EffectsModule.forRoot([CountriesEffects]),
   ],
   providers: [
     DataRetrievalService,
