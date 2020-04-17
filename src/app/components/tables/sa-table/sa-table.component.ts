@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
-import { DataStoreService } from '../../../services/data-store/data-store.service';
 import { MatSort } from '@angular/material/sort';
 import { SouthAfricaProvinceTableModel } from '../../../models/south-africa-province-table.model';
+import { AppState, SOUTH_AFRICA_PROVINCE_ } from '../../../store/app.reducer';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-sa-table',
@@ -12,17 +13,19 @@ import { SouthAfricaProvinceTableModel } from '../../../models/south-africa-prov
 export class SaTableComponent implements OnInit {
   displayedColumns: string[] = ['Number', 'name', 'totalCases', 'totalDeaths'];
 
+  data: SouthAfricaProvinceTableModel[];
   tableDataSource;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private dataStore: DataStoreService) {
-    this.tableDataSource = new MatTableDataSource<
-      SouthAfricaProvinceTableModel
-    >(
-      [...this.dataStore.southAfricaProvinceTableDetails].sort(
-        (a, b) => b.totalCases - a.totalCases
-      )
-    );
+  constructor(public store: Store<AppState>) {
+    this.store.select(SOUTH_AFRICA_PROVINCE_).subscribe((x) => {
+      if (x.isDeathDetailsLoaded && x.isProvinceDetailsLoaded) {
+        this.data = x.southAfricaProvinceTableDetails;
+        this.tableDataSource = new MatTableDataSource<
+          SouthAfricaProvinceTableModel
+        >(this.data.sort((a, b) => b.totalCases - a.totalCases));
+      }
+    });
   }
 
   ngOnInit() {
@@ -31,7 +34,7 @@ export class SaTableComponent implements OnInit {
 
   getTotalDeaths(): number {
     let total = 0;
-    this.dataStore.southAfricaProvinceTableDetails.forEach((x) => {
+    this.data.forEach((x) => {
       total += x.totalDeaths;
     });
     return total;
@@ -39,7 +42,7 @@ export class SaTableComponent implements OnInit {
 
   getTotalCases(): number {
     let total = 0;
-    this.dataStore.southAfricaProvinceTableDetails.forEach((x) => {
+    this.data.forEach((x) => {
       total += x.totalCases;
     });
     return total;

@@ -7,11 +7,13 @@ import {
 export interface GlobalTimeSeriesReducer {
   globalTimelineData: GlobalTimeSeriesModel;
   timelineData: GlobalTimeSeriesModel[];
+  isLoaded: boolean;
 }
 
 const initialState: GlobalTimeSeriesReducer = {
   globalTimelineData: {} as GlobalTimeSeriesModel,
   timelineData: [] as GlobalTimeSeriesModel[],
+  isLoaded: false,
 };
 
 export function globalTimeSeriesReducer(
@@ -23,7 +25,8 @@ export function globalTimeSeriesReducer(
       return {
         ...state,
         globalTimelineData: { ...action.payload.globalTimelineData },
-        timelineData: { ...action.payload.timelineData },
+        timelineData: [...action.payload.timelineData],
+        isLoaded: true,
       };
     default:
       return state;

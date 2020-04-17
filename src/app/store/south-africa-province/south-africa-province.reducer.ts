@@ -1,18 +1,27 @@
 import { SouthAfricaProvinceModel } from '../../models/south-africa-province.model';
 
 import {
+  ASSIGN_SOUTH_AFRICA_DEATH_MODEL,
   ASSIGN_SOUTH_AFRICA_PROVINCE_MODEL,
   AssignSouthAfricaProvinceModel,
+  SouthAfricaProvinceActions,
 } from './south-africa-province.actions';
 import { SouthAfricaProvinceTableModel } from '../../models/south-africa-province-table.model';
+import { SouthAfricaDeathModel } from '../../models/south-africa-death.model';
 
 export interface SouthAfricaProvinceReducer {
   southAfricaProvinceDetails: SouthAfricaProvinceModel[];
   southAfricaProvinceTableDetails: SouthAfricaProvinceTableModel[];
+  southAfricaDeathDetails: SouthAfricaDeathModel[];
+  isDeathDetailsLoaded: boolean;
+  isProvinceDetailsLoaded: boolean;
 }
 
 const initialState: SouthAfricaProvinceReducer = {
   southAfricaProvinceDetails: [] as SouthAfricaProvinceModel[],
+  southAfricaDeathDetails: [] as SouthAfricaDeathModel[],
+  isDeathDetailsLoaded: false,
+  isProvinceDetailsLoaded: false,
   southAfricaProvinceTableDetails: [
     {
       key: 'GP',
@@ -89,16 +98,79 @@ const initialState: SouthAfricaProvinceReducer = {
 
 export function southAfricaProvinceReducer(
   state: SouthAfricaProvinceReducer = initialState,
-  action: AssignSouthAfricaProvinceModel
+  action: SouthAfricaProvinceActions
 ): SouthAfricaProvinceReducer {
   switch (action.type) {
     case ASSIGN_SOUTH_AFRICA_PROVINCE_MODEL:
+      const southAfricaProvinceData = [
+        ...state.southAfricaProvinceTableDetails,
+      ];
+      const sortData = [...action.payload].sort(
+        (a, b) =>
+          (b.provinces.gauteng === '' ? 0 : Number(b.provinces.gauteng)) -
+          (a.provinces.gauteng === '' ? 0 : Number(a.provinces.gauteng))
+      );
+
+      southAfricaProvinceData[0].totalCases = Number(
+        sortData[0].provinces.gauteng
+      );
+
+      southAfricaProvinceData[1].totalCases = Number(
+        sortData[0].provinces.western_cape
+      );
+
+      southAfricaProvinceData[2].totalCases = Number(
+        sortData[0].provinces.kwazulu_natal
+      );
+
+      southAfricaProvinceData[3].totalCases = Number(
+        sortData[0].provinces.free_state
+      );
+
+      southAfricaProvinceData[4].totalCases = Number(
+        sortData[0].provinces.mpumlanga
+      );
+
+      southAfricaProvinceData[5].totalCases = Number(
+        sortData[0].provinces.north_west
+      );
+
+      southAfricaProvinceData[6].totalCases = Number(
+        sortData[0].provinces.limpopo
+      );
+
+      southAfricaProvinceData[7].totalCases = Number(
+        sortData[0].provinces.eastern_cape
+      );
+
+      southAfricaProvinceData[8].totalCases = Number(
+        sortData[0].provinces.northern_cape
+      );
+      southAfricaProvinceData[9].totalCases = Number(
+        sortData[0].provinces.unknown
+      );
       return {
         ...state,
-        southAfricaProvinceDetails: {
-          ...action.payload.southAfricaProvinceDetails,
-        },
+        isProvinceDetailsLoaded: true,
+        southAfricaProvinceTableDetails: southAfricaProvinceData,
+        southAfricaProvinceDetails: sortData,
       };
+    case ASSIGN_SOUTH_AFRICA_DEATH_MODEL:
+      const southAfricaProvince = [...state.southAfricaProvinceTableDetails];
+      action.payload.forEach((x) => {
+        southAfricaProvince.forEach((y) => {
+          if (x.province === y.key) {
+            y.totalDeaths += 1;
+          }
+        });
+      });
+      return {
+        ...state,
+        isDeathDetailsLoaded: true,
+        southAfricaProvinceTableDetails: southAfricaProvince,
+        southAfricaDeathDetails: [...action.payload],
+      };
+
     default:
       return state;
   }

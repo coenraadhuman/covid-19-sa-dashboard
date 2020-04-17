@@ -11,12 +11,14 @@ import {
   COUNTRIES,
   GLOBAL_STATS,
   SOUTH_AFRICA_CASE,
+  SOUTH_AFRICA_PROVINCE_,
   SOUTH_AFRICA_TEST_DATA,
 } from '../../store/app.reducer';
 import { GlobalStatsReducer } from '../../store/global-stats/global-stats.reducer';
 import { CountriesReducer } from '../../store/countries/countries.reducer';
 import { SouthAfricaTestReducer } from '../../store/south-africa-test/south-africa-test.reducer';
 import { SouthAfricaCaseReducer } from '../../store/south-africa-case/south-africa-case.reducer';
+import { SouthAfricaProvinceReducer } from '../../store/south-africa-province/south-africa-province.reducer';
 
 @Component({
   selector: 'app-dashboard',
@@ -33,6 +35,9 @@ export class DashboardComponent implements OnInit {
   );
   southAfricaTestData$: Observable<SouthAfricaTestReducer> = this.store.select(
     SOUTH_AFRICA_TEST_DATA
+  );
+  provinces$: Observable<SouthAfricaProvinceReducer> = this.store.select(
+    SOUTH_AFRICA_PROVINCE_
   );
 
   constructor(

@@ -16,8 +16,18 @@ import {
 import { DataLoadService } from '../../services/data-load/data-load.service';
 import { SnackBarNotificationService } from '../../services/snack-bar-notification/snack-bar-notification.service';
 import { LanguageService } from '../../services/language/language.service';
-import { AppState, GLOBAL_TIME_SERIES } from '../../store/app.reducer';
+import {
+  AppState,
+  COUNTRIES,
+  GLOBAL_TIME_SERIES,
+} from '../../store/app.reducer';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { CountriesReducer } from '../../store/countries/countries.reducer';
+import {
+  GlobalTimeSeriesReducer,
+  globalTimeSeriesReducer,
+} from '../../store/global-time-series/global-time-series.reducer';
 
 @Component({
   selector: 'app-timeline',
@@ -47,7 +57,9 @@ export class TimelineComponent implements OnInit {
 
   selectedCountry = 'unknown';
   formattedPrefix: string;
-
+  timeline$: Observable<GlobalTimeSeriesReducer> = this.store.select(
+    GLOBAL_TIME_SERIES
+  );
   constructor(
     public dataStore: DataStoreService,
     private dataAssignment: DataAssignmentService,
@@ -65,12 +77,15 @@ export class TimelineComponent implements OnInit {
     this.formattedPrefix = this.selectedCountry + ' ';
 
     dataLoad.loadData();
-
-    if (this.selectedCountry === 'Global') {
-      this.assignGlobalToGraph();
-    } else {
-      this.assignDataToGraph();
-    }
+    this.store.select(GLOBAL_TIME_SERIES).subscribe((x) => {
+      if (x.isLoaded) {
+        if (this.selectedCountry === 'Global') {
+          this.assignGlobalToGraph();
+        } else {
+          this.assignDataToGraph();
+        }
+      }
+    });
 
     language.getTranslation('TABLECOLUMNS.TOTALCASES').subscribe((x) => {
       this.multiLineData[0].name = x;
@@ -90,6 +105,7 @@ export class TimelineComponent implements OnInit {
 
   assignDataToGraph() {
     this.store.select(GLOBAL_TIME_SERIES).subscribe((x) => {
+      console.log(x.timelineData);
       this.mapData(x.timelineData);
     });
   }
@@ -117,12 +133,15 @@ export class TimelineComponent implements OnInit {
   }
 
   mapData(countries: GlobalTimeSeriesModel[]) {
+    console.log(countries);
     countries.forEach((x) => {
       if (x.country === this.selectedCountry) {
         this.selectedCountryData = x;
       }
     });
 
+    console.log(this.selectedCountryData);
+    console.log(this.selectedCountry);
     if (this.selectedCountry === 'unknown') {
       this.snackBar.unknownCountry();
     } else {

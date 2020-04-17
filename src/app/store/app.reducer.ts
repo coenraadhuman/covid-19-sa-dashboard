@@ -29,6 +29,7 @@ export const SOUTH_AFRICA_CASE = 'southAfricaCase';
 export const COUNTRIES = 'countries';
 export const GLOBAL_TIME_SERIES = 'globalTimeSeries';
 export const SOUTH_AFRICA_TEST_DATA = 'southAfricaTestData';
+export const SOUTH_AFRICA_PROVINCE_ = 'southAfricaProvince';
 
 export interface AppState {
   globalStats: GlobalStatsReducer;

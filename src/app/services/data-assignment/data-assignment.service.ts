@@ -9,6 +9,10 @@ import { AssignGlobalStats } from '../../store/global-stats/global-stats.actions
 import { AssignSouthAfricaCountriesModel } from '../../store/south-africa-case/south-africa-case.actions';
 import { AssignSouthAfricaTestDataModel } from '../../store/south-africa-test/south-africa-test.actions';
 import { AssignGlobalTimeSeriesModel } from '../../store/global-time-series/global-time-series.actions';
+import {
+  AssignSouthAfricaDeathModel,
+  AssignSouthAfricaProvinceModel,
+} from '../../store/south-africa-province/south-africa-province.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +27,6 @@ export class DataAssignmentService {
 
   constructor(
     private dataRetrieval: DataRetrievalService,
-    public dataStore: DataStoreService,
     private dataTransforming: DataTransformingService,
     private store: Store<AppState>
   ) {}
@@ -88,15 +91,7 @@ export class DataAssignmentService {
     this.subscriptionSix = this.dataRetrieval
       .getSouthAfricaDeaths()
       .subscribe((retrievedData) => {
-        this.dataStore.southAfricaDeathDetails = retrievedData;
-        retrievedData.forEach((x) => {
-          this.dataStore.southAfricaProvinceTableDetails.forEach((y) => {
-            if (x.province === y.key) {
-              y.totalDeaths += 1;
-            }
-          });
-        });
-        this.dataStore.isDeathDetailsLoaded = true;
+        this.store.dispatch(new AssignSouthAfricaDeathModel(retrievedData));
         this.subscriptionSix.unsubscribe();
       });
   }
@@ -105,52 +100,7 @@ export class DataAssignmentService {
     this.subscriptionSeven = this.dataRetrieval
       .getSouthAfricaProvince()
       .subscribe((retrievedData) => {
-        retrievedData = retrievedData.sort(
-          (a, b) =>
-            (b.provinces.gauteng === '' ? 0 : Number(b.provinces.gauteng)) -
-            (a.provinces.gauteng === '' ? 0 : Number(a.provinces.gauteng))
-        );
-        this.dataStore.southAfricaProvinceDetails = retrievedData;
-        // tslint:disable-next-line:max-line-length
-        this.dataStore.southAfricaProvinceTableDetails[0].totalCases = Number(
-          retrievedData[0].provinces.gauteng
-        );
-        // tslint:disable-next-line:max-line-length
-        this.dataStore.southAfricaProvinceTableDetails[1].totalCases = Number(
-          retrievedData[0].provinces.western_cape
-        );
-        // tslint:disable-next-line:max-line-length
-        this.dataStore.southAfricaProvinceTableDetails[2].totalCases = Number(
-          retrievedData[0].provinces.kwazulu_natal
-        );
-        // tslint:disable-next-line:max-line-length
-        this.dataStore.southAfricaProvinceTableDetails[3].totalCases = Number(
-          retrievedData[0].provinces.free_state
-        );
-        // tslint:disable-next-line:max-line-length
-        this.dataStore.southAfricaProvinceTableDetails[4].totalCases = Number(
-          retrievedData[0].provinces.mpumlanga
-        );
-        // tslint:disable-next-line:max-line-length
-        this.dataStore.southAfricaProvinceTableDetails[5].totalCases = Number(
-          retrievedData[0].provinces.north_west
-        );
-        // tslint:disable-next-line:max-line-length
-        this.dataStore.southAfricaProvinceTableDetails[6].totalCases = Number(
-          retrievedData[0].provinces.limpopo
-        );
-        // tslint:disable-next-line:max-line-length
-        this.dataStore.southAfricaProvinceTableDetails[7].totalCases = Number(
-          retrievedData[0].provinces.eastern_cape
-        );
-        // tslint:disable-next-line:max-line-length
-        this.dataStore.southAfricaProvinceTableDetails[8].totalCases = Number(
-          retrievedData[0].provinces.northern_cape
-        );
-        this.dataStore.southAfricaProvinceTableDetails[9].totalCases = Number(
-          retrievedData[0].provinces.unknown
-        );
-        this.dataStore.isProvinceDetailsLoaded = true;
+        this.store.dispatch(new AssignSouthAfricaProvinceModel(retrievedData));
         this.subscriptionSeven.unsubscribe();
       });
   }

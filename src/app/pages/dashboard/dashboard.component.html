@@ -34,10 +34,10 @@
 
     <mat-card class="sa">
         <app-card-title [translationKey]="'TITLES.KNOWNPROVINCE' | translate"></app-card-title>
-<!--        <mat-card-content>-->
-<!--            <app-progress-bar [loadState]="(countries$ | async).isProvinceDetailsLoaded && (countries$ | async).isDeathDetailsLoaded"></app-progress-bar>-->
-<!--            <app-sa-table *ngIf="(countries$ | async).isProvinceDetailsLoaded && (countries$ | async).isDeathDetailsLoaded"></app-sa-table>-->
-<!--        </mat-card-content>-->
+        <mat-card-content>
+            <app-progress-bar [loadState]="(provinces$ | async).isProvinceDetailsLoaded && (provinces$ | async).isDeathDetailsLoaded"></app-progress-bar>
+            <app-sa-table *ngIf="(provinces$ | async).isProvinceDetailsLoaded && (provinces$ | async).isDeathDetailsLoaded"></app-sa-table>
+        </mat-card-content>
     </mat-card>
 
     <mat-card class="table">
