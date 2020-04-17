@@ -19,6 +19,10 @@ import {
   southAfricaTestReducer,
   SouthAfricaTestReducer,
 } from './south-africa-test/south-africa-test.reducer';
+import {
+  southAfricaProvinceReducer,
+  SouthAfricaProvinceReducer,
+} from './south-africa-province/south-africa-province.reducer';
 
 export const GLOBAL_STATS = 'globalStats';
 export const SOUTH_AFRICA_CASE = 'southAfricaCase';
@@ -32,6 +36,7 @@ export interface AppState {
   countries: CountriesReducer;
   globalTimeSeries: GlobalTimeSeriesReducer;
   southAfricaTestData: SouthAfricaTestReducer;
+  southAfricaProvince: SouthAfricaProvinceReducer;
 }
 
 export const appReducerMap: ActionReducerMap<AppState> = {
@@ -40,4 +45,5 @@ export const appReducerMap: ActionReducerMap<AppState> = {
   countries: countriesReducer,
   globalTimeSeries: globalTimeSeriesReducer,
   southAfricaTestData: southAfricaTestReducer,
+  southAfricaProvince: southAfricaProvinceReducer,
 };

@@ -15,21 +15,19 @@ export class DataLoadService {
     this.dataAssignment.getTotalsData();
     this.dataAssignment.getSouthAfricaCaseDetailsData();
     this.dataAssignment.getTablesData();
+    this.dataAssignment.getSouthAfricaTestData();
+    this.dataAssignment.getSouthAfricaProvinceDetailsData();
 
     if (this.dataStore.southAfricaDeathDetails.length === 0) {
       this.dataAssignment.getSouthAfricaDeathsDetailsData();
     }
 
-    if (this.dataStore.southAfricaProvinceDetails.length === 0) {
-      this.dataAssignment.getSouthAfricaProvinceDetailsData();
-    }
+    // if (this.dataStore.southAfricaProvinceDetails.length === 0) {
+    //   this.dataAssignment.getSouthAfricaProvinceDetailsData();
+    // }
 
     if (this.dataStore.timelineDataCopy.length === 0) {
       this.dataAssignment.getTimelineData();
-    }
-
-    if (!this.dataStore.isTestDataLoaded) {
-      this.dataAssignment.getSouthAfricaTestData();
     }
   }
 }
