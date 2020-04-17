@@ -48,6 +48,7 @@ import { StoreModule } from '@ngrx/store';
 import { appReducerMap } from './store/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CountriesEffects } from './store/countries/countries.effects';
+import { GlobalStatsEffects } from './store/global-stats/global-stats.effects';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -100,7 +101,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatInputModule,
     MatTooltipModule,
     StoreModule.forRoot(appReducerMap),
-    EffectsModule.forRoot([CountriesEffects]),
+    EffectsModule.forRoot([CountriesEffects, GlobalStatsEffects]),
   ],
   providers: [
     DataRetrievalService,

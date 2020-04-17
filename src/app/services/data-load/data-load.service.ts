@@ -12,7 +12,7 @@ import {
 } from '../../store/app.reducer';
 import { Store } from '@ngrx/store';
 import { RequestCountries } from '../../store/countries/countries.actions';
-import { ASSIGN_SOUTH_AFRICA_DEATH_MODEL } from '../../store/south-africa-province/south-africa-province.actions';
+import { RequestGlobalStats } from '../../store/global-stats/global-stats.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -43,7 +43,8 @@ export class DataLoadService {
   private checkAndLoadOverview() {
     this.store.select(GLOBAL_STATS).subscribe((x) => {
       if (!x.isOverviewLoaded) {
-        this.dataAssignment.getTotalsData();
+        this.store.dispatch(new RequestGlobalStats());
+        // this.dataAssignment.getTotalsData();
       }
     });
   }

@@ -30,9 +30,6 @@ export class DashboardComponent implements OnInit {
     GLOBAL_STATS
   );
   countries$: Observable<CountriesReducer> = this.store.select(COUNTRIES);
-  southAfricaCases$: Observable<SouthAfricaCaseReducer> = this.store.select(
-    SOUTH_AFRICA_CASE
-  );
   southAfricaTestData$: Observable<SouthAfricaTestReducer> = this.store.select(
     SOUTH_AFRICA_TEST_DATA
   );
