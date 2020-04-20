@@ -6,25 +6,16 @@
 
 This is a simple COVID-19 tracker dashboard primarily for personal use by a South African citizen.
 
-## Data Repositories
+## Get Started
 
-World Wide Data
+Please refer to our [GitBook](gitbook.sacovid.co.za) for how to contribute.
 
-- [Official Github Repository](https://www.worldometers.info/coronavirus/)
-- [Worldometers's Corona Virus](https://github.com/CSSEGISandData)
+## Authors
 
-South Africa Data
+| Coenraad Human                                                                                                           | Cameron Nair                                                                  |
+|--------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| <img src="https://avatars1.githubusercontent.com/u/20205514?s=460&u=b393e1cb87714dd753f281fc7f0c2d700db2db83&v=4" alt="Profile Picture" width="100"/> | <img src="https://avatars3.githubusercontent.com/u/62882067?s=460&v=4" alt="Profile Picture" width="100"/> |
 
-- [Official Github Repository](https://github.com/dsfsi/covid19za)
+## Contributors
 
 
-## Web API Repositories
-
-World Wide Tracker API
-
-- [Official Github Repository](https://github.com/novelcovid/api)
-- [Swagger Documentation](https://corona.lmao.ninja/docs/)
-
-South Africa Tracker API
-
-- [Official Github Repository](https://github.com/dsfsi/covid19za/tree/master/api)

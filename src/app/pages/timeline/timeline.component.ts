@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DataStoreService } from '../../services/data-store/data-store.service';
-import { DataAssignmentService } from '../../services/data-assignment/data-assignment.service';
-import { TranslateService } from '@ngx-translate/core';
 import { Gtag } from 'angular-gtag';
 import { ActivatedRoute } from '@angular/router';
 import { DataTransformingService } from '../../services/data-transforming/data-transforming.service';
@@ -16,6 +13,10 @@ import {
 import { DataLoadService } from '../../services/data-load/data-load.service';
 import { SnackBarNotificationService } from '../../services/snack-bar-notification/snack-bar-notification.service';
 import { LanguageService } from '../../services/language/language.service';
+import { AppState, GLOBAL_TIME_SERIES } from '../../store/app.reducer';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { GlobalTimeSeriesReducer } from '../../store/global-time-series/global-time-series.reducer';
 
 @Component({
   selector: 'app-timeline',
@@ -45,14 +46,15 @@ export class TimelineComponent implements OnInit {
 
   selectedCountry = 'unknown';
   formattedPrefix: string;
-
+  timeline$: Observable<GlobalTimeSeriesReducer> = this.store.select(
+    GLOBAL_TIME_SERIES
+  );
   constructor(
-    public dataStore: DataStoreService,
-    private dataAssignment: DataAssignmentService,
     private activatedRoute: ActivatedRoute,
     private dataTransforming: DataTransformingService,
     private dataLoad: DataLoadService,
     private snackBar: SnackBarNotificationService,
+    private store: Store<AppState>,
     public gtag: Gtag,
     private language: LanguageService
   ) {
@@ -62,12 +64,15 @@ export class TimelineComponent implements OnInit {
     this.formattedPrefix = this.selectedCountry + ' ';
 
     dataLoad.loadData();
-
-    if (this.selectedCountry === 'Global') {
-      this.assignGlobalToGraph();
-    } else {
-      this.assignDataToGraph();
-    }
+    this.store.select(GLOBAL_TIME_SERIES).subscribe((x) => {
+      if (x.isLoaded) {
+        if (this.selectedCountry === 'Global') {
+          this.assignGlobalToGraph();
+        } else {
+          this.assignDataToGraph();
+        }
+      }
+    });
 
     language.getTranslation('TABLECOLUMNS.TOTALCASES').subscribe((x) => {
       this.multiLineData[0].name = x;
@@ -86,25 +91,15 @@ export class TimelineComponent implements OnInit {
   }
 
   assignDataToGraph() {
-    if (this.dataStore.timelineDataCopy.length === 0) {
-      this.dataAssignment.getTimelineData();
-      this.dataStore.getTimelineData().subscribe((x) => {
-        this.mapData(x);
-      });
-    } else {
-      this.mapData(this.dataStore.timelineDataCopy);
-    }
+    this.store.select(GLOBAL_TIME_SERIES).subscribe((x) => {
+      this.mapData(x.timelineData);
+    });
   }
 
   assignGlobalToGraph() {
-    if (this.dataStore.timelineDataCopy.length === 0) {
-      this.dataAssignment.getTimelineData();
-      this.dataStore.getGlobalTimelineData().subscribe((x) => {
-        this.mapDataGlobal(x);
-      });
-    } else {
-      this.mapDataGlobal(this.dataStore.globalTimelineDataCopy);
-    }
+    this.store.select(GLOBAL_TIME_SERIES).subscribe((x) => {
+      this.mapDataGlobal(x.globalTimelineData);
+    });
   }
 
   mapDataGlobal(x: GlobalTimeSeriesModel) {

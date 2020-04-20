@@ -2,11 +2,13 @@ import { TestBed } from '@angular/core/testing';
 
 import { DataRetrievalService } from './data-retrieval.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { appReducerMap } from '../../store/app.reducer';
+import { StoreModule } from '@ngrx/store';
 
 describe('DataRetrievalService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, StoreModule.forRoot(appReducerMap)],
     })
   );
 

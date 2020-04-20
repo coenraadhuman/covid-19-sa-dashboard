@@ -43,6 +43,8 @@
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
     "@babel/compat-data": "^7.8.0",
+    "@ngrx/effects": "^9.1.0",
+    "@ngrx/store": "^9.0.0",
     "@ngx-translate/core": "^12.1.2",
     "@ngx-translate/http-loader": "^4.0.0",
     "@swimlane/ngx-charts": "^13.0.2",
@@ -51,8 +53,7 @@
     "hammerjs": "^2.0.8",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
-    "zone.js": "~0.9.1",
-    "@ngrx/store": "^9.0.0"
+    "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.25",

@@ -104,7 +104,7 @@ export class DataTransformingService {
     let southAfrica = {} as CountriesModel;
 
     locations.forEach((x) => {
-      if (x.country === 'South Africa') {
+      if (x.countryInfo.iso2 === 'ZA') {
         southAfrica = { ...x };
       }
     });
@@ -201,7 +201,7 @@ export class DataTransformingService {
   public getGlobalAggregatedData(
     data: GlobalTimeSeriesModel[]
   ): GlobalTimeSeriesModel {
-    const aggregatedResult = [...data].reduce(
+    const aggregatedResult = this.getAggregatedTimelineData(data).reduce(
       (finalCountry, workingCountry) => {
         for (const key in workingCountry.timeline.cases) {
           if (workingCountry.timeline.cases.hasOwnProperty(key)) {

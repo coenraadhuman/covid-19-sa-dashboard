@@ -1,7 +1,7 @@
 <mat-card>
     <app-card-title [translationKey]="'TITLES.ALLAFFECTEDCOUNTRIES'"></app-card-title>
     <mat-card-content>
-        <app-progress-bar [loadState]="dataStore.isTableLoaded"></app-progress-bar>
-        <app-stats-table *ngIf="dataStore.isTableLoaded"></app-stats-table>
+        <app-progress-bar [loadState]="(countries$ | async).isTableLoaded"></app-progress-bar>
+        <app-stats-table *ngIf="(countries$ | async).isTableLoaded"></app-stats-table>
     </mat-card-content>
 </mat-card>
