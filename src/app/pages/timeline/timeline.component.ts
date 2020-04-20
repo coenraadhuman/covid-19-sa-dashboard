@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DataStoreService } from '../../services/data-store/data-store.service';
-import { DataAssignmentService } from '../../services/data-assignment/data-assignment.service';
-import { TranslateService } from '@ngx-translate/core';
 import { Gtag } from 'angular-gtag';
 import { ActivatedRoute } from '@angular/router';
 import { DataTransformingService } from '../../services/data-transforming/data-transforming.service';
@@ -23,11 +20,7 @@ import {
 } from '../../store/app.reducer';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { CountriesReducer } from '../../store/countries/countries.reducer';
-import {
-  GlobalTimeSeriesReducer,
-  globalTimeSeriesReducer,
-} from '../../store/global-time-series/global-time-series.reducer';
+import { GlobalTimeSeriesReducer } from '../../store/global-time-series/global-time-series.reducer';
 
 @Component({
   selector: 'app-timeline',
@@ -61,8 +54,6 @@ export class TimelineComponent implements OnInit {
     GLOBAL_TIME_SERIES
   );
   constructor(
-    public dataStore: DataStoreService,
-    private dataAssignment: DataAssignmentService,
     private activatedRoute: ActivatedRoute,
     private dataTransforming: DataTransformingService,
     private dataLoad: DataLoadService,
@@ -105,7 +96,6 @@ export class TimelineComponent implements OnInit {
 
   assignDataToGraph() {
     this.store.select(GLOBAL_TIME_SERIES).subscribe((x) => {
-      console.log(x.timelineData);
       this.mapData(x.timelineData);
     });
   }
@@ -133,15 +123,12 @@ export class TimelineComponent implements OnInit {
   }
 
   mapData(countries: GlobalTimeSeriesModel[]) {
-    console.log(countries);
     countries.forEach((x) => {
       if (x.country === this.selectedCountry) {
         this.selectedCountryData = x;
       }
     });
 
-    console.log(this.selectedCountryData);
-    console.log(this.selectedCountry);
     if (this.selectedCountry === 'unknown') {
       this.snackBar.unknownCountry();
     } else {

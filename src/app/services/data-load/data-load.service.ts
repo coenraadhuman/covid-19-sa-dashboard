@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { DataStoreService } from '../data-store/data-store.service';
-import { DataAssignmentService } from '../data-assignment/data-assignment.service';
 import {
   AppState,
   COUNTRIES,
@@ -16,6 +15,10 @@ import { RequestGlobalStats } from '../../store/global-stats/global-stats.action
 import { RequestTimeSeries } from '../../store/global-time-series/global-time-series.actions';
 import { RequestSouthAfricaCases } from '../../store/south-africa-case/south-africa-case.actions';
 import { RequestSouthAfricaTests } from '../../store/south-africa-test/south-africa-test.actions';
+import {
+  RequestSouthAfricaDeathModel,
+  RequestSouthAfricaProvinceModel,
+} from '../../store/south-africa-province/south-africa-province.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -23,8 +26,7 @@ import { RequestSouthAfricaTests } from '../../store/south-africa-test/south-afr
 export class DataLoadService {
   constructor(
     private dataStore: DataStoreService,
-    private store: Store<AppState>,
-    private dataAssignment: DataAssignmentService
+    private store: Store<AppState>
   ) {}
 
   private checkAndLoadCountries() {
@@ -70,7 +72,7 @@ export class DataLoadService {
   private checkAndLoadDeathDetails() {
     this.store.select(SOUTH_AFRICA_PROVINCE).subscribe((x) => {
       if (!x.isDeathDetailsLoaded) {
-        this.dataAssignment.getSouthAfricaDeathsDetailsData();
+        this.store.dispatch(new RequestSouthAfricaDeathModel());
       }
     });
   }
@@ -78,7 +80,7 @@ export class DataLoadService {
   private checkAndLoadProvinceTable() {
     this.store.select(SOUTH_AFRICA_PROVINCE).subscribe((x) => {
       if (!x.isProvinceDetailsLoaded) {
-        this.dataAssignment.getSouthAfricaProvinceDetailsData();
+        this.store.dispatch(new RequestSouthAfricaProvinceModel());
       }
     });
   }
