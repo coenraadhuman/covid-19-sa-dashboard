@@ -8,7 +8,7 @@ This is a simple COVID-19 tracker dashboard primarily for personal use by a Sout
 
 ## Get Started
 
-Please refer to our [GitBook](gitbook.sacovid.co.za) for how to contribute.
+Please refer to our [GitBook](https://gitbook.sacovid.co.za) for how to contribute.
 
 ## Authors
 
