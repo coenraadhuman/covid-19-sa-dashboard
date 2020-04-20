@@ -1,7 +1,5 @@
 import { Action } from '@ngrx/store';
 import { GlobalTimeSeriesModel } from '../../models/global-timeSeries.model';
-import { Subject } from 'rxjs';
-import { REQUEST_GLOBAL_STATS } from '../global-stats/global-stats.actions';
 
 export const ASSIGN_GLOBAL_TIME_SERIES_MODEL =
   'assign_global_time_series_model';

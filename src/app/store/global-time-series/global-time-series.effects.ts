@@ -8,7 +8,6 @@ import {
   REQUEST_TIME_SERIES,
 } from './global-time-series.actions';
 import { DataTransformingService } from '../../services/data-transforming/data-transforming.service';
-import { AssignGlobalStats } from '../global-stats/global-stats.actions';
 
 @Injectable()
 export class TimeSeriesEffects {

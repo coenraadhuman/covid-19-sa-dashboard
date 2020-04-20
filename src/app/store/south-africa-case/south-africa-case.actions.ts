@@ -1,7 +1,6 @@
 import { Action } from '@ngrx/store';
 import { SouthAfricaCaseModel } from '../../models/south-africa-case.model';
 import { SouthAfricaCasesDetailsModel } from '../../models/south-africa-cases-details.model';
-import { REQUEST_GLOBAL_STATS } from '../global-stats/global-stats.actions';
 
 export const ASSIGN_SOUTH_AFRICA_COUNTRY_MODEL =
   'ASSIGN_SOUTH_AFRICA_COUNTRY_MODEL';
