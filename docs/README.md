@@ -14,4 +14,4 @@ This is a simple COVID-19 tracker dashboard primarily for personal use by a Sout
 
 ## Contributors
 
-We need your help with translations, please contribute if you can :smile:
+We need your help with translations, please contribute if you can :)
