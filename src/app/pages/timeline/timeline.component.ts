@@ -13,11 +13,7 @@ import {
 import { DataLoadService } from '../../services/data-load/data-load.service';
 import { SnackBarNotificationService } from '../../services/snack-bar-notification/snack-bar-notification.service';
 import { LanguageService } from '../../services/language/language.service';
-import {
-  AppState,
-  COUNTRIES,
-  GLOBAL_TIME_SERIES,
-} from '../../store/app.reducer';
+import { AppState, GLOBAL_TIME_SERIES } from '../../store/app.reducer';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { GlobalTimeSeriesReducer } from '../../store/global-time-series/global-time-series.reducer';
