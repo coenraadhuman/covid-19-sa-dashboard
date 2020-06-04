@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStoreService } from '../../services/data-store/data-store.service';
 import { Gtag } from 'angular-gtag';
-import { SnackBarNotificationService } from '../../services/snack-bar-notification/snack-bar-notification.service';
 import { DataLoadService } from '../../services/data-load/data-load.service';
 import { LanguageService } from '../../services/language/language.service';
 import { Store } from '@ngrx/store';
@@ -38,7 +37,6 @@ export class DashboardComponent implements OnInit {
   constructor(
     public dataStore: DataStoreService,
     private dataLoad: DataLoadService,
-    public snackBar: SnackBarNotificationService,
     public gtag: Gtag,
     private language: LanguageService,
     public store: Store<AppState>
@@ -47,7 +45,6 @@ export class DashboardComponent implements OnInit {
     this.dataStore.showTopTen = true;
 
     if (!this.dataStore.isFeatureSnackbarShown) {
-      this.snackBar.newFeatures();
       this.dataStore.isFeatureSnackbarShown = true;
     }
   }

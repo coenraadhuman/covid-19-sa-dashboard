@@ -11,7 +11,7 @@ import { SouthAfricaProvinceTableModel } from '../../../store/south-africa-provi
   styleUrls: ['./sa-table.component.scss'],
 })
 export class SaTableComponent implements OnInit {
-  displayedColumns: string[] = ['Number', 'name', 'totalCases', 'totalDeaths'];
+  displayedColumns: string[] = ['Number', 'name', 'totalCases'];
 
   southAfricaProvinceTableDetails: SouthAfricaProvinceTableModel[] = [
     {

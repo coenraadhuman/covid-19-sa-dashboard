@@ -24,7 +24,6 @@
                         <p>{{ 'TABLECOLUMNS.TOTALDEATHS' | translate }}: {{ (countries$ | async).southAfrica.deaths }}</p>
                         <p>{{ 'TABLECOLUMNS.TOTALRECOVERED' | translate }}: {{ (countries$ | async).southAfrica.recovered }}</p>
                         <p>{{ 'COMMON.TESTS' | translate }}: {{ (southAfricaTestData$ | async).southAfricaTestData.cumulative_tests }}</p>
-                        <p>{{ 'TABLECOLUMNS.NEWCASES' | translate }}: {{ (countries$ | async).southAfrica.todayCases }}</p>
                         <button mat-raised-button color="primary" routerLink="/timeline/South Africa">{{ 'BUTTONS.TIMELINE' | translate }}</button>
                     </div>
                 </div>
